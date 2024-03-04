@@ -1,0 +1,45 @@
+/* .profile-card {
+    width: 350px;
+    margin: 20px;
+    border-radius: 4px;
+    padding-bottom: 20px;
+    background: white;
+    align-items: center;
+}
+
+.gradient {
+    background-image: linear-gradient(cyan, whitesmoke);
+    height: 125px;
+    border-radius: 4px 4px 0px 0px;
+} */
+
+/* .profile-down img {
+    height: 150px;
+    width: 150px;
+    border-radius: 100px;
+    margin-top: -75px;
+    padding: 5px;
+    background: white;
+} */
+
+/* img {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+}
+
+.profile-image {
+    height: 80%;
+    width: 17%;
+} */
+
+.image {
+    width: 100%; /* you can use % */
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-image {
+    height: 80%;
+    width: 16%;
+}

@@ -1,0 +1,60 @@
+/* #root {
+    margin: 0;
+    padding: 2rem;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}  */
+
+.people-portal {
+    /* The image used */
+}
+
+.side-bar {
+    /* width: 30%;
+    height: 100%; */
+    background: blanchedalmond;
+}
+
+.name-panel {
+    /* width: 30%; */
+    background: blue;
+}
+
+.tree-view {
+    /* width: 60%; */
+    background: black;
+}
+
+.people-portal {
+    /* display: flex;
+    flex-direction: row;
+    padding: 0;
+    height: 70%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    justify-content: space-around; */
+    /* height: 100%;
+    width: 100%; */
+}
+/*
+.profile-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 70%;
+    height: 100%;
+} */
+
+.profile-component {
+    display: flex;
+    width: 100%;
+    height: 25%;
+    /* object-fit: cover; */
+}
+
+.tree-component {
+    width: 100%;
+    height: 75%;
+}
