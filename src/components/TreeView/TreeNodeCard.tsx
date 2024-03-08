@@ -1,35 +1,35 @@
 import profileImg from "../../assets/IMG_20240127_171651_857.jpg";
 import "./TreeNodeCard.css";
 import { DEFUALT_INITIALISE_EMPLOYEE, EMPLOYEE_DUMMY } from "../../utils/contants";
-import { store } from "../../stores/userProfileStore";
+import { store } from "../../stores/profileStore";
 import Employee from "../../models/Employee";
 import { observer } from "mobx-react";
 
-const testData: Employee = { name: "Lokesh", employeeId: "0", designation: "HA BHAIII BHAROSA RAKH", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [{ name: "Ramesh", employeeId: "0", designation: "BRUH WTF", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [], documentURL: "", interest: [], projectTags: [], profileImageURL: ["src/assets/MoneyView.jpeg"], isAdmin: true }], documentURL: "", interest: [], projectTags: [], profileImageURL: ["src/assets/IMG_20240127_171651_857.jpg"], isAdmin: false };
+const testData: Employee = { name: "Lokesh", employeeId: "0", designation: "HA BHAIII BHAROSA RAKH", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [{ name: "Ramesh", employeeId: "0", designation: "BRUH WTF", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [], documentURL: "", interest: [], projectTags: [], profileImageUrl: "src/assets/MoneyView.jpeg", isAdmin: true }], documentURL: "", interest: [], projectTags: [], profileImageUrl: "src/assets/IMG_20240127_171651_857.jpg", isAdmin: false };
 
 function TreeNodeCard(prop: any) {
-    const image = document.querySelector(".image");
-    const hover = document.querySelector(".hover");
-    const modal = document.querySelector(".modal");
-    const close = document.querySelector(".close");
+    // const image = document.querySelector(".image");
+    // const hover = document.querySelector(".hover");
+    // const modal = document.querySelector(".modal");
+    // const close = document.querySelector(".close");
 
     const { toggleNode, nodeDatum } = prop;
-    console.log(EMPLOYEE_DUMMY.profileImageURL);
+    // console.log(EMPLOYEE_DUMMY.profileImageURL);
 
-    function show() {
-        hover?.classList.add("active");
-        modal?.classList.add("show");
-    }
+    // function show() {
+    //     hover?.classList.add("active");
+    //     modal?.classList.add("show");
+    // }
 
-    function hide() {
-        hover?.classList.remove("active");
-        modal?.classList.remove("show");
-    }
+    // function hide() {
+    //     hover?.classList.remove("active");
+    //     modal?.classList.remove("show");
+    // }
 
-    image?.addEventListener("click", show);
-    close?.addEventListener("click", hide);
+    // image?.addEventListener("click", show);
+    // close?.addEventListener("click", hide);
 
-    const addData = () => {
+    const updateProfile = () => {
         store.setCurrentUser(nodeDatum);
         store.setTreeData(nodeDatum);
     };
@@ -37,7 +37,7 @@ function TreeNodeCard(prop: any) {
     return (
         <>
             <div className="container">
-                <div className="card flex flex-col content-center bg-gradient-to-r from-white to-cyan-100 m-2 rounded-lg">
+                <div className="card flex flex-col content-center bg-gradient-to-r from-white to-stone-300 m-2 rounded-lg">
                     <div className="header">
                         {/* <div className="hamburger-menu">
                             <div className="center"></div>
@@ -47,7 +47,7 @@ function TreeNodeCard(prop: any) {
                         </a> */}
                         <div className="main">
                             {/* <div className="image"> */}
-                            <img className="node-image" src={nodeDatum.profileImageURL} alt="ProfilePhoto" />
+                            <img className="node-image" src={nodeDatum.profileImageUrl} alt="ProfilePhoto" />
                             {/* <div className="hover">
                                     <i className="fas fa-camera fa-2x"></i>
                                 </div> */}
@@ -84,7 +84,7 @@ function TreeNodeCard(prop: any) {
                                             {nodeDatum.__rd3t.collapsed ? "Expand" : "Collapse"}
                                         </button>
                                     )}
-                                    <button onClick={addData} className="follow basis-1/2">
+                                    <button className="follow basis-1/2" onClick={updateProfile}>
                                         Profile
                                     </button>
                                 </div>

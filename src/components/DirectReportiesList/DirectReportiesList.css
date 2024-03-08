@@ -1,8 +1,9 @@
 .direct-reporties:hover {
     transform: scale(1.02);
-    background-color: wheat;
+    border: 2px solid gray;
 }
 
 .direct-reporties {
     transition: transform 0.5s;
+    border: 2px solid white;
 }

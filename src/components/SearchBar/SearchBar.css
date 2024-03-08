@@ -1,7 +1,9 @@
 .detail-card:hover {
     transform: scale(1.06);
+    border: 2px solid gray;
 }
 
 .detail-card {
     transition: transform 0.5s;
+    border: 2px solid white;
 }

@@ -32,7 +32,7 @@
     /* background-image: url("../../assets/IMG_20240127_171651_857.jpg"); */
     box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    border: 1px solid #33fe00;
+    border: 1px solid cyan;
 }
 
 /* .card:before {
@@ -127,8 +127,8 @@
     width: 100%;
     height: 100%;
     /* border-radius: 50%; */
-    background: url("../../assets/IMG_20240127_171651_857.jpg") no-repeat center / cover;
-    border: 2px solid #00fefe;
+    /* background: url("../../assets/IMG_20240127_171651_857.jpg") no-repeat center / cover; */
+    border: 3px solid white;
     /* margin-bottom: 2px; */
     padding: 0;
     margin: 0;

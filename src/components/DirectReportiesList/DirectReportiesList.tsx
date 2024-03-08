@@ -7,16 +7,16 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import "./DirectReportiesList.css";
 import Employee from "../../models/Employee";
-import { store } from "../../stores/userProfileStore";
+import { store } from "../../stores/profileStore";
 
 function DirectReportiesList() {
     function displayList() {
         return store.currentUser.children?.map((empl: Employee) => {
             return (
                 <>
-                    <ListItem alignItems="flex-start" className="direct-reporties bg-gradient-to-r from-white to-cyan-100 m-2 rounded-lg p-0 shadow-xl">
+                    <ListItem alignItems="flex-start" className="direct-reporties bg-gradient-to-r from-white to-gray-300 m-2 rounded-lg p-0 shadow-xl">
                         <ListItemAvatar>
-                            <Avatar alt="Remy Sharp" src={empl.profileImageURL[0]} />
+                            <Avatar alt="Remy Sharp" src={empl.profileImageUrl} />
                         </ListItemAvatar>
                         <ListItemText
                             primary={empl.name}
@@ -30,14 +30,13 @@ function DirectReportiesList() {
                             }
                         />
                     </ListItem>
-                    {/* <Divider variant="inset" component="li" /> */}
                 </>
             );
         });
     }
 
     return (
-        <List className="bg-gradient-to-l from-cyan-100 to-blue-300" sx={{ width: "100%", maxHeight: "100%", overflow: "visible" }}>
+        <List className="" sx={{ width: "100%", maxHeight: "100%", overflow: "visible" }}>
             {displayList()}
         </List>
     );

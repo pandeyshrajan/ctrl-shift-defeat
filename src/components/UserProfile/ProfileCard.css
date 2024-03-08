@@ -37,9 +37,45 @@
     width: 100%; /* you can use % */
     height: 100%;
     object-fit: cover;
+    border: 4px solid white;
+    transition: transform 0.5s;
+}
+.image:hover {
+    transform: scale(1.05);
+    border: 2px solid gray;
 }
 
 .profile-image {
     height: 80%;
     width: 16%;
+}
+
+.profile-component.image-cotainer {
+    display: flex;
+    width: 100%;
+    height: 25%;
+    /* object-fit: cover; */
+}
+
+.badge-icon {
+    opacity: 80%;
+    transform: translate(490%, -80%);
+    width: 18%;
+    height: 18%;
+    cursor: pointer;
+}
+
+.badge-icon:hover {
+    opacity: 100%;
+}
+
+.deep-link-icons {
+    /* transform: translate(300%, -100%); */
+    /* /* position: relative; */
+    /* position: fixed; */
+    float: right;
+}
+
+.profile-details {
+    /* transform: translate(-30%, 0); */
 }

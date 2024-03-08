@@ -5,6 +5,10 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
 import UploadImageIcon from "../../assets/bxs--image-add.svg";
+import { UploadFile } from "@mui/icons-material";
+import CropEasy from "./ImageUpload/CropEasy";
+import { Button, Input } from "@mui/material";
+import UploadButton from "../../utils/components/UploadButton";
 
 const style = {
     position: "absolute" as "absolute",
@@ -41,12 +45,7 @@ function PopUp() {
             >
                 <Fade in={open}>
                     <Box sx={style}>
-                        <Typography id="transition-modal-title" variant="h6" component="h2">
-                            Text in a modal
-                        </Typography>
-                        <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-                            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                        </Typography>
+                        <UploadButton />
                     </Box>
                 </Fade>
             </Modal>

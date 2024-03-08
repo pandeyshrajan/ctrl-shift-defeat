@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import Tree from "react-d3-tree";
 import TreeNodeCard from "./TreeNodeCard";
 import { useCenteredTree } from "./helper";
-import { store } from "../../stores/userProfileStore";
+import { store } from "../../stores/profileStore";
 
 const containerStyles = {
     width: "100%",
@@ -43,6 +43,7 @@ function TreeViewComponent({ rootStore }: any) {
                 enableLegacyTransitions={true}
                 dimensions={dimensions}
                 translate={translate}
+                on
             />
         </div>
     );

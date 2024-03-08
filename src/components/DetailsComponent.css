@@ -1,0 +1,12 @@
+.search-on-click {
+    display: block !important;
+    animation: slide 1s 1;
+}
+/* 
+.form-control,
+.me-2 {
+} */
+
+.me-2 {
+    display: none;
+}

@@ -25,7 +25,7 @@ function Search() {
     //     }
 
     return (
-        <section className="p-1 place-content-center flex flex-col justify-center bg-gray-200 opacity-70 rounded-lg">
+        <section className="p-1 place-content-center flex flex-col justify-center bg-stone-400 opacity-70 rounded-lg">
             {/* <div className=">
                 <h2 className="f2">Search your course</h2>
             </div>

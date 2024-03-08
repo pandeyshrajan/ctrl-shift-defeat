@@ -13,15 +13,15 @@ export default function AlignItemsList() {
     return (
         <>
             <Search />
-            <List className="bg-gradient-to-l from-cyan-100 to-blue-300 m-2" sx={{ width: "100%", maxWidth: "100%", maxHeight: "100%", overflow: "visible" }}>
-                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-cyan-100 rounded-lg mt-1 p-0 shadow-xl">
+            <List className="m-2 " sx={{ width: "100%", maxWidth: "100%", maxHeight: "100%", overflow: "visible" }}>
+                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-gray-300 rounded-lg mt-1 p-0 shadow-xl">
                     <ListItemAvatar>
                         <Avatar alt="Remy Sharp" src={profileImage} />
                     </ListItemAvatar>
                     <ListItemText primary="Shrajan Pandey" secondary={<React.Fragment>{"Software Developer Intern "}</React.Fragment>} />
                 </ListItem>
                 {/* <Divider variant="inset" component="li" /> */}
-                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-cyan-100 rounded-lg mt-2 p-0 shadow-xl">
+                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-gray-300 rounded-lg mt-2 p-0 shadow-xl">
                     <ListItemAvatar>
                         <Avatar alt="Travis Howard" src={profileImage} />
                     </ListItemAvatar>
@@ -38,7 +38,7 @@ export default function AlignItemsList() {
                     />
                 </ListItem>
                 {/* <Divider variant="inset" component="li" /> */}
-                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-cyan-100 rounded-lg mt-2 p-0 shadow-xl">
+                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-gray-300 rounded-lg mt-2 p-0 shadow-xl">
                     <ListItemAvatar>
                         <Avatar alt="Cindy Baker" src={profileImage} />
                     </ListItemAvatar>
@@ -54,7 +54,7 @@ export default function AlignItemsList() {
                         }
                     />
                 </ListItem>
-                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-cyan-100 mt-2 rounded-lg p-0 shadow-xl">
+                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-gray-300 mt-2 rounded-lg p-0 shadow-xl">
                     <ListItemAvatar>
                         <Avatar alt="Remy Sharp" src={profileImage} />
                     </ListItemAvatar>
@@ -70,7 +70,7 @@ export default function AlignItemsList() {
                         }
                     />
                 </ListItem>
-                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-cyan-100 mt-2 rounded-lg p-0 shadow-xl">
+                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-gray-300 mt-2 rounded-lg p-0 shadow-xl">
                     <ListItemAvatar>
                         <Avatar alt="Remy Sharp" src={profileImage} />
                     </ListItemAvatar>
@@ -86,7 +86,7 @@ export default function AlignItemsList() {
                         }
                     />
                 </ListItem>
-                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-cyan-100 mt-2 rounded-lg p-0 shadow-xl">
+                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-gray-300 mt-2 rounded-lg p-0 shadow-xl">
                     <ListItemAvatar>
                         <Avatar alt="Remy Sharp" src={profileImage} />
                     </ListItemAvatar>
@@ -102,7 +102,7 @@ export default function AlignItemsList() {
                         }
                     />
                 </ListItem>
-                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-cyan-100 mt-2 rounded-lg p-0 shadow-xl">
+                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-gray-300 mt-2 rounded-lg p-0 shadow-xl">
                     <ListItemAvatar>
                         <Avatar alt="Remy Sharp" src={profileImage} />
                     </ListItemAvatar>
