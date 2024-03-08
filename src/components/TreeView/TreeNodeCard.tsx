@@ -1,6 +1,11 @@
 import profileImg from "../../assets/IMG_20240127_171651_857.jpg";
 import "./TreeNodeCard.css";
-import { EMPLOYEE_DUMMY } from "../../utils/contants";
+import { DEFUALT_INITIALISE_EMPLOYEE, EMPLOYEE_DUMMY } from "../../utils/contants";
+import { store } from "../../stores/userProfileStore";
+import Employee from "../../models/Employee";
+import { observer } from "mobx-react";
+
+const testData: Employee = { name: "Lokesh", employeeId: "0", designation: "HA BHAIII BHAROSA RAKH", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [{ name: "Ramesh", employeeId: "0", designation: "BRUH WTF", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [], documentURL: "", interest: [], projectTags: [], profileImageURL: ["src/assets/MoneyView.jpeg"], isAdmin: true }], documentURL: "", interest: [], projectTags: [], profileImageURL: ["src/assets/IMG_20240127_171651_857.jpg"], isAdmin: false };
 
 function TreeNodeCard(prop: any) {
     const image = document.querySelector(".image");
@@ -24,10 +29,15 @@ function TreeNodeCard(prop: any) {
     image?.addEventListener("click", show);
     close?.addEventListener("click", hide);
 
+    const addData = () => {
+        store.setCurrentUser(nodeDatum);
+        store.setTreeData(nodeDatum);
+    };
+
     return (
         <>
             <div className="container">
-                <div className="card flex flex-col content-center">
+                <div className="card flex flex-col content-center bg-gradient-to-r from-white to-cyan-100 m-2 rounded-lg">
                     <div className="header">
                         {/* <div className="hamburger-menu">
                             <div className="center"></div>
@@ -74,9 +84,9 @@ function TreeNodeCard(prop: any) {
                                             {nodeDatum.__rd3t.collapsed ? "Expand" : "Collapse"}
                                         </button>
                                     )}
-                                    <a href="#" className="follow basis-1/2">
+                                    <button onClick={addData} className="follow basis-1/2">
                                         Profile
-                                    </a>
+                                    </button>
                                 </div>
                                 {/* <div className="share-wrap">
                                     <a href="#" className="share">
@@ -108,4 +118,4 @@ function TreeNodeCard(prop: any) {
     );
 }
 
-export default TreeNodeCard;
+export default observer(TreeNodeCard);

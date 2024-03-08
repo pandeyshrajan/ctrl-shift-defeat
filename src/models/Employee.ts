@@ -13,7 +13,8 @@ class Employee {
     contactNo: string;
     interest: string[];
     projectTags: string[];
-    profileImageURL: string;
+    profileImageURL: string[];
+    isAdmin: Boolean;
 
     constructor() {
         this.name = DEFUALT_INITIALISE_EMPLOYEE.name;
@@ -30,6 +31,7 @@ class Employee {
         this.interest = DEFUALT_INITIALISE_EMPLOYEE.interest;
         this.projectTags = DEFUALT_INITIALISE_EMPLOYEE.projectTags;
         this.profileImageURL = DEFUALT_INITIALISE_EMPLOYEE.profileImageURL;
+        this.isAdmin = DEFUALT_INITIALISE_EMPLOYEE.isAdmin;
     }
 }
 

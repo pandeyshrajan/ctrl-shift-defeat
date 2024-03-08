@@ -1,0 +1,8 @@
+.direct-reporties:hover {
+    transform: scale(1.02);
+    background-color: wheat;
+}
+
+.direct-reporties {
+    transition: transform 0.5s;
+}

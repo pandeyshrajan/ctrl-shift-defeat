@@ -10,10 +10,10 @@
     /* The image used */
 }
 
-.side-bar {
+.side-tab {
     /* width: 30%;
     height: 100%; */
-    background: blanchedalmond;
+    overflow: visible;
 }
 
 .name-panel {

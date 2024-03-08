@@ -1,18 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { observer } from "mobx-react";
 import Tree from "react-d3-tree";
 import TreeNodeCard from "./TreeNodeCard";
 import { useCenteredTree } from "./helper";
-import { EMPLOYEE_DUMMY } from "../../utils/contants";
+import { store } from "../../stores/userProfileStore";
 
 const containerStyles = {
     width: "100%",
     height: "100%",
 };
 
-// Here we're using `renderCustomNodeElement` render a component that uses
-// both SVG and HTML tags side-by-side.
-// This is made possible by `foreignObject`, which wraps the HTML tags to
-// allow for them to be injected into the SVG namespace.
 const renderForeignObjectNode = ({ nodeDatum, toggleNode, foreignObjectProps }: any) => (
     <g>
         {/* <circle r={5}></circle> */}
@@ -23,7 +20,7 @@ const renderForeignObjectNode = ({ nodeDatum, toggleNode, foreignObjectProps }: 
     </g>
 );
 
-export default function TreeViewComponent() {
+function TreeViewComponent({ rootStore }: any) {
     //   const [translate, containerRef] = useCenteredTree();
     const [toggle, toggleNode] = useState(false);
 
@@ -33,10 +30,10 @@ export default function TreeViewComponent() {
     return (
         <div style={containerStyles} ref={containerRef}>
             <Tree
-                data={EMPLOYEE_DUMMY}
+                data={store.getTreeData()}
                 // translate={translate}
                 nodeSize={nodeSize}
-                renderCustomNodeElement={(rd3tProps) => renderForeignObjectNode({ ...rd3tProps, foreignObjectProps })}
+                renderCustomNodeElement={(rd3tProps) => renderForeignObjectNode({ ...rd3tProps, foreignObjectProps, rootStore })}
                 orientation="vertical"
                 depthFactor={500}
                 initialDepth={1}
@@ -51,22 +48,4 @@ export default function TreeViewComponent() {
     );
 }
 
-// function TreeViewComponent(){
-//     const nodeSize = { x: 200, y: 200 };
-//     const foreignObjectProps = { width: nodeSize.x, height: nodeSize.y, x: 20 };
-
-//     return (<>
-//         <div style={containerStyles} >
-//             <Tree
-//                 data={orgChart}
-//                 zoomable={true}
-//                 nodeSize={nodeSize}
-//                 renderCustomNodeElement={(rd3tProps) =>
-//                     renderForeignObjectNode({ ...rd3tProps, foreignObjectProps })
-//                 }
-//                 orientation="vertical"
-//             />
-//         </div>
-//     </>)
-
-// }
+export default observer(TreeViewComponent);

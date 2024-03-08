@@ -1,47 +1,27 @@
-// import React from "react";
-// import SearchBarComponent from "./SearchBarComponent";
-
-// function SearchList({ filteredPersons }: any) {
-//     const filtered = filteredPersons.map((person: any) => <SearchBarComponent key={person.id} person={person} />);
-//     return <div>{filtered}</div>;
-// }
-
-// export default SearchList;
-
 import * as React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import profileImage from "../../assets/IMG_20240127_171651_857.jpg";
-import Search from "./Seach";
+import Search from "./Search";
+import "./SearchBar.css";
 
 export default function AlignItemsList() {
     return (
         <>
             <Search />
-            <List sx={{ width: "100%", maxWidth: "100%", bgcolor: "background.paper", maxHeight: "100%", overflow: "auto" }}>
-                <ListItem alignItems="flex-start">
+            <List className="bg-gradient-to-l from-cyan-100 to-blue-300 m-2" sx={{ width: "100%", maxWidth: "100%", maxHeight: "100%", overflow: "visible" }}>
+                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-cyan-100 rounded-lg mt-1 p-0 shadow-xl">
                     <ListItemAvatar>
                         <Avatar alt="Remy Sharp" src={profileImage} />
                     </ListItemAvatar>
-                    <ListItemText
-                        primary="Brunch this weekend?"
-                        secondary={
-                            <React.Fragment>
-                                <Typography sx={{ display: "inline" }} component="span" variant="body2" color="text.primary">
-                                    Ali Connors
-                                </Typography>
-                                {" — I'll be in your neighborhood doing errands this…"}
-                            </React.Fragment>
-                        }
-                    />
+                    <ListItemText primary="Shrajan Pandey" secondary={<React.Fragment>{"Software Developer Intern "}</React.Fragment>} />
                 </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem alignItems="flex-start">
+                {/* <Divider variant="inset" component="li" /> */}
+                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-cyan-100 rounded-lg mt-2 p-0 shadow-xl">
                     <ListItemAvatar>
                         <Avatar alt="Travis Howard" src={profileImage} />
                     </ListItemAvatar>
@@ -57,8 +37,8 @@ export default function AlignItemsList() {
                         }
                     />
                 </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem alignItems="flex-start">
+                {/* <Divider variant="inset" component="li" /> */}
+                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-cyan-100 rounded-lg mt-2 p-0 shadow-xl">
                     <ListItemAvatar>
                         <Avatar alt="Cindy Baker" src={profileImage} />
                     </ListItemAvatar>
@@ -74,7 +54,7 @@ export default function AlignItemsList() {
                         }
                     />
                 </ListItem>
-                <ListItem alignItems="flex-start">
+                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-cyan-100 mt-2 rounded-lg p-0 shadow-xl">
                     <ListItemAvatar>
                         <Avatar alt="Remy Sharp" src={profileImage} />
                     </ListItemAvatar>
@@ -90,7 +70,7 @@ export default function AlignItemsList() {
                         }
                     />
                 </ListItem>
-                <ListItem alignItems="flex-start">
+                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-cyan-100 mt-2 rounded-lg p-0 shadow-xl">
                     <ListItemAvatar>
                         <Avatar alt="Remy Sharp" src={profileImage} />
                     </ListItemAvatar>
@@ -106,7 +86,7 @@ export default function AlignItemsList() {
                         }
                     />
                 </ListItem>
-                <ListItem alignItems="flex-start">
+                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-cyan-100 mt-2 rounded-lg p-0 shadow-xl">
                     <ListItemAvatar>
                         <Avatar alt="Remy Sharp" src={profileImage} />
                     </ListItemAvatar>
@@ -122,7 +102,7 @@ export default function AlignItemsList() {
                         }
                     />
                 </ListItem>
-                <ListItem alignItems="flex-start">
+                <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-cyan-100 mt-2 rounded-lg p-0 shadow-xl">
                     <ListItemAvatar>
                         <Avatar alt="Remy Sharp" src={profileImage} />
                     </ListItemAvatar>

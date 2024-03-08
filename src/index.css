@@ -24,3 +24,12 @@ html {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.animate-button-hover:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.animate-button-hover {
+    transition: transform 0.5s;
+}

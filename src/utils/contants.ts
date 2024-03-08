@@ -13,11 +13,12 @@ export const DEFUALT_INITIALISE_EMPLOYEE: Employee = {
     documentURL: "",
     interest: [],
     projectTags: [],
-    profileImageURL: "",
+    profileImageURL: [],
+    isAdmin: false,
 };
 
 export const EMPLOYEE_DUMMY: Employee = {
-    name: "Shrajan",
+    name: "Shrajan Pandey",
     employeeId: "0",
     designation: "SDE Intern",
     level: "0",
@@ -26,11 +27,12 @@ export const EMPLOYEE_DUMMY: Employee = {
     emailId: "",
     contactNo: "",
     children: [
-        { name: "Lokesh", employeeId: "0", designation: "HA BHAIII BHAROSA RAKH", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [{ name: "Ramesh", employeeId: "0", designation: "BRUH WTF", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [], documentURL: "", interest: [], projectTags: [], profileImageURL: "src/assets/MoneyView.jpeg" }], documentURL: "", interest: [], projectTags: [], profileImageURL: "src/assets/IMG_20240127_171651_857.jpg" },
-        { name: "Lokesh", employeeId: "0", designation: "HA BHAIII BHAROSA RAKH", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [{ name: "Ramesh", employeeId: "0", designation: "BRUH WTF", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageURL: "src/assets/IMG_20240127_171651_857.jpg" }], documentURL: "", interest: [], projectTags: [], profileImageURL: "src/assets/MoneyView.jpeg" },
+        { name: "Lokesh", employeeId: "0", designation: "LAMBAA HAI REE MADUM LAMBA", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [{ name: "Ramesh", employeeId: "0", designation: "BRUH WTF", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [], documentURL: "", interest: [], projectTags: [], profileImageURL: ["src/assets/MoneyView.jpeg"], isAdmin: false }], documentURL: "", interest: [], projectTags: [], profileImageURL: ["src/assets/IMG_20240127_171651_857.jpg"], isAdmin: false },
+        { name: "Lokesh", employeeId: "0", designation: "ROM ROMM BHAIYOONNN", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [{ name: "Ramesh", employeeId: "0", designation: "ROM ROOM BHAIYOOOOO", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageURL: ["src/assets/IMG_20240127_171651_857.jpg"], isAdmin: false }], documentURL: "", interest: [], projectTags: [], profileImageURL: ["src/assets/MoneyView.jpeg"], isAdmin: false },
     ],
     documentURL: "",
     interest: [],
     projectTags: [],
-    profileImageURL: "/src/assets/IMG_20240127_171651_857.jpg",
+    profileImageURL: ["/src/assets/IMG_20240127_171651_857.jpg"],
+    isAdmin: true,
 };
