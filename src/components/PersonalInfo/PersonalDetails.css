@@ -1,0 +1,24 @@
+.document-section {
+    width: 100%;
+    height: 100%;
+}
+
+.document {
+    width: 10em;
+    height: 10em;
+    text-align: center;
+}
+
+.more-info {
+    overflow: auto;
+    text-align: justify;
+}
+
+.list {
+    border: 2px solid wheat;
+    transition: transform 0.5s;
+}
+.list:hover {
+    transform: scale(1.02);
+    border: 2px solid gray;
+}

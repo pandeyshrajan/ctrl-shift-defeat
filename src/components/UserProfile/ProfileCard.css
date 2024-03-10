@@ -50,13 +50,6 @@
     width: 16%;
 }
 
-.profile-component.image-cotainer {
-    display: flex;
-    width: 100%;
-    height: 25%;
-    /* object-fit: cover; */
-}
-
 .badge-icon {
     opacity: 80%;
     transform: translate(490%, -80%);

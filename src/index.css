@@ -33,3 +33,7 @@ html {
 .animate-button-hover {
     transition: transform 0.5s;
 }
+
+body {
+    overflow: hidden;
+}

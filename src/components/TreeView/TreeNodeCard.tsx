@@ -29,6 +29,14 @@ function TreeNodeCard(prop: any) {
     // image?.addEventListener("click", show);
     // close?.addEventListener("click", hide);
 
+    const addNewChild = (e: any) => {
+        store.newNode(nodeDatum.employeeId);
+    };
+
+    const addManager = () => {
+        store.newManager(nodeDatum.employeeId);
+    };
+
     const updateProfile = () => {
         store.setCurrentUser(nodeDatum);
         store.setTreeData(nodeDatum);
@@ -79,13 +87,14 @@ function TreeNodeCard(prop: any) {
                             </div> */}
                             <div className="buttons-wrap p-2">
                                 <div className="follow-wrap">
-                                    {nodeDatum.children && (
-                                        <button className="follow" onClick={toggleNode}>
-                                            {nodeDatum.__rd3t.collapsed ? "Expand" : "Collapse"}
-                                        </button>
-                                    )}
-                                    <button className="follow basis-1/2" onClick={updateProfile}>
-                                        Profile
+                                    {/* {nodeDatum.children && ( */}
+                                    <button className="follow" onClick={addManager}>
+                                        Manager
+                                        {/* {nodeDatum.__rd3t.collapsed ? "Expand" : "Collapse"} */}
+                                    </button>
+                                    {/* )} */}
+                                    <button className="follow basis-1/2" onClick={addNewChild}>
+                                        Reporties
                                     </button>
                                 </div>
                                 {/* <div className="share-wrap">

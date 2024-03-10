@@ -1,9 +1,18 @@
 .detail-card:hover {
-    transform: scale(1.06);
+    transform: scale(0.97);
     border: 2px solid gray;
 }
 
 .detail-card {
     transition: transform 0.5s;
     border: 2px solid white;
+}
+
+.search-section {
+    /* margin: 5px; */
+    /* float: left; */
+    margin: 0;
+    padding: 4px;
+    /* border: 10px solid #78716c; */
+    /* overflow-x: visible; */
 }
