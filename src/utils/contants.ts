@@ -28,8 +28,8 @@ export const EMPLOYEE_DUMMY: Employee = {
     emailId: "",
     contactNo: "",
     children: [
-        { name: "Lokesh", employeeId: "0", designation: "LAMBAA HAI REE MADUM LAMBA", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [{ name: "Ramesh", employeeId: "0", designation: "BRUH WTF", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [], documentURL: "", interest: [], projectTags: [], profileImageUrl: "src/assets/MoneyView.jpeg", isAdmin: false }], documentURL: "", interest: [], projectTags: [], profileImageUrl: "src/assets/IMG_20240127_171651_857.jpg", isAdmin: false },
-        { name: "Lokesh", employeeId: "0", designation: "ROM ROMM BHAIYOONNN", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [{ name: "Ramesh", employeeId: "0", designation: "ROM ROOM BHAIYOOOOO", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "src/assets/IMG_20240127_171651_857.jpg", isAdmin: false }], documentURL: "", interest: [], projectTags: [], profileImageUrl: "src/assets/MoneyView.jpeg", isAdmin: false },
+        { name: "Lokesh", employeeId: "1", designation: "LAMBAA HAI REE MADUM LAMBA", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [{ name: "Ramesh", employeeId: "3", designation: "BRUH WTF", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [], documentURL: "", interest: [], projectTags: [], profileImageUrl: "src/assets/MoneyView.jpeg", isAdmin: false }], documentURL: "", interest: [], projectTags: [], profileImageUrl: "src/assets/IMG_20240127_171651_857.jpg", isAdmin: false },
+        { name: "Lokesh", employeeId: "2", designation: "ROM ROMM BHAIYOONNN", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [{ name: "Ramesh", employeeId: "4", designation: "ROM ROOM BHAIYOOOOO", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "src/assets/IMG_20240127_171651_857.jpg", isAdmin: false }], documentURL: "", interest: [], projectTags: [], profileImageUrl: "src/assets/MoneyView.jpeg", isAdmin: false },
     ],
     documentURL: "",
     interest: [],
@@ -38,3 +38,54 @@ export const EMPLOYEE_DUMMY: Employee = {
     isAdmin: true,
     badgeImageUrl: "/src/assets/MoneyView.jpeg",
 };
+
+export enum PERSONAL_INFO {
+    Name,
+    "Employee ID",
+    Department,
+    Designation,
+    Pod,
+    Level,
+    Manager,
+    DOB,
+    DOJ,
+    Address,
+}
+
+export enum DOCUMENTS {
+    "Offer Letter",
+    "Aadhar Card",
+    "Pan Card",
+    "Bank Detail",
+}
+
+export const DEMO_EMPLOYEES: Employee[] = [
+    { name: "Shrajan Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "BRUH Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "HA Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "JA Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "HATT Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "WTF Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "LMAO Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "AYO Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "CH Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "ROM ROM Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "HEIN ? Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "Baigan Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "Systuum Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "CHALO Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "SOOYA Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "JAGA Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "KHATA Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "Shrajan Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "Shrajan Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "Shrajan Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "Shrajan Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "Shrajan Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "Shrajan Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "Shrajan Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "Shrajan Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "Shrajan Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "Shrajan Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+    { name: "Shrajan Pandey", employeeId: "0", designation: "SDE Intern", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg", isAdmin: true, badgeImageUrl: "/src/assets/MoneyView.jpeg" },
+];

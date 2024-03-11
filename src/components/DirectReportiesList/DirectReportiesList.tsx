@@ -14,7 +14,7 @@ function DirectReportiesList() {
         return store.currentUser.children?.map((empl: Employee) => {
             return (
                 <>
-                    <ListItem alignItems="flex-start" className="direct-reporties bg-gradient-to-r from-white to-gray-300 m-2 rounded-lg p-0 shadow-xl">
+                    <ListItem alignItems="flex-start" className="direct-reporties gradient-color-r m-2 rounded-lg p-1 shadow-xl">
                         <ListItemAvatar>
                             <Avatar alt="Remy Sharp" src={empl.profileImageUrl} />
                         </ListItemAvatar>
@@ -35,11 +35,7 @@ function DirectReportiesList() {
         });
     }
 
-    return (
-        <List className="" sx={{ width: "100%", maxHeight: "100%", overflow: "visible" }}>
-            {displayList()}
-        </List>
-    );
+    return <List>{displayList()}</List>;
 }
 
 export default DirectReportiesList;

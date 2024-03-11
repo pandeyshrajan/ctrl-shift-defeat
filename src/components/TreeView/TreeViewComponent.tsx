@@ -12,8 +12,6 @@ const containerStyles = {
 
 const renderForeignObjectNode = ({ nodeDatum, toggleNode, foreignObjectProps }: any) => (
     <g>
-        {/* <circle r={5}></circle> */}
-        {/* `foreignObject` requires width & height to be explicitly set. */}
         <foreignObject {...foreignObjectProps}>
             <TreeNodeCard toggleNode={toggleNode} nodeDatum={nodeDatum} />
         </foreignObject>
@@ -36,14 +34,13 @@ function TreeViewComponent({ rootStore }: any) {
                 renderCustomNodeElement={(rd3tProps) => renderForeignObjectNode({ ...rd3tProps, foreignObjectProps, rootStore })}
                 orientation="vertical"
                 depthFactor={500}
-                initialDepth={1}
+                // initialDepth={1}
                 pathFunc="step"
                 separation={{ siblings: 3, nonSiblings: 3 }}
                 zoomable={true}
-                enableLegacyTransitions={true}
+                // enableLegacyTransitions={true}
                 dimensions={dimensions}
                 translate={translate}
-                on
             />
         </div>
     );

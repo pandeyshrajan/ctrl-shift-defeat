@@ -7,7 +7,7 @@ import BadgeIcon from "../../assets/material-symbols--badge.svg";
 import CallIcon from "../../assets/fluent--call-32-filled.svg";
 import BadegeIcon from "../../assets/mingcute--badge-fill.svg";
 import PopUp from "../PopUp/PopUp";
-import Tags from "../Tags";
+import Tags from "../../utils/components/Tags";
 
 function ProfileCard() {
     const toggleProfileIcon = () => {
@@ -18,24 +18,26 @@ function ProfileCard() {
     return (
         <>
             <span className="image-container profile-image rounded-lg shadow-2xl">
-                <img className="image rounded-lg" src={store.profileImage} alt="ProfilePhoto" />
+                <img className="image rounded-lg" src={store.getProfileImage()} alt="ProfilePhoto" />
                 <img className="badge-icon bg-gray-200 shadow-xl rounded-lg" src={BadegeIcon} onClick={toggleProfileIcon} />
             </span>
             <div>
-                <div className="profile-details pl-20">
-                    <div className="profile-name font-bold text-4xl text-gray-100 ml-1">{store.getCurrentUser().name}</div>
+                <div className="profile-name font-bold text-4xl text-gray-700 ml-1">{store.getCurrentUser().name}</div>
+                <div className="profile-level text-slate-500 italic pt-2 font-medium ml-1">{store.getCurrentUser().designation}</div>
+                <div>
+                    <Tags />
+                    <Tags />
+                </div>
+            </div>
+            <div>
+                <div className="profile-details">
                     <div className="other-info">
-                        <div className="profile-level text-slate-500 italic pt-2 font-medium ml-1">{store.getCurrentUser().designation}</div>
-                        <div>
-                            <Tags />
-                            <Tags />
-                        </div>
-                        <div className="deep-links pt-2 flex flex-row">
-                            <img className="animate-button-hover m-1 bg-white p-2 rounded-lg" src={SlackIcon} />
-                            <img className="animate-button-hover m-1 bg-white p-2 rounded-lg" src={MailIcon} />
-                            <img className="animate-button-hover m-1 bg-white p-2 rounded-lg" src={BadgeIcon} />
-                            <img className="animate-button-hover m-1 bg-white p-2 rounded-lg" src={CallIcon} />
-                            <PopUp />
+                        <div className="deep-link-icons pt-2 flex flex-row">
+                            <img className="animate-button-hover deep-link m-1 bg-white p-2 rounded-lg" src={SlackIcon} />
+                            <img className="animate-button-hover deep-link m-1 bg-white p-2 rounded-lg" src={MailIcon} />
+                            <img className="animate-button-hover deep-link m-1 bg-white p-2 rounded-lg" src={BadgeIcon} />
+                            <img className="animate-button-hover deep-link m-1 bg-white p-2 rounded-lg" src={CallIcon} />
+                            {store.isCurrentUser && <PopUp />}
                         </div>
                     </div>
                 </div>
