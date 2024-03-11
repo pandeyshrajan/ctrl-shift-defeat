@@ -34,7 +34,7 @@ function TreeReportiesComponent() {
     };
 
     return (
-        <div className="details-component gradient-color mt-2 rounded-lg overflow-hidden" data-aos="fade-up">
+        <div className="details-component rounded-lg overflow-hidden" data-aos="fade-up">
             <Box>
                 <Tabs className="bg-white m-1 rounded-lg" value={store.getTabValue()} onChange={handleChange} textColor="primary" indicatorColor="primary" aria-label="secondary tabs example">
                     <Tab value="one" label="More Info" className="m-2" />

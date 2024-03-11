@@ -10,7 +10,7 @@ function Search() {
     };
 
     return (
-        <section className="z-10 sticky top-0 p-1 mt-0 mb-0 bg-white rounded-2xl shadow-xl">
+        <section className="z-10 sticky top-0  bg-white rounded-2xl shadow-xl">
             <Input
                 startDecorator={<SearchTwoTone />}
                 endDecorator={

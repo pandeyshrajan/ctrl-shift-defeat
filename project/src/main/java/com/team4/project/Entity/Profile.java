@@ -11,6 +11,7 @@ public class Profile {
     private Employee employee;
     private List<ProjectTags> projectTags;
     private List<InterestTags> interestTags;
+    private List<Employee> children;
 
     public Profile(Employee employee, List<ProjectTags> projectTags, List<InterestTags> interestTags) {
         this.employee = employee;

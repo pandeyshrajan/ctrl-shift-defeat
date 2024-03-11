@@ -14,7 +14,7 @@ const Tags = () => {
     return (
         <Flex gap="4px 0" wrap="wrap" align="center" className="pt-2 ml-1">
             {tagsData.map<React.ReactNode>((tag) => (
-                <Tag.CheckableTag key={tag} checked={selectedTags.includes(tag)} onChange={(checked) => handleChange(tag, checked)}>
+                <Tag.CheckableTag className="text-white" key={tag} checked={selectedTags.includes(tag)} onChange={(checked) => handleChange(tag, checked)}>
                     {tag}
                 </Tag.CheckableTag>
             ))}

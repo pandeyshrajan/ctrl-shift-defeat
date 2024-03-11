@@ -5,7 +5,7 @@ import { store } from "../../stores/profileStore";
 import Employee from "../../models/Employee";
 import { observer } from "mobx-react";
 
-const testData: Employee = { name: "Lokesh", employeeId: "0", designation: "HA BHAIII BHAROSA RAKH", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [{ name: "Ramesh", employeeId: "0", designation: "BRUH WTF", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [], documentURL: "", interest: [], projectTags: [], profileImageUrl: "src/assets/MoneyView.jpeg", isAdmin: true }], documentURL: "", interest: [], projectTags: [], profileImageUrl: "src/assets/IMG_20240127_171651_857.jpg", isAdmin: false };
+// const testData: Employee = { name: "Lokesh", employeeId: "0", designation: "HA BHAIII BHAROSA RAKH", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [{ name: "Ramesh", employeeId: "0", designation: "BRUH WTF", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [], documentURL: "", interest: [], projectTags: [], profileImageUrl: "src/assets/MoneyView.jpeg", isAdmin: true }], documentURL: "", interest: [], projectTags: [], profileImageUrl: "src/assets/IMG_20240127_171651_857.jpg", isAdmin: false };
 
 function TreeNodeCard(prop: any) {
     // const image = document.querySelector(".image");
@@ -30,6 +30,8 @@ function TreeNodeCard(prop: any) {
     // close?.addEventListener("click", hide);
 
     const addNewChild = (e: any) => {
+        console.log("FTECH CALL ");
+
         store.newNode(nodeDatum.employeeId);
     };
 

@@ -22,8 +22,8 @@ function ProfileCard() {
                 <img className="badge-icon bg-gray-200 shadow-xl rounded-lg" src={BadegeIcon} onClick={toggleProfileIcon} />
             </span>
             <div>
-                <div className="profile-name font-bold text-4xl text-gray-700 ml-1">{store.getCurrentUser().name}</div>
-                <div className="profile-level text-slate-500 italic pt-2 font-medium ml-1">{store.getCurrentUser().designation}</div>
+                <div className="profile-name font-bold text-4xl text-gray-100 ml-1">{store.getCurrentUser().name}</div>
+                <div className="profile-level text-slate-100 italic pt-2 font-medium ml-1">{store.getCurrentUser().designation}</div>
                 <div>
                     <Tags />
                     <Tags />
