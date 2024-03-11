@@ -1,7 +1,7 @@
 import profileImg from "../../assets/IMG_20240127_171651_857.jpg";
 import "./TreeNodeCard.css";
 import { DEFUALT_INITIALISE_EMPLOYEE, EMPLOYEE_DUMMY } from "../../utils/contants";
-import { store } from "../../stores/profileStore";
+import { store } from "../../stores/userProfileStore";
 import Employee from "../../models/Employee";
 import { observer } from "mobx-react";
 
@@ -36,6 +36,7 @@ function TreeNodeCard(prop: any) {
     };
 
     const addManager = () => {
+        // console.log(nodeDatum);
         store.newManager(nodeDatum.employeeId);
     };
 

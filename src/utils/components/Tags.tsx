@@ -1,9 +1,10 @@
 import React from "react";
 import { Flex, Tag } from "antd";
+import { useState } from "react";
 
 const tagsData = ["Movies", "Books", "Music", "Sports"];
 
-const Tags = () => {
+const Tags = (currentTags: any, type: number) => {
     const [selectedTags, setSelectedTags] = React.useState<string[]>(["Movies"]);
     const handleChange = (tag: string, checked: boolean) => {
         const nextSelectedTags = checked ? [...selectedTags, tag] : selectedTags.filter((t) => t !== tag);

@@ -2,7 +2,7 @@ import Input from "@mui/joy/Input";
 import Divider from "@mui/joy/Divider";
 import { DOCUMENTS, PERSONAL_INFO } from "../../utils/contants";
 import "./PersonalDetails.css";
-import { store } from "../../stores/profileStore";
+import { store } from "../../stores/userProfileStore";
 
 function PersonalDetails() {
     const form = () => {

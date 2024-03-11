@@ -62,8 +62,8 @@ public class EmployeeService {
         return employeeRepository.findEmployeeByProjectTags(projectId);
     }
 
-    public List<Employee> getEmployeeByInterestTags(String interestId){
-        return employeeRepository.findEmployeeByInterestTags(interestId);
+    public List<Employee> getEmployeeByInterestTags(String interestName){
+        return employeeRepository.findEmployeeByInterestTags(interestName);
     }
 
     public List<Employee> getEmployeeByName(String employeeName){

@@ -7,7 +7,7 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import "./DirectReportiesList.css";
 import Employee from "../../models/Employee";
-import { store } from "../../stores/profileStore";
+import { store } from "../../stores/userProfileStore";
 
 function DirectReportiesList() {
     function displayList() {

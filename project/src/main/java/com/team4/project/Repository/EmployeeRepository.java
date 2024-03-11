@@ -30,11 +30,13 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 //    @Query(value = "SELECT  p.* FROM employee_projects e, project_tags p WHERE e.project_id=p.project_id AND e.employee_id=?1", nativeQuery = true)
 //    @Query(value = "SELECT  * FROM project_tags", nativeQuery = true)
 //    List<ProjectTags> findProjectTags();
-    @Query(value = "SELECT  e.* FROM employee_projects p, employee e WHERE e.employee_id=p.employee_id AND p.project_id=?1", nativeQuery = true)
+@Query(value = "SELECT  e.* FROM employee_projects p, employee e, project_tags t WHERE e.employee_id=p.employee_id AND t.project_id=p.project_id AND t.project_name like %?1%", nativeQuery = true)
     List<Employee> findEmployeeByProjectTags(String projectId);
 
-    @Query(value = "SELECT  e.* FROM employee_interests i, employee e WHERE e.employee_id=i.employee_id AND i.interest_id=?1", nativeQuery = true)
-    List<Employee> findEmployeeByInterestTags(String interestId);
+    @Query(value = "SELECT  e.* FROM employee_interests i, employee e, interest_tags t WHERE e.employee_id=i.employee_id AND t.interest_id=i.interest_id AND t.interest_name like %?1%", nativeQuery = true)
+    List<Employee> findEmployeeByInterestTags(String interestName);
+
+
 
     //@Query(value = "SELECT * FROM employee WHERE name LIKE %?1%", nativeQuery = true) //match anywhere in between
     @Query(value = "SELECT * FROM employee WHERE name LIKE ?1%", nativeQuery = true)

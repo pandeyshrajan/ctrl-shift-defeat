@@ -1,5 +1,7 @@
 import Employee from "../models/Employee";
-
+import ProjectTags from "../models/ProjectTags";
+import InterestTags from "../models/InterestTags";
+import UserProfile from "../models/UserProfile";
 // employeeId: number;
 //     name: string;
 //     email: string;
@@ -38,9 +40,15 @@ export const DEFUALT_INITIALISE_EMPLOYEE: Employee = {
     children: [],
 };
 
+export const DEFUALT_INITIALISE_USER_PROFILE: UserProfile = {
+    employee: DEFUALT_INITIALISE_EMPLOYEE,
+    interestTags: [],
+    projectTags: [],
+};
+
 export const EMPLOYEE_DUMMY: Employee = {
     name: "Shrajan Pandey",
-    employeeId: 1,
+    employeeId: 2,
     designation: "SDE Intern",
     level: "0",
     slackURL: "",
@@ -54,24 +62,19 @@ export const EMPLOYEE_DUMMY: Employee = {
     profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
     badgeImageUrl: "/src/assets/MoneyView.jpeg",
     children: [],
-    // name: "Shrajan Pandey",
-    // employeeId: 0,
-    // designation: "SDE Intern",
-    // level: "0",
-    // slackURL: "",
-    // managerId: "0",
-    // email: "",
-    // contactNo: "",
-    // children: [
-    //     { name: "Lokesh", employeeId: "1", designation: "LAMBAA HAI REE MADUM LAMBA", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [{ name: "Ramesh", employeeId: "3", designation: "BRUH WTF", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [], documentURL: "", interest: [], projectTags: [], profileImageUrl: "src/assets/MoneyView.jpeg", isAdmin: false }], documentURL: "", interest: [], projectTags: [], profileImageUrl: "src/assets/IMG_20240127_171651_857.jpg", isAdmin: false },
-    //     { name: "Lokesh", employeeId: "2", designation: "ROM ROMM BHAIYOONNN", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", children: [{ name: "Ramesh", employeeId: "4", designation: "ROM ROOM BHAIYOOOOO", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "src/assets/IMG_20240127_171651_857.jpg", isAdmin: false }], documentURL: "", interest: [], projectTags: [], profileImageUrl: "src/assets/MoneyView.jpeg", isAdmin: false },
-    // ],
-    // documentURL: "",
-    // interest: [],
-    // projectTags: [],
-    // profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
-    // isAdmin: true,
-    // badgeImageUrl: "/src/assets/MoneyView.jpeg",
+};
+
+export const PROJECT_TAGS_INITIALISE: ProjectTags = {
+    projectId: "",
+    projectManager: "",
+    projectUrl: "",
+    name: "",
+};
+
+export const INTEREST_TAGS_INITIALISE: InterestTags = {
+    interestId: "",
+    interestUrl: "",
+    interestName: "",
 };
 
 export enum PERSONAL_INFO {

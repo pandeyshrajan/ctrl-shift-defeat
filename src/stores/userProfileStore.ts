@@ -1,16 +1,22 @@
 import { observable, action, makeObservable } from "mobx";
 import Employee from "../models/Employee";
-import { EMPLOYEE_DUMMY } from "../utils/contants";
+import { DEFUALT_INITIALISE_USER_PROFILE, EMPLOYEE_DUMMY } from "../utils/contants";
 import { api } from "../models/api";
+import UserProfile from "../models/UserProfile";
+import InterestTags from "../models/InterestTags";
+import ProjectTags from "../models/ProjectTags";
 
 class UserProfileStore {
     currentUser: Employee = EMPLOYEE_DUMMY;
     treeData: Employee = EMPLOYEE_DUMMY;
     tabValue: string = "one";
-    uploadPopUp: Boolean = false;
-    profileImage: string = this.currentUser.profileImageUrl;
+    uploadPopUp: boolean = false;
+    profileImage: string = "../../assets/MoneyView.jpeg";
     isAdmin: boolean = Math.random() * 10 > 5;
     isCurrentUser: boolean = Math.random() * 10 > 5;
+    currentProfileInfo: UserProfile = DEFUALT_INITIALISE_USER_PROFILE;
+    interestTags: InterestTags[] = [];
+    projectTags: ProjectTags[] = [];
 
     constructor() {
         makeObservable(this, {
@@ -21,10 +27,14 @@ class UserProfileStore {
             profileImage: observable,
             setCurrentUser: action,
             setTreeData: action,
-            showPopUp: action,
+            openPopUp: action,
             closePopUp: action,
             toggleProfileImage: action,
         });
+    }
+
+    getPopUpStatus(): boolean {
+        return this.uploadPopUp;
     }
 
     getCurrentUser(): Employee {
@@ -50,12 +60,15 @@ class UserProfileStore {
         }
     }
 
-    showPopUp() {
+    openPopUp() {
         this.uploadPopUp = true;
+        console.log(" PP " + this.uploadPopUp);
     }
 
     closePopUp() {
-        this.uploadPopUp = !this.uploadPopUp;
+        console.log("CLOSE");
+
+        this.uploadPopUp = false;
     }
 
     setCurrentUser(newUser: Employee) {
@@ -95,23 +108,34 @@ class UserProfileStore {
     }
 
     async newManager(curId: number) {
-        const e: Employee[] = await api.getReportees(curId);
-        this.setTreeData(this.addManager(this.treeData, e, curId));
+        const manager: Employee = await api.getManager(curId);
+        manager.children = await api.getReportees(manager.employeeId);
+        this.setTreeData(this.addManager(this.treeData, manager, curId));
         console.log(this.treeData);
     }
 
-    addManager(empl: Employee, e: Employee[], curId: number): any {
-        // if (empl.employeeId === curId) {
-        //     e.children?.push(empl);
-        //     return e;
-        // }
-        // const c: Employee[] = empl.children?.map((i) => {
-        //     return this.addManager(i, e, curId);
-        // })!;
-        // empl.children = c;
-        // return empl;
+    addManager(empl: Employee, manager: Employee, curId: number): any {
+        if (empl.employeeId === curId) {
+            // manager.children(empl);
+            return manager;
+        }
+        const c: Employee[] = empl.children?.map((cur) => {
+            return this.addManager(cur, manager, curId);
+        })!;
+        empl.children = c;
+        return empl;
+    }
+
+    async initialLoading() {
+        console.log("AAGAY ");
+
+        this.currentProfileInfo = await api.getUserProfile(1);
+        console.log(this.currentProfileInfo);
+        this.projectTags = this.currentProfileInfo.projectTags;
+        this.interestTags = this.currentProfileInfo.interestTags;
+        this.setCurrentUser(this.currentProfileInfo.employee);
     }
 }
 
-export default UserProfileStore;
+// export default UserProfileStore;
 export const store = new UserProfileStore();

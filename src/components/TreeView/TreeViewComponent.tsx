@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import Tree from "react-d3-tree";
 import TreeNodeCard from "./TreeNodeCard";
 import { useCenteredTree } from "./helper";
-import { store } from "../../stores/profileStore";
+import { store } from "../../stores/userProfileStore";
 
 const containerStyles = {
     width: "100%",

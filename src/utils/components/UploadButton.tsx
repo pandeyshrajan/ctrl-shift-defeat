@@ -4,16 +4,17 @@ import type { UploadProps } from "antd";
 import { message, Upload } from "antd";
 import { storage } from "../../../firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { store } from "../../stores/profileStore";
+import { store } from "../../stores/userProfileStore";
 const { Dragger } = Upload;
+import { observer } from "mobx-react";
 
 const uploadImage = async (info: any) => {
     const imageUpload = info.fileList[0];
     console.log(imageUpload);
 
-    if (imageUpload == null) {
-        return;
-    }
+    // if (imageUpload == null) {
+    //     return;
+    // }
 
     const imageRef = ref(storage, `${store.currentUser.employeeId}/image/${imageUpload.name}`);
     console.log(imageRef);
@@ -24,14 +25,9 @@ const uploadImage = async (info: any) => {
     const url = await getDownloadURL(imageRef);
     console.log(url);
 
-    const { status } = info.file;
-    console.log(status);
-
-    if (status !== "uploading") {
-        console.log(info.file, info.fileList);
-    }
-    if (status === "success") {
+    if (url != "") {
         message.success(`${info.file.name} file uploaded successfully.`);
+        store.closePopUp();
     } else if (status === "error") {
         message.error(`${info.file.name} file upload failed.`);
     }
@@ -58,4 +54,4 @@ const UploadButton = () => (
     </Dragger>
 );
 
-export default UploadButton;
+export default observer(UploadButton);

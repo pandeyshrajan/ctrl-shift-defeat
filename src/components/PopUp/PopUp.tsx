@@ -9,6 +9,8 @@ import { UploadFile } from "@mui/icons-material";
 import CropEasy from "./ImageUpload/CropEasy";
 import { Button, Input } from "@mui/material";
 import UploadButton from "../../utils/components/UploadButton";
+import { store } from "../../stores/userProfileStore";
+import { observer } from "mobx-react";
 
 const style = {
     position: "absolute" as "absolute",
@@ -27,14 +29,18 @@ function PopUp() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    // const check = (): boolean => {
+    //     return store.uploadPopUp;
+    // };
+
     return (
         <div>
-            <img className="animate-button-hover m-1 bg-white p-2 rounded-lg deep-link " src={UploadImageIcon} onClick={handleOpen} />
+            <img className="animate-button-hover m-1 bg-white p-2 rounded-lg deep-link " src={UploadImageIcon} onClick={store.openPopUp} />
             <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
-                open={open}
-                onClose={handleClose}
+                open={store.getPopUpStatus()}
+                onClose={store.closePopUp}
                 closeAfterTransition
                 slots={{ backdrop: Backdrop }}
                 slotProps={{
@@ -43,7 +49,7 @@ function PopUp() {
                     },
                 }}
             >
-                <Fade in={open}>
+                <Fade in={store.getPopUpStatus()}>
                     <Box sx={style}>
                         <UploadButton />
                     </Box>
@@ -53,4 +59,4 @@ function PopUp() {
     );
 }
 
-export default PopUp;
+export default observer(PopUp);

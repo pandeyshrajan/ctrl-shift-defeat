@@ -4,8 +4,15 @@ import TreeReportiesComponent from "./components/MoreDetails/DetailsComponent";
 import "./App.css";
 import { observer } from "mobx-react";
 import LoginPage from "./components/LoginPage/LoginPage";
+import { useEffect } from "react";
+import { store } from "./stores/userProfileStore";
+import { api } from "./models/api";
 
 const App = () => {
+    useEffect(() => {
+        (async () => await store.initialLoading())();
+    }, []);
+
     return (
         // <LoginPage />
         <div className="bg-indigo-200">

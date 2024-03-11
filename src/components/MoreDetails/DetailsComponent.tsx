@@ -1,6 +1,6 @@
 import TreeViewComponent from "../TreeView/TreeViewComponent";
-import { useState } from "react";
-import { store } from "../../stores/profileStore";
+import { useState, useEffect } from "react";
+import { store } from "../../stores/userProfileStore";
 import { observer } from "mobx-react";
 import { Tab } from "@mui/material";
 import { Button } from "@mui/joy";
@@ -13,8 +13,16 @@ import PersonalDetails from "../PersonalInfo/PersonalDetails";
 import { SearchTwoTone } from "@mui/icons-material";
 import { Input } from "@mui/joy";
 
+import CsvDownloadButton from "react-json-to-csv";
+import { api } from "../../models/api";
+
 function TreeReportiesComponent() {
+    useEffect(() => {
+        (async () => await callData())();
+    }, []);
+
     const [style, setStyle] = useState(".me-2");
+    const [csvData, setCsvData] = useState({});
 
     const handleChange = (event: any, newValue: string) => {
         store.setTabValue(newValue);
@@ -29,8 +37,14 @@ function TreeReportiesComponent() {
         }
     };
 
-    const showSearchBar = () => {
-        setStyle("search-on-click");
+    // const showSearchBar = () => {
+    //     setStyle("search-on-click");
+    // };
+
+    // const loadTreeData = () => {};
+    const callData = async () => {
+        const curData = await api.getReportees(store.getCurrentUser().employeeId);
+        setCsvData(curData);
     };
 
     return (
@@ -63,11 +77,7 @@ function TreeReportiesComponent() {
                             <input className={style} /> */}
                         </>
                     )}
-                    {store.getTabValue() == "three" && (
-                        <Button className="mt-2 ml-2" color="">
-                            Download CSV
-                        </Button>
-                    )}
+                    {store.getTabValue() == "three" && <CsvDownloadButton data={csvData} />}
                     <img className="ml-5" src={FullScreenIcon} onClick={toggleFullScreen} style={{ cursor: "pointer" }} />
                 </Tabs>
             </Box>
