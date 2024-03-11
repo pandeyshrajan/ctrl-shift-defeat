@@ -33,10 +33,10 @@ function ProfileCard() {
                 <div className="profile-details">
                     <div className="other-info">
                         <div className="deep-link-icons pt-2 flex flex-row">
-                            <img className="animate-button-hover deep-link m-1 bg-white p-2 rounded-lg" src={SlackIcon} />
-                            <img className="animate-button-hover deep-link m-1 bg-white p-2 rounded-lg" src={MailIcon} />
-                            <img className="animate-button-hover deep-link m-1 bg-white p-2 rounded-lg" src={BadgeIcon} />
-                            <img className="animate-button-hover deep-link m-1 bg-white p-2 rounded-lg" src={CallIcon} />
+                            <img className="animate-button-hover deep-link m-1 bg-white p-2 rounded-lg" src={SlackIcon} onClick={() => openInNewTab("https://openinapp.link/ggd8x")}/>
+                            <img className="animate-button-hover deep-link m-1 bg-white p-2 rounded-lg" src={MailIcon} onClick={() => openInNewTab("mailto:example@gmail.com")}/>
+                            <img className="animate-button-hover deep-link m-1 bg-white p-2 rounded-lg" src={BadgeIcon}  />
+                            <img className="animate-button-hover deep-link m-1 bg-white p-2 rounded-lg" src={CallIcon} onClick={() => openInNewTab("tel:+917070039357")}/>
                             {store.isCurrentUser && <PopUp />}
                         </div>
                     </div>
@@ -47,3 +47,7 @@ function ProfileCard() {
 }
 
 export default observer(ProfileCard);
+export const openInNewTab = (url: string): void => {
+    const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+    if (newWindow) newWindow.opener = null
+  }
