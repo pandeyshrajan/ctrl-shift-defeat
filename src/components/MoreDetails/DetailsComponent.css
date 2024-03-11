@@ -10,4 +10,12 @@
 .details-component {
     height: 100%;
     width: 100%;
+    border-bottom-right-radius: 4em;
+    /* overflow-y: scroll; */
+    /* position: relative; */
+    overflow-y: auto;
+}
+
+.section-bar {
+    background-color: rgba(245, 245, 245, 0.42);
 }

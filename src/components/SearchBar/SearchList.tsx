@@ -16,11 +16,11 @@ function AlignItemsList() {
         return searchBarStore.getFilteredEmployee().map((empl: Employee) => {
             return (
                 <>
-                    <ListItem alignItems="flex-start" className="detail-card gradient-color-r rounded-xl mt-2 p-0 shadow-xl">
+                    <ListItem alignItems="flex-start" className="detail-card p-0 mt-1">
                         <ListItemAvatar>
                             <Avatar alt="Remy Sharp" src={empl.profileImageUrl} />
                         </ListItemAvatar>
-                        <ListItemText primary={empl.name} secondary={<React.Fragment>{empl.designation}</React.Fragment>} />
+                        <ListItemText className="text-white" primary={empl.name} secondary={<React.Fragment>{empl.designation}</React.Fragment>} />
                     </ListItem>
                 </>
             );

@@ -2,26 +2,7 @@ import Employee from "../models/Employee";
 import ProjectTags from "../models/ProjectTags";
 import InterestTags from "../models/InterestTags";
 import UserProfile from "../models/UserProfile";
-// employeeId: number;
-//     name: string;
-//     email: string;
-//     managerId: string;
-//     level: string;
-//     designation: string;
-//     contact: string;
-//     profileImageUrl: string;
-//     badgeImageUrl?: string;
-//     slackURL: string;
-//     department: string;
-//     dob: Date;
-//     date_of_joining: Date;
-//     address: string;
 
-// isAdmin: false,
-// children: [],
-// documentURL: "",
-// interest: [],
-// projectTags: [],
 export const DEFUALT_INITIALISE_EMPLOYEE: Employee = {
     name: "",
     employeeId: 0,
@@ -98,6 +79,102 @@ export enum DOCUMENTS {
 }
 
 export const DEMO_EMPLOYEES: Employee[] = [
+    {
+        name: "Shrajan Pandey",
+        employeeId: 0,
+        designation: "SDE Intern",
+        level: "0",
+        slackURL: "",
+        managerId: "0",
+        email: "",
+        contact: "",
+        dob: new Date("0000-00-00"),
+        address: "",
+        department: "",
+        date_of_joining: new Date("0000-00-00"),
+        profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
+        badgeImageUrl: "/src/assets/MoneyView.jpeg",
+    },
+    {
+        name: "Shrajan Pandey",
+        employeeId: 0,
+        designation: "SDE Intern",
+        level: "0",
+        slackURL: "",
+        managerId: "0",
+        email: "",
+        contact: "",
+        dob: new Date("0000-00-00"),
+        address: "",
+        department: "",
+        date_of_joining: new Date("0000-00-00"),
+        profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
+        badgeImageUrl: "/src/assets/MoneyView.jpeg",
+    },
+    {
+        name: "Shrajan Pandey",
+        employeeId: 0,
+        designation: "SDE Intern",
+        level: "0",
+        slackURL: "",
+        managerId: "0",
+        email: "",
+        contact: "",
+        dob: new Date("0000-00-00"),
+        address: "",
+        department: "",
+        date_of_joining: new Date("0000-00-00"),
+        profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
+        badgeImageUrl: "/src/assets/MoneyView.jpeg",
+    },
+    {
+        name: "Shrajan Pandey",
+        employeeId: 0,
+        designation: "SDE Intern",
+        level: "0",
+        slackURL: "",
+        managerId: "0",
+        email: "",
+        contact: "",
+        dob: new Date("0000-00-00"),
+        address: "",
+        department: "",
+        date_of_joining: new Date("0000-00-00"),
+        profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
+        badgeImageUrl: "/src/assets/MoneyView.jpeg",
+    },
+    {
+        name: "Shrajan Pandey",
+        employeeId: 0,
+        designation: "SDE Intern",
+        level: "0",
+        slackURL: "",
+        managerId: "0",
+        email: "",
+        contact: "",
+        dob: new Date("0000-00-00"),
+        address: "",
+        department: "",
+        date_of_joining: new Date("0000-00-00"),
+        profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
+        badgeImageUrl: "/src/assets/MoneyView.jpeg",
+    },
+    {
+        name: "Shrajan Pandey",
+        employeeId: 0,
+        designation: "SDE Intern",
+        level: "0",
+        slackURL: "",
+        managerId: "0",
+        email: "",
+        contact: "",
+        dob: new Date("0000-00-00"),
+        address: "",
+        department: "",
+        date_of_joining: new Date("0000-00-00"),
+        profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
+        badgeImageUrl: "/src/assets/MoneyView.jpeg",
+    },
     {
         name: "Shrajan Pandey",
         employeeId: 0,

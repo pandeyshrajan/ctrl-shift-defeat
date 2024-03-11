@@ -11,8 +11,8 @@ function PersonalDetails() {
         return fields.map((element) => {
             return (
                 <div className="p-1">
-                    <p className="text-stone-600 ml-1 mb-1">{element}</p>
-                    <Input className="list" placeholder="Placeholder" variant="soft" color="primary" value={"Shrajan pandey"} />
+                    <p className="text-white ml-1 mb-1">{element}</p>
+                    <Input className="list" placeholder="Placeholder" variant="soft" value={"Shrajan pandey"} />
                 </div>
             );
         });
@@ -22,7 +22,7 @@ function PersonalDetails() {
         const fields = Object.keys(DOCUMENTS).filter((v) => isNaN(Number(v)));
 
         return fields.map((element) => {
-            return <div className="list document bg-gray-300">{element}</div>;
+            return <div className="list document bg-gray-100">{element}</div>;
         });
     };
 

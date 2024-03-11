@@ -1,14 +1,27 @@
 .detail-card:hover {
     transform: scale(0.97);
-    border: 2px solid gray;
+    transition: ease-in-out 0.3s;
+    border: 2px solid rgba(213, 255, 76, 0.623);
+    /* box-shadow: ; */
 }
 
 .detail-card {
     transition: transform 0.5s;
-    border: 2px solid white;
+    /* border: 2px solid rgba(255, 255, 255, 0.256); */
+    /* z-index: 20; */
+    color: rgb(255, 255, 255);
 }
 
 .search-section {
-    margin: 0;
+    margin: 3px;
     padding: 4px;
+    border-top-left-radius: 5em;
+    /* border-bottom-left-radius: 5em; */
+    /* z-index: 20; */
+    /* overflow-y: scroll; */
+}
+
+.search-bar {
+    border-top-left-radius: 5em;
+    z-index: 2;
 }

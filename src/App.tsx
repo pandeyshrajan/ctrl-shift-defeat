@@ -14,23 +14,30 @@ const App = () => {
     }, []);
 
     return (
-        // <LoginPage />
-        <div className="bg-indigo-200">
-            <div className="text-center font-bold text-stone-900 opacity-95 sticky top-0 min-h-16 bg-white pt-4 text-2xl">PEOPLE PORTAL</div>
-            <div className="flex flex-row h-dvh m-2 rounded-lg">
-                <div className="search-tab basis-1/4 gradient-color rounded-lg m-2" data-aos="fade-right">
-                    <SearchList />
-                </div>
-                <div className="basis-3/4 flex flex-col m-2 rounded-lg">
-                    <div className="profile-component flex justify-between gradient-color mb-2 pl-10 pr-10 rounded-lg items-center" data-aos="fade-down">
-                        <ProfileCard />
-                    </div>
-                    <div className="info-section">
-                        <TreeReportiesComponent />
+        <>
+            {/* <LoginPage /> */}
+            <div className="flex h-screen flex-col">
+                <div className="nav-bar h-25 font-bold text-stone-100 pt-6 pl-10 ml-10 sticky text-4xl">People Portal</div>
+                <div className="main-container flex-grow w-full">
+                    <div className="containing-div flex glass flex-row h-full w-full">
+                        <div className="search-tab flex flex-col glass h-full w-1/4 gradient-color" data-aos="fade-right">
+                            <div className="search-part h-1/2">
+                                <SearchList />
+                            </div>
+                            <div></div>
+                        </div>
+                        <div className="right-halt flex flex-col h-full flex-grow">
+                            <div className="profile-component global-border glass flex h-1/4 justify-between pl-10 pr-10 items-center" data-aos="fade-down">
+                                <ProfileCard />
+                            </div>
+                            <div className="info-section glass flex-grow" data-aos="fade-up">
+                                <TreeReportiesComponent />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

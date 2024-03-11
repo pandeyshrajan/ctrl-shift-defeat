@@ -13,13 +13,7 @@ html {
 } */
 
 .bg {
-    /* The image used */
-    /* background-image: url("./assets/MoneyView.jpeg"); */
-
-    /* Full height */
-    height: 100%;
-
-    /* Center and scale the image nicely */
+    height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -35,5 +29,10 @@ html {
 }
 
 body {
-    overflow: hidden;
+    background-image: url("./assets/rustic-elegance-illuminates-comfortable-domestic-kitchen-with-old-fashioned-bookshelf-decoration-generated-by-ai.jpg");
+    height: 100vh;
 }
+
+/* #root {
+    height: 100vh;
+} */

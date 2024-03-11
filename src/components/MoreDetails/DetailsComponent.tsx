@@ -48,9 +48,9 @@ function TreeReportiesComponent() {
     };
 
     return (
-        <div className="details-component gradient-color mt-2 rounded-lg overflow-hidden" data-aos="fade-up">
+        <div className="details-component overflow-hidden">
             <Box>
-                <Tabs className="bg-white m-1 rounded-lg" value={store.getTabValue()} onChange={handleChange} textColor="primary" indicatorColor="primary" aria-label="secondary tabs example">
+                <Tabs className="section-bar m-1" value={store.getTabValue()} onChange={handleChange} textColor="primary" indicatorColor="primary" aria-label="secondary tabs example">
                     <Tab value="one" label="More Info" className="m-2" />
                     <Tab value="two" label="Hierarchy Tree" className="m-2" />
                     <Tab value="three" label="Direct Reporties" className="m-2" />
@@ -59,13 +59,9 @@ function TreeReportiesComponent() {
                         <>
                             <Input
                                 startDecorator={<SearchTwoTone />}
-                                endDecorator={
-                                    <Button sx={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }} type="submit">
-                                        Search
-                                    </Button>
-                                }
+                                endDecorator={<Button type="submit">Search</Button>}
                                 sx={{
-                                    "--Input-radius": "16px",
+                                    // "--Input-radius": "16px",
                                     "--Input-decoratorChildHeight": "38px",
                                 }}
                                 placeholder="Search"
