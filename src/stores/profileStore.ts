@@ -1,7 +1,7 @@
 import { observable, action, makeObservable } from "mobx";
 import Employee from "../models/Employee";
 import { EMPLOYEE_DUMMY } from "../utils/contants";
-import { getNodeData } from "../models/api";
+import { api } from "../models/api";
 
 class UserProfileStore {
     currentUser: Employee = EMPLOYEE_DUMMY;
@@ -72,16 +72,16 @@ class UserProfileStore {
         this.tabValue = newValue;
     }
 
-    newNode(curId: string) {
-        const e: Employee = getNodeData();
+    async newNode(curId: number) {
+        const e: Employee[] = await api.getReportees(curId);
         this.insertNewNode(this.treeData, e, curId);
         console.log(this.treeData);
         this.setTreeData(this.treeData);
     }
 
-    insertNewNode(empl: Employee, e: Employee, curId: string): boolean {
+    insertNewNode(empl: Employee, e: Employee[], curId: number): boolean {
         if (empl.employeeId === curId) {
-            empl.children?.push(e);
+            empl.children = e;
             return true;
         }
 
@@ -94,25 +94,22 @@ class UserProfileStore {
         return false;
     }
 
-    newManager(curId: string) {
-        const e: Employee = getNodeData();
+    async newManager(curId: number) {
+        const e: Employee[] = await api.getReportees(curId);
         this.setTreeData(this.addManager(this.treeData, e, curId));
         console.log(this.treeData);
     }
 
-    addManager(empl: Employee, e: Employee, curId: string): Employee {
-        if (empl.employeeId === curId) {
-            e.children?.push(empl);
-            return e;
-        }
-
-        const c: Employee[] = empl.children?.map((i) => {
-            return this.addManager(i, e, curId);
-        })!;
-
-        empl.children = c;
-
-        return empl;
+    addManager(empl: Employee, e: Employee[], curId: number): any {
+        // if (empl.employeeId === curId) {
+        //     e.children?.push(empl);
+        //     return e;
+        // }
+        // const c: Employee[] = empl.children?.map((i) => {
+        //     return this.addManager(i, e, curId);
+        // })!;
+        // empl.children = c;
+        // return empl;
     }
 }
 
