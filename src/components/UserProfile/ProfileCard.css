@@ -51,7 +51,7 @@
 }
 
 .badge-icon {
-    opacity: 80%;
+    opacity: 70%;
     transform: translate(490%, -80%);
     width: 18%;
     height: 18%;
@@ -60,6 +60,13 @@
 
 .badge-icon:hover {
     opacity: 100%;
+}
+
+.deep-link {
+    width: 2.5em;
+    height: 2.5em;
+    float: inline-end;
+    align-items: baseline;
 }
 
 .deep-link-icons {

@@ -21,6 +21,14 @@
     background: blue;
 }
 
+.gradient-color {
+    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+    border: 1px solid white;
+}
+.gradient-color-r {
+    background: linear-gradient(to left, #e2e2e2, #c9d6ff);
+}
+
 .tree-view {
     /* width: 60%; */
     background: black;

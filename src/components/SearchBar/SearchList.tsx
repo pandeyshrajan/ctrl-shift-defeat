@@ -16,7 +16,7 @@ function AlignItemsList() {
         return searchBarStore.getFilteredEmployee().map((empl: Employee) => {
             return (
                 <>
-                    <ListItem alignItems="flex-start" className="detail-card bg-gradient-to-r from-white to-gray-300 rounded-lg mt-2 p-0 shadow-xl">
+                    <ListItem alignItems="flex-start" className="detail-card gradient-color-r rounded-xl mt-2 p-0 shadow-xl">
                         <ListItemAvatar>
                             <Avatar alt="Remy Sharp" src={empl.profileImageUrl} />
                         </ListItemAvatar>
@@ -28,7 +28,7 @@ function AlignItemsList() {
     };
 
     return (
-        <div className="search-section">
+        <div className="search-section m-1">
             <Search />
             <List className="" sx={{ width: "100%", maxWidth: "100%", maxHeight: "100%" }}>
                 {populateEmployee()}

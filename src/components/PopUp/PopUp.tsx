@@ -29,7 +29,7 @@ function PopUp() {
 
     return (
         <div>
-            <img className="animate-button-hover m-1 bg-white p-2 rounded-lg" src={UploadImageIcon} onClick={handleOpen} />
+            <img className="animate-button-hover m-1 bg-white p-2 rounded-lg deep-link " src={UploadImageIcon} onClick={handleOpen} />
             <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"

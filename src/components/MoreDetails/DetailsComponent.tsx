@@ -10,7 +10,8 @@ import DirectReportiesList from "../DirectReportiesList/DirectReportiesList";
 import FullScreenIcon from "../../assets/icon-park--full-screen.svg";
 import "./DetailsComponent.css";
 import PersonalDetails from "../PersonalInfo/PersonalDetails";
-import Search from "../SearchBar/Search";
+import { SearchTwoTone } from "@mui/icons-material";
+import { Input } from "@mui/joy";
 
 function TreeReportiesComponent() {
     const [style, setStyle] = useState(".me-2");
@@ -33,22 +34,41 @@ function TreeReportiesComponent() {
     };
 
     return (
-        <div className="details-component bg-gradient-to-l from-stone-100 to-stone-300 mt-2 rounded-lg overflow-hidden" data-aos="fade-up">
-            <Box sx={{ width: "100%" }}>
-                <Tabs className="bg-stone-400 m-1 rounded-lg" value={store.getTabValue()} onChange={handleChange} textColor="primary" indicatorColor="primary" aria-label="secondary tabs example">
+        <div className="details-component gradient-color mt-2 rounded-lg overflow-hidden" data-aos="fade-up">
+            <Box>
+                <Tabs className="bg-white m-1 rounded-lg" value={store.getTabValue()} onChange={handleChange} textColor="primary" indicatorColor="primary" aria-label="secondary tabs example">
                     <Tab value="one" label="More Info" className="m-2" />
                     <Tab value="two" label="Hierarchy Tree" className="m-2" />
                     <Tab value="three" label="Direct Reporties" className="m-2" />
 
-                    {store.getTabValue() == "three" && <Button className="rounded-lg">Download CSV</Button>}
                     {store.getTabValue() == "three" && (
                         <>
-                            <Search />
+                            <Input
+                                startDecorator={<SearchTwoTone />}
+                                endDecorator={
+                                    <Button sx={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }} type="submit">
+                                        Search
+                                    </Button>
+                                }
+                                sx={{
+                                    "--Input-radius": "16px",
+                                    "--Input-decoratorChildHeight": "38px",
+                                }}
+                                placeholder="Search"
+                                // onChange={handleFormInput}
+                                autoComplete="on"
+                                className="m-1 ml-3 mr-3 shadow-lg"
+                            />
                             {/* <Button onClick={showSearchBar}>Search</Button>
                             <input className={style} /> */}
                         </>
                     )}
-                    <img className="m-2" src={FullScreenIcon} onClick={toggleFullScreen} style={{ cursor: "pointer" }} />
+                    {store.getTabValue() == "three" && (
+                        <Button className="mt-2 ml-2" color="">
+                            Download CSV
+                        </Button>
+                    )}
+                    <img className="ml-5" src={FullScreenIcon} onClick={toggleFullScreen} style={{ cursor: "pointer" }} />
                 </Tabs>
             </Box>
             {store.getTabValue() == "one" && <PersonalDetails />}

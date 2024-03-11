@@ -56,6 +56,7 @@ export enum DOCUMENTS {
     "Offer Letter",
     "Aadhar Card",
     "Pan Card",
+    "Bank Detail",
 }
 
 export const DEMO_EMPLOYEES: Employee[] = [
