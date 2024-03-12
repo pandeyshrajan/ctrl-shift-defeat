@@ -58,7 +58,10 @@ public class Employee {
     @Column(name = "address")
     private String address;
 
-    public Employee(int employeeId, String name, String email, String managerId, String level, String designation, long contact, String profileImageUrl, String badgeImageUrl, String slackUrl) {
+    @Column(name="pod")
+    private String pod;
+
+    public Employee(int employeeId, String name, String email, String managerId, String level, String designation, long contact, String profileImageUrl, String badgeImageUrl, String slackUrl,String pod) {
         this.employeeId = employeeId;
         this.name = name;
         this.email = email;
@@ -69,6 +72,7 @@ public class Employee {
         this.profileImageUrl = profileImageUrl;
         this.badgeImageUrl = badgeImageUrl;
         this.slackUrl = slackUrl;
+        this.pod=pod;
     }
 
     public Employee(){
