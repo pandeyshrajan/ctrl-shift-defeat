@@ -21,8 +21,15 @@ public class EmployeeController {
     @PostMapping(value = "/save")
     private int saveEmployee(@RequestBody Employee employee)
     {
-        employeeService.saveOrUpdate(employee);
+        employeeService.saveOrUpdateEmployee(employee);
         return employee.getEmployeeId();
+    }
+
+    @PostMapping(value = "/docUpdate")
+    private int saveDocument(@RequestBody Documents documents)
+    {
+        employeeService.saveOrUpdateDocument(documents);
+        return documents.getEmployeeId();
     }
     //    @GetMapping(value = "/all")
 //    public List<Employee> getAllEmployee()
@@ -37,9 +44,10 @@ public class EmployeeController {
 
 
     @PostMapping(value="/login")
-    public Profile checkLogin(@RequestBody Login userLogin)
+    public LoginResponse checkLogin(@RequestBody Login userLogin)
     {
         System.out.println("UserLogin "+userLogin.getEmailId());
+        LoginResponse response=new LoginResponse();
 //        Login fetchUser=employeeService.getPassword(userLogin.getEmailId(),userLogin.getEmployeeId());
         Login fetchUser;
         String userEmail= userLogin.getEmailId();
@@ -48,10 +56,17 @@ public class EmployeeController {
         else if(userId!=0 && userEmail=="")fetchUser=employeeService.getUserById(userLogin.getEmployeeId());
         else fetchUser=employeeService.getUserByEmail(userLogin.getEmailId());
 
+
+
+
+
         System.out.println("User "+fetchUser.getEmailId());
         if(fetchUser!=null) {
-            if (fetchUser.getPassword().equals(userLogin.getPassword()))
-                return getProfileById(fetchUser.getEmployeeId());
+            if (fetchUser.getPassword().equals(userLogin.getPassword())) {
+                response.setAdmin(employeeService.isAdmin(fetchUser.getEmployeeId()));
+                response.setUserProfile(getProfileById(fetchUser.getEmployeeId()));
+                return response;
+            }
             return null;
         }
         else return null;
@@ -130,7 +145,7 @@ public class EmployeeController {
     public void updateEmployeeProfileImage(@PathVariable int id,@RequestBody String url) {
         Employee employee=employeeService.getEmployeeById(id);
         employee.setProfileImageUrl(url);
-        employeeService.saveOrUpdate(employee);
+        employeeService.saveOrUpdateEmployee(employee);
     }
 
 

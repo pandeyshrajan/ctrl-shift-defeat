@@ -22,9 +22,14 @@ public class EmployeeService {
     private DocumentRepository documentRepository;
     @Autowired
     private LoginRepository loginRepository;
+    @Autowired
+    private AdminRepository adminRepository;
 
-    public void saveOrUpdate(Employee employee) {
+    public void saveOrUpdateEmployee(Employee employee) {
         employeeRepository.save(employee);
+    }
+    public void saveOrUpdateDocument(Documents documents) {
+        documentRepository.save(documents);
     }
 
     public List<Employee> getAllEmployees() {
@@ -53,6 +58,12 @@ public class EmployeeService {
     public Login getUserById(int employeeId)
     {
         return loginRepository.findUserById(employeeId);
+    }
+    public boolean isAdmin(int employeeId)
+    {
+        int result=adminRepository.isAdmin(employeeId);
+        if(result==1)return true;
+        else return false;
     }
 
     public Login getUserByEmail(String emailId)

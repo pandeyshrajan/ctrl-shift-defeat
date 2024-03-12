@@ -15,7 +15,7 @@ public class Documents {
 
     @Id
     @Column(name="employee_id")
-    private int employee_id;
+    private int employeeId;
 
     @Column(name="aadhar_url")
     private String aadharUrl;
@@ -31,7 +31,7 @@ public class Documents {
 
 
     public Documents(int employee_id, String aadharUrl, String panUrl, String offerLetterUrl, String bankDetailsUrl) {
-        this.employee_id = employee_id;
+        this.employeeId = employee_id;
         this.aadharUrl = aadharUrl;
         this.panUrl = panUrl;
         this.offerLetterUrl = offerLetterUrl;
