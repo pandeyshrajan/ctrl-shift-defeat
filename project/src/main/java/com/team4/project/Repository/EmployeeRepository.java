@@ -23,6 +23,8 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
     @Query(value = "SELECT * FROM employee" , nativeQuery = true)
     List<Employee> findAllEmployees();
+    @Query(value = "SELECT * FROM employee Limit ?1" , nativeQuery = true)
+    List<Employee> findLimitedEmployees(int num);
 
     @Query(value = "select m.* from employee e, employee m where m.employee_id=e.manager_id and e.employee_id=?1", nativeQuery = true)
     Employee findMangerbyEmployeeId(int employeeId);

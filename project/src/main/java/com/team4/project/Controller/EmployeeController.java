@@ -2,6 +2,7 @@ package com.team4.project.Controller;
 
 
 import com.team4.project.Entity.*;
+import com.team4.project.Repository.LoginRepository;
 import com.team4.project.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,33 @@ public class EmployeeController {
     public List<Employee> getAllEmployees()
     {
         return employeeService.getEmployees();
+    }
+
+
+    @PostMapping(value="/login")
+    public Profile checkLogin(@RequestBody Login userLogin)
+    {
+        System.out.println("UserLogin "+userLogin.getEmailId());
+//        Login fetchUser=employeeService.getPassword(userLogin.getEmailId(),userLogin.getEmployeeId());
+        Login fetchUser;
+        String userEmail= userLogin.getEmailId();
+        int userId= userLogin.getEmployeeId();
+        if(userId ==0 && userEmail=="")fetchUser=null;
+        else if(userId!=0 && userEmail=="")fetchUser=employeeService.getUserById(userLogin.getEmployeeId());
+        else fetchUser=employeeService.getUserByEmail(userLogin.getEmailId());
+
+        System.out.println("User "+fetchUser.getEmailId());
+        if(fetchUser!=null) {
+            if (fetchUser.getPassword().equals(userLogin.getPassword()))
+                return getProfileById(fetchUser.getEmployeeId());
+            return null;
+        }
+        else return null;
+    }
+    @GetMapping(value = "/limitedEmployee/{num}")
+    public List<Employee> getLimitedEmployees(@PathVariable int num)
+    {
+        return employeeService.getLimitedEmployees(num);
     }
 
 //    @GetMapping("/child/{id}")

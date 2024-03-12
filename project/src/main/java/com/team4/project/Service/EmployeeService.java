@@ -1,10 +1,7 @@
 package com.team4.project.Service;
 
 import com.team4.project.Entity.*;
-import com.team4.project.Repository.DocumentRepository;
-import com.team4.project.Repository.EmployeeRepository;
-import com.team4.project.Repository.InterestRepository;
-import com.team4.project.Repository.ProjectRepository;
+import com.team4.project.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +20,8 @@ public class EmployeeService {
     private InterestRepository interestRepository;
     @Autowired
     private DocumentRepository documentRepository;
+    @Autowired
+    private LoginRepository loginRepository;
 
     public void saveOrUpdate(Employee employee) {
         employeeRepository.save(employee);
@@ -45,6 +44,20 @@ public class EmployeeService {
 
     public Employee getEmployeeById(int employeeId) {
         return employeeRepository.findById((employeeId)).get();
+    }
+    public List<Employee> getLimitedEmployees(int num)
+    {
+        return employeeRepository.findLimitedEmployees(num);
+    }
+
+    public Login getUserById(int employeeId)
+    {
+        return loginRepository.findUserById(employeeId);
+    }
+
+    public Login getUserByEmail(String emailId)
+    {
+        return loginRepository.findUserByEmail(emailId);
     }
 
     public Employee getManagerByEmployeeId(int employeeId) {
