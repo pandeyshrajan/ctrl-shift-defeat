@@ -90,6 +90,14 @@ public class EmployeeService {
         return employeeRepository.findEmployeeByInterestTags(interestName);
     }
 
+    public List<Employee> getEmployeeByDepartment(String interestName){
+        return employeeRepository.findEmployeeByDept(interestName);
+    }
+
+    public List<Employee> getEmployeeByPod(String podName){
+        return employeeRepository.findEmployeeByPod(podName);
+    }
+
     public List<Employee> getEmployeeByName(String employeeName){
         return employeeRepository.findEmployeeByName(employeeName);
     }
