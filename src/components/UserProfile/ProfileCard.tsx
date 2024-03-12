@@ -26,8 +26,8 @@ function ProfileCard() {
             <div className="flex flex-col items-center">
                 <div className="profile-name font-bold text-4xl ml-1">{store.getCurrentUser().name}</div>
                 <div className="profile-level text-gray-900 italic pt-2 font-medium ml-1">{store.getCurrentUser().designation}</div>
-                <div>
-                    <Tags />
+                <div className="mt-3">
+                    <Tags color="orange" />
                     <Tags />
                 </div>
             </div>

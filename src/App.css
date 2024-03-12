@@ -22,7 +22,6 @@
 }
 
 .global-border {
-    /* background: linear-gradient(to right, #e2e2e2, #c9d6ff); */
     border: 1px solid hsl(0, 0%, 100%, 0.6);
 }
 .gradient-color-r {
@@ -32,19 +31,6 @@
 .tree-view {
     /* width: 60%; */
     background: black;
-}
-
-.people-portal {
-    /* display: flex;
-    flex-direction: row;
-    padding: 0;
-    height: 70%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    justify-content: space-around; */
-    /* height: 100%;
-    width: 100%; */
 }
 
 .profile-component {
@@ -62,6 +48,7 @@
     border: 0px;
     border-bottom-right-radius: 5em;
     /* backdrop-filter: blur(50px); */
+    overflow: hidden;
 }
 
 .search-tab {
@@ -83,7 +70,7 @@
 
 .main-container {
     /* z-index: 0; */
-    padding: 30px 60px;
+    padding: 10px 80px 30px 80px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -101,4 +88,9 @@
 .containing-div {
     border-radius: 5em;
     /* position: relative; */
+}
+
+.nav-bar {
+    /* border-bottom: 1px solid rgba(179, 124, 221, 0.662); */
+    padding: 1.5% 4%;
 }

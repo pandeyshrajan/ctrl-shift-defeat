@@ -14,6 +14,7 @@ html {
 
 .bg {
     height: 100vh;
+    background-image: url("./assets/rustic-elegance-illuminates-comfortable-domestic-kitchen-with-old-fashioned-bookshelf-decoration-generated-by-ai.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -29,8 +30,9 @@ html {
 }
 
 body {
-    background-image: url("./assets/rustic-elegance-illuminates-comfortable-domestic-kitchen-with-old-fashioned-bookshelf-decoration-generated-by-ai.jpg");
     height: 100vh;
+    overflow: hidden;
+    /* background-color: rgba(70, 82, 12, 0.213); */
 }
 
 /* #root {

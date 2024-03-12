@@ -17,7 +17,7 @@ const App = () => {
         <>
             {/* <LoginPage /> */}
             <div className="flex h-screen flex-col">
-                <div className="nav-bar h-25 font-bold text-stone-100 pt-6 pl-10 ml-10 sticky text-4xl">People Portal</div>
+                <div className="nav-bar font-bold text-stone-100 sticky text-4xl">People Portal</div>
                 <div className="main-container flex-grow w-full">
                     <div className="containing-div flex glass flex-row h-full w-full">
                         <div className="search-tab flex flex-col glass h-full w-1/4 gradient-color" data-aos="fade-right">

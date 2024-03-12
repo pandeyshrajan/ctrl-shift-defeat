@@ -24,4 +24,5 @@
 .search-bar {
     border-top-left-radius: 5em;
     z-index: 2;
+    /* background-color: rgba(245, 245, 245, 0.42); */
 }
