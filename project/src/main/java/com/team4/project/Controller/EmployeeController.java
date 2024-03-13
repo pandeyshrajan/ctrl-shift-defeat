@@ -45,8 +45,8 @@ public class EmployeeController {
         Login fetchUser;
         String userEmail = userLogin.getEmailId();
         int userId = userLogin.getEmployeeId();
-        if (userId == 0 && userEmail.isEmpty()) fetchUser = null;
-        else if (userId != 0 && userEmail.isEmpty()) fetchUser = employeeService.getUserById(userLogin.getEmployeeId());
+        if (userId == 0 && userEmail.equals("")) fetchUser = null;
+        else if (userId != 0 && userEmail.equals("")) fetchUser = employeeService.getUserById(userLogin.getEmployeeId());
         else fetchUser = employeeService.getUserByEmail(userLogin.getEmailId());
 
 

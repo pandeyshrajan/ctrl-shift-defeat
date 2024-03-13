@@ -4,7 +4,7 @@ import { DEMO_EMPLOYEES } from "../utils/contants";
 import { api } from "../models/api";
 
 class SearchBarStore {
-    allEmployee: Employee[] = DEMO_EMPLOYEES;
+    limitedEmployee: Employee[] = DEMO_EMPLOYEES;
     filteredEmployee: Employee[] = DEMO_EMPLOYEES;
     searchInput: string = "";
     searchCriteria: string = "name";
@@ -13,11 +13,16 @@ class SearchBarStore {
         makeAutoObservable(this, {
             filteredEmployee: observable,
             searchInput: observable,
-            applyFilter: action,
             setFilteredEmployee: action,
             searchCriteria: observable,
             setSearchCriteria: action,
         });
+    }
+
+    async fetchEmployeeList() {
+        const data: Employee[] = await api.getLimitedEmployee();
+        this.limitedEmployee = data;
+        this.setFilteredEmployee(this.limitedEmployee);
     }
 
     getFilteredEmployee(): Employee[] {
@@ -26,14 +31,6 @@ class SearchBarStore {
 
     setFilteredEmployee(employees: Employee[]) {
         this.filteredEmployee = employees;
-    }
-
-    applyFilter(searchFilter: string) {
-        const searchResult: Employee[] = this.allEmployee.filter((curEmployee) => {
-            return curEmployee.name.toLowerCase().includes(searchFilter.toLowerCase());
-        });
-
-        this.setFilteredEmployee(searchResult);
     }
 
     setSearchCriteria(currentCriteria: string) {

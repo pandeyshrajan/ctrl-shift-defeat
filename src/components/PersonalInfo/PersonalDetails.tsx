@@ -3,16 +3,38 @@ import Divider from "@mui/joy/Divider";
 import { DOCUMENTS, PERSONAL_INFO } from "../../utils/contants";
 import "./PersonalDetails.css";
 import { store } from "../../stores/userProfileStore";
+import { observer } from "mobx-react";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 function PersonalDetails() {
     const form = () => {
-        const fields = Object.keys(PERSONAL_INFO).filter((v) => isNaN(Number(v)));
+        const fields = [];
+        const currentEmployeeData = store.currentProfile.employee;
+
+        Object.entries(currentEmployeeData).map((entry) => {
+            let key = entry[0];
+            let value = entry[1];
+            console.log(key);
+
+            if (key in PERSONAL_INFO) {
+                fields.push({ key: PERSONAL_INFO[key], value: value });
+            }
+        });
 
         return fields.map((element) => {
             return (
-                <div className="p-1">
-                    <p className="text-white ml-1 mb-1">{element}</p>
-                    <Input className="list" placeholder="Placeholder" variant="soft" value={"Shrajan pandey"} />
+                <div className="info-fields p-1">
+                    <p className="text-white ml-1 mb-1">{element.key}</p>
+                    <Input
+                        placeholder="Placeholder"
+                        variant="soft"
+                        value={element.value}
+                        sx={{
+                            backgroundColor: "rgba(245, 245, 245, 0.48)",
+                            color: "rgba(58,42,29, 0.90)",
+                            fontWeight: "600",
+                        }}
+                    />
                 </div>
             );
         });
@@ -22,7 +44,22 @@ function PersonalDetails() {
         const fields = Object.keys(DOCUMENTS).filter((v) => isNaN(Number(v)));
 
         return fields.map((element) => {
-            return <div className="list document bg-gray-100">{element}</div>;
+            return (
+                <div
+                    className="list document"
+                    style={{
+                        backgroundColor: "rgba(245, 245, 245, 0.48)",
+                        color: "rgba(58,42,29, 0.90)",
+                        fontWeight: "600",
+                    }}
+                >
+                    {element}
+                    <div className="document-icons">
+                        <Icon className="animate-button-hover" icon="line-md:downloading-loop" width="1.2em" height="1.2em" style={{ color: "white" }} />
+                        <Icon className="animate-button-hover" icon="line-md:uploading-loop" width="1.2em" height="1.2em" style={{ color: "white" }} />
+                    </div>
+                </div>
+            );
         });
     };
 
@@ -31,7 +68,10 @@ function PersonalDetails() {
             <div className="personal-details p-8 columns-2 basis-3/4">{form()}</div>
             {store.isAdmin && (
                 <>
-                    <Divider orientation="horizontal"> Documents </Divider>
+                    <Divider orientation="horizontal" sx={{ color: "white" }}>
+                        {" "}
+                        Documents{" "}
+                    </Divider>
                     <div className="doucments-section p-8 columns-3 flex flex-row justify-around basis-1/4">{documents()}</div>
                 </>
             )}
@@ -39,4 +79,4 @@ function PersonalDetails() {
     );
 }
 
-export default PersonalDetails;
+export default observer(PersonalDetails);

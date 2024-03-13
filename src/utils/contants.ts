@@ -18,6 +18,7 @@ export const DEFUALT_INITIALISE_EMPLOYEE: Employee = {
     date_of_joining: new Date("0000-00-00"),
     profileImageUrl: "",
     badgeImageUrl: "",
+    pod: "",
     children: [],
 };
 
@@ -43,6 +44,7 @@ export const EMPLOYEE_DUMMY: Employee = {
     profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
     badgeImageUrl: "/src/assets/MoneyView.jpeg",
     children: [],
+    pod: "growth",
 };
 
 export const PROJECT_TAGS_INITIALISE: ProjectTags = {
@@ -58,18 +60,18 @@ export const INTEREST_TAGS_INITIALISE: InterestTags = {
     interestName: "",
 };
 
-export enum PERSONAL_INFO {
-    Name,
-    "Employee ID",
-    Department,
-    Designation,
-    Pod,
-    Level,
-    Manager,
-    DOB,
-    DOJ,
-    Address,
-}
+export const PERSONAL_INFO = {
+    name: "Name",
+    employeeId: "Employee ID",
+    department: "Department",
+    designation: "Designation",
+    pod: "Pod",
+    level: "Level",
+    managerId: "Manager",
+    dob: "DOB",
+    date_of_joining: "DOJ",
+    address: "Address",
+};
 
 export enum DOCUMENTS {
     "Offer Letter",
@@ -94,6 +96,7 @@ export const DEMO_EMPLOYEES: Employee[] = [
         date_of_joining: new Date("0000-00-00"),
         profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
         badgeImageUrl: "/src/assets/MoneyView.jpeg",
+        pod: "growth",
     },
     {
         name: "Shrajan Pandey",
@@ -110,6 +113,7 @@ export const DEMO_EMPLOYEES: Employee[] = [
         date_of_joining: new Date("0000-00-00"),
         profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
         badgeImageUrl: "/src/assets/MoneyView.jpeg",
+        pod: "growth",
     },
     {
         name: "Shrajan Pandey",
@@ -126,6 +130,7 @@ export const DEMO_EMPLOYEES: Employee[] = [
         date_of_joining: new Date("0000-00-00"),
         profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
         badgeImageUrl: "/src/assets/MoneyView.jpeg",
+        pod: "growth",
     },
     {
         name: "Shrajan Pandey",
@@ -142,6 +147,7 @@ export const DEMO_EMPLOYEES: Employee[] = [
         date_of_joining: new Date("0000-00-00"),
         profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
         badgeImageUrl: "/src/assets/MoneyView.jpeg",
+        pod: "growth",
     },
     {
         name: "Shrajan Pandey",
@@ -158,6 +164,7 @@ export const DEMO_EMPLOYEES: Employee[] = [
         date_of_joining: new Date("0000-00-00"),
         profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
         badgeImageUrl: "/src/assets/MoneyView.jpeg",
+        pod: "growth",
     },
     {
         name: "Shrajan Pandey",
@@ -174,6 +181,7 @@ export const DEMO_EMPLOYEES: Employee[] = [
         date_of_joining: new Date("0000-00-00"),
         profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
         badgeImageUrl: "/src/assets/MoneyView.jpeg",
+        pod: "growth",
     },
     {
         name: "Shrajan Pandey",
@@ -190,6 +198,7 @@ export const DEMO_EMPLOYEES: Employee[] = [
         date_of_joining: new Date("0000-00-00"),
         profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
         badgeImageUrl: "/src/assets/MoneyView.jpeg",
+        pod: "dev",
     },
     {
         name: "Shrajan Pandey",
@@ -206,6 +215,7 @@ export const DEMO_EMPLOYEES: Employee[] = [
         date_of_joining: new Date("0000-00-00"),
         profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
         badgeImageUrl: "/src/assets/MoneyView.jpeg",
+        pod: "growth",
     },
     {
         name: "Shrajan Pandey",
@@ -222,6 +232,7 @@ export const DEMO_EMPLOYEES: Employee[] = [
         date_of_joining: new Date("0000-00-00"),
         profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
         badgeImageUrl: "/src/assets/MoneyView.jpeg",
+        pod: "test",
     },
     {
         name: "Shrajan Pandey",
@@ -238,6 +249,7 @@ export const DEMO_EMPLOYEES: Employee[] = [
         date_of_joining: new Date("0000-00-00"),
         profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
         badgeImageUrl: "/src/assets/MoneyView.jpeg",
+        pod: "test",
     },
     {
         name: "Shrajan Pandey",
@@ -254,5 +266,6 @@ export const DEMO_EMPLOYEES: Employee[] = [
         date_of_joining: new Date("0000-00-00"),
         profileImageUrl: "/src/assets/IMG_20240127_171651_857.jpg",
         badgeImageUrl: "/src/assets/MoneyView.jpeg",
+        pod: "dev",
     },
 ];

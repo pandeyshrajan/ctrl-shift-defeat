@@ -8,15 +8,13 @@ import { store } from "../../stores/userProfileStore";
 const { Dragger } = Upload;
 import { observer } from "mobx-react";
 
-const uploadImage = async (info: any) => {
-    const imageUpload = info.fileList[0];
+const uploadImage = async (event: any) => {
+    console.log(event);
+
+    const imageUpload = event.target.files[0];
     console.log(imageUpload);
 
-    // if (imageUpload == null) {
-    //     return;
-    // }
-
-    const imageRef = ref(storage, `${store.currentUser.employeeId}/image/${imageUpload.name}`);
+    const imageRef = ref(storage, `${store.loggedInUser.employee.employeeId}/image/ProfileImage`);
     console.log(imageRef);
 
     const response = await uploadBytes(imageRef, imageUpload);
@@ -25,18 +23,14 @@ const uploadImage = async (info: any) => {
     const url = await getDownloadURL(imageRef);
     console.log(url);
 
-    if (url != "") {
-        message.success(`${info.file.name} file uploaded successfully.`);
-        store.closePopUp();
-    } else if (status === "error") {
-        message.error(`${info.file.name} file upload failed.`);
-    }
+    store.profileImage = url;
+    store.closePopUp();
 };
 
 const props: UploadProps = {
     name: "file",
     multiple: false,
-    action: "https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188",
+    // action: "https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188",
     accept: "image/*",
     maxCount: 1,
     onChange: uploadImage,
@@ -46,12 +40,8 @@ const props: UploadProps = {
 };
 
 const UploadButton = () => (
-    <Dragger {...props}>
-        <p className="ant-upload-drag-icon">
-            <InboxOutlined />
-        </p>
-        <p className="ant-upload-text">Click or Drag Image to this area to upload</p>
-    </Dragger>
+    // <Dragger {...props}>
+    <p className="ant-upload-drag-icon"></p>
 );
 
-export default observer(UploadButton);
+export default UploadButton;

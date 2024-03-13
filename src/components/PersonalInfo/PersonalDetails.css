@@ -12,14 +12,33 @@
 
 .more-info {
     overflow: auto;
+    width: 100%;
     text-align: justify;
+    /* transition: width 2s height 2s; */
+    transition-timing-function: ease-in;
 }
 
 .list {
     border: 2px solid wheat;
-    transition: transform 0.5s;
+    transition: all 0.6s;
+    filter: brightness(80%);
 }
 .list:hover {
-    transform: scale(1.02);
-    border: 2px solid gray;
+    filter: brightness(110%);
+}
+
+.document-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-fields {
+    transition: all 0.6s;
+    filter: brightness(90%);
+}
+
+.info-fields:hover {
+    filter: brightness(110%);
 }

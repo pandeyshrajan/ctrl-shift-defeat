@@ -3,7 +3,7 @@
     height: 100vh;
     overflow: auto;
     /* background-color: rgb(55, 22, 22); */
-    background-image: linear-gradient(90deg, rgba(155, 150, 150, 0.058), rgba(0, 0, 0, 0.267)), url("../../assets/IMG-20240312-WA0001.png");
+    background-image: linear-gradient(90deg, rgba(155, 150, 150, 0.058), rgba(0, 0, 0, 0.267)), url("../../../assets/IMG-20240312-WA0001.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

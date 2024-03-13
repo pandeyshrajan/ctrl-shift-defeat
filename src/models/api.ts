@@ -1,8 +1,9 @@
 // import { get } from "firebase/database";
+import { common } from "@mui/material/colors";
+import { store } from "../stores/userProfileStore";
 import Employee from "./Employee";
 import UserProfile from "./UserProfile";
-
-// const testData: Employee = { name: "NAYA MAL", employeeId: "12", designation: "HA BHAIII BHAROSA RAKH", level: "0", slackURL: "", managerId: "0", emailId: "", contactNo: "", documentURL: "", interest: [], projectTags: [], profileImageUrl: "src/assets/IMG_20240127_171651_857.jpg", isAdmin: false };
+import { commonStore } from "../stores/commonStore";
 
 class Api {
     constructor() {}
@@ -11,13 +12,18 @@ class Api {
         const response = await fetch(`http://localhost:8080/api/employee/reportee/${curId}`);
         const data: Employee[] = await response.json();
         console.log(data);
-
         return data;
     };
 
     public getUserProfile = async (curId: number) => {
         const response = await fetch(`http://localhost:8080/api/employee/profile/${curId}`);
         const data: UserProfile = await response.json();
+        return data;
+    };
+
+    public getLimitedEmployee = async () => {
+        const response = await fetch(`http://localhost:8080/api/employee/limitedEmployee/15`);
+        const data: Employee[] = await response.json();
         return data;
     };
 
@@ -48,6 +54,26 @@ class Api {
     public searchByID = async (Id: number) => {
         const response = await fetch(`http://localhost:8080/api/employee/${Id}`);
         const data: Employee[] = await response.json();
+        return data;
+    };
+
+    public logInAuthentication = async (emailId: string, employeeId: number, password: string) => {
+        const response = await fetch("http://localhost:8080/api/employee/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                employeeId: 2,
+                emailId: "",
+                password: "password2",
+            }),
+        });
+
+        console.log("API RES");
+
+        console.log(response);
+        const data = await response.json();
         return data;
     };
 }

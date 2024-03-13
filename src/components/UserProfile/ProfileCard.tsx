@@ -9,7 +9,6 @@ import PopUp from "../PopUp/PopUp";
 import Tags from "../../utils/components/Tags";
 import linkedInIcon from "../../assets/logos--linkedin-icon.svg";
 import X from "../../assets/line-md--twitter-x.svg";
-import { EMPLOYEE_DUMMY } from "../../utils/contants";
 
 function ProfileCard() {
     const toggleProfileIcon = () => {
@@ -17,15 +16,17 @@ function ProfileCard() {
         console.log(store.getProfileImage());
     };
 
+    const currentShownProfile = store.getCurrentProfile().employee;
+
     return (
         <>
             <span className="image-container profile-image rounded-lg shadow-2xl">
-                <img className="image rounded-lg" src={EMPLOYEE_DUMMY.profileImageUrl} alt="ProfilePhoto" />
+                <img className="image rounded-lg" src={store.profileImage} alt="ProfilePhoto" />
                 <img className="badge-icon bg-gray-200 shadow-xl rounded-lg" src={BadegeIcon} onClick={toggleProfileIcon} />
             </span>
             <div className="flex flex-col items-center">
-                <div className="profile-name font-bold text-4xl ml-1">{store.getCurrentUser().name}</div>
-                <div className="profile-level text-gray-900 italic pt-2 font-medium ml-1">{store.getCurrentUser().designation}</div>
+                <div className="profile-name font-bold text-4xl ml-1">{currentShownProfile.name}</div>
+                <div className="profile-level text-gray-900 italic pt-2 font-medium ml-1">{currentShownProfile.designation}</div>
                 <div className="mt-3">
                     <Tags color="orange" />
                     <Tags />
@@ -40,7 +41,7 @@ function ProfileCard() {
                             <img className="animate-button-hover deep-link m-1 bg-white p-2 rounded-lg" src={linkedInIcon} />
                             <img className="animate-button-hover deep-link m-1 bg-white p-2 rounded-lg" src={X} />
                             <img className="animate-button-hover deep-link m-1 bg-white p-2 rounded-lg" src={CallIcon} onClick={() => openInNewTab("tel:+917070039357")} />
-                            {store.isCurrentUser && <PopUp />}
+                            {store.loggedInUser.employee.employeeId === store.currentProfile.employee.employeeId && <PopUp />}
                         </div>
                     </div>
                 </div>

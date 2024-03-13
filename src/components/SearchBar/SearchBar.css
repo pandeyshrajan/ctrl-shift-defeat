@@ -2,6 +2,7 @@
     transform: scale(0.97);
     transition: ease-in-out 0.3s;
     border: 2px solid rgba(213, 255, 76, 0.623);
+    cursor: pointer;
     /* box-shadow: ; */
 }
 

@@ -7,3 +7,9 @@
     transition: transform 0.5s;
     border: 2px solid white;
 }
+
+.direct-reporties-list {
+    height: 100%;
+    width: 70%;
+    overflow-y: auto;
+}

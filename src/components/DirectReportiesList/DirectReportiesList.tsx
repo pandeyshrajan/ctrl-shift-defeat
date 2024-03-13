@@ -11,31 +11,24 @@ import { store } from "../../stores/userProfileStore";
 
 function DirectReportiesList() {
     function displayList() {
-        return store.currentUser.children?.map((empl: Employee) => {
+        // const currentShownProfile: Employee = store.getCurrentProfile().employee;
+        // console.log(currentShownProfile);
+
+        return store.directReporties.map((child: Employee) => {
             return (
                 <>
-                    <ListItem alignItems="flex-start" className="direct-reporties gradient-color-r m-2 rounded-lg p-1 shadow-xl">
+                    <ListItem className="reportee-item detail-card">
                         <ListItemAvatar>
-                            <Avatar alt="Remy Sharp" src={empl.profileImageUrl} />
+                            <Avatar alt="Remy Sharp" src={child.profileImageUrl} />
                         </ListItemAvatar>
-                        <ListItemText
-                            primary={empl.name}
-                            secondary={
-                                <React.Fragment>
-                                    <Typography sx={{ display: "inline" }} component="span" variant="body2" color="text.primary">
-                                        {empl.designation}
-                                    </Typography>
-                                    {" — I'll be in your neighborhood doing errands this…"}
-                                </React.Fragment>
-                            }
-                        />
+                        <ListItemText className="text-white" primary={child.name} secondary={<React.Fragment>{child.designation}</React.Fragment>} />
                     </ListItem>
                 </>
             );
         });
     }
 
-    return <List>{displayList()}</List>;
+    return <List className="direct-reporties-list">{displayList()}</List>;
 }
 
 export default DirectReportiesList;

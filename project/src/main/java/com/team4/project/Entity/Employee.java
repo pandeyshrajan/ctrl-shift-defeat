@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -50,10 +51,10 @@ public class Employee {
     private String department;
 
     @Column(name = "date_of_birth")
-    private Date dob;
+    private LocalDate dob;
 
     @Column(name = "date_of_joining")
-    private Date date_of_joining;
+    private LocalDate date_of_joining;
 
     @Column(name = "address")
     private String address;

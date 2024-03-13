@@ -1,31 +1,35 @@
 import { observable, action, makeObservable } from "mobx";
 import Employee from "../models/Employee";
-import { DEFUALT_INITIALISE_USER_PROFILE, EMPLOYEE_DUMMY } from "../utils/contants";
+import { DEFUALT_INITIALISE_EMPLOYEE, DEFUALT_INITIALISE_USER_PROFILE, EMPLOYEE_DUMMY } from "../utils/contants";
 import { api } from "../models/api";
 import UserProfile from "../models/UserProfile";
 import InterestTags from "../models/InterestTags";
 import ProjectTags from "../models/ProjectTags";
+import { commonStore } from "./commonStore";
 
 class UserProfileStore {
-    currentUser: Employee = EMPLOYEE_DUMMY;
-    treeData: Employee = EMPLOYEE_DUMMY;
-    tabValue: string = "one";
-    uploadPopUp: boolean = false;
-    profileImage: string = "../../assets/MoneyView.jpeg";
-    isAdmin: boolean = Math.random() * 10 > 5;
-    isCurrentUser: boolean = Math.random() * 10 > 5;
-    currentProfileInfo: UserProfile = DEFUALT_INITIALISE_USER_PROFILE;
+    loggedInUser: UserProfile = DEFUALT_INITIALISE_USER_PROFILE; //logged in user
+    currentProfile: UserProfile = DEFUALT_INITIALISE_USER_PROFILE; //current open profile
+    directReporties: Employee[] = [];
+    treeData: Employee = EMPLOYEE_DUMMY; //data to be loaded in tree
+    tabValue: string = "one"; //current active tab in details component
+    uploadPopUp: boolean = false; //show upload popup or not
+    profileImage: string = "../../assets/MoneyView.jpeg"; //current profile image
+    isAdmin: boolean = Math.random() * 10 > 5; //wheather logged in user is admin or not ( Show admin privilages in UI )
+    // currentProfileInfo: UserProfile = DEFUALT_INITIALISE_USER_PROFILE; //complete profile info of current user
     interestTags: InterestTags[] = [];
     projectTags: ProjectTags[] = [];
 
     constructor() {
         makeObservable(this, {
-            currentUser: observable,
+            currentProfile: observable,
             treeData: observable,
             tabValue: observable,
             uploadPopUp: observable,
             profileImage: observable,
-            setCurrentUser: action,
+            isAdmin: observable,
+            directReporties: observable,
+            setCurrentProfile: action,
             setTreeData: action,
             openPopUp: action,
             closePopUp: action,
@@ -33,12 +37,23 @@ class UserProfileStore {
         });
     }
 
+    setLoggedInUser(user: UserProfile) {
+        this.loggedInUser = user;
+        console.log("LOGGED IN USER ");
+
+        this.setCurrentProfile(this.loggedInUser);
+    }
+
+    setAdmin(value: boolean) {
+        this.isAdmin = value;
+    }
+
     getPopUpStatus(): boolean {
         return this.uploadPopUp;
     }
 
-    getCurrentUser(): Employee {
-        return this.currentUser;
+    getCurrentProfile(): UserProfile {
+        return this.currentProfile;
     }
 
     getTabValue(): string {
@@ -55,8 +70,8 @@ class UserProfileStore {
     }
 
     toggleProfileImage() {
-        if (this.currentUser.badgeImageUrl) {
-            this.profileImage = this.profileImage === this.currentUser.badgeImageUrl ? this.currentUser.profileImageUrl : this.currentUser.badgeImageUrl;
+        if (this.currentProfile.employee.badgeImageUrl) {
+            this.profileImage = this.profileImage === this.currentProfile.employee.badgeImageUrl ? this.currentProfile.employee.profileImageUrl : this.currentProfile.employee.badgeImageUrl;
         }
     }
 
@@ -71,35 +86,69 @@ class UserProfileStore {
         this.uploadPopUp = false;
     }
 
-    setCurrentUser(newUser: Employee) {
-        this.currentUser = newUser;
+    async setCurrentProfile(currentProfile: UserProfile) {
+        this.currentProfile = currentProfile;
+        this.treeData = DEFUALT_INITIALISE_EMPLOYEE;
+        console.log("SETTING CURRENT PROFILE");
+
+        await this.setTreeData();
     }
 
-    setTreeData(newData: Employee) {
-        this.treeData = { ...newData };
-        this.currentUser = newData;
-        this.profileImage = this.currentUser.profileImageUrl;
+    setDirectReportees(reportess: Employee[]) {
+        this.directReporties = reportess;
+    }
+
+    //Tree Data to be shown in hirarchy
+    async setTreeData(newData?: Employee) {
+        if (this.treeData.employeeId === 0) {
+            await this.createInitialTree();
+        } else {
+            console.log(" AYO WTFFF ");
+
+            this.treeData = { ...newData! }; //! marks that we know what we we are doing ignoring the error message
+        }
+    }
+
+    async createInitialTree() {
+        console.log("CREATING NEW INITIAL  TREE DATA");
+
+        const employeeId = this.currentProfile.employee.employeeId;
+        const manager: Employee = await api.getManager(employeeId);
+        const siblings: Employee[] = await api.getReportees(manager.employeeId);
+        const reportees: Employee[] = await api.getReportees(employeeId);
+
+        this.setDirectReportees(reportees);
+
+        for (let i = 0; i < siblings.length; ++i) {
+            if (siblings[i].employeeId === employeeId) {
+                siblings[i].children = reportees;
+                break;
+            }
+        }
+
+        manager.children = siblings;
+        this.treeData = { ...manager };
     }
 
     setTabValue(newValue: string) {
         this.tabValue = newValue;
     }
 
-    async newNode(curId: number) {
+    async fetchReportees(curId: number) {
         const e: Employee[] = await api.getReportees(curId);
-        this.insertNewNode(this.treeData, e, curId);
+        this.insertReportees(this.treeData, e, curId);
         console.log(this.treeData);
         this.setTreeData(this.treeData);
     }
 
-    insertNewNode(empl: Employee, e: Employee[], curId: number): boolean {
+    insertReportees(empl: Employee, e: Employee[], curId: number): boolean {
         if (empl.employeeId === curId) {
             empl.children = e;
             return true;
         }
 
         empl.children?.forEach((i) => {
-            if (this.insertNewNode(i, e, curId)) {
+            if (this.insertReportees(i, e, curId)) {
                 return true;
             }
         });
@@ -126,14 +175,9 @@ class UserProfileStore {
         return empl;
     }
 
-    async initialLoading() {
-        console.log("AAGAY ");
-
-        this.currentProfileInfo = await api.getUserProfile(1);
-        console.log(this.currentProfileInfo);
-        this.projectTags = this.currentProfileInfo.projectTags;
-        this.interestTags = this.currentProfileInfo.interestTags;
-        this.setCurrentUser(this.currentProfileInfo.employee);
+    async fetchClickedProfile(emplId: number) {
+        const newProfile: UserProfile = await api.getUserProfile(emplId);
+        this.setCurrentProfile(newProfile);
     }
 }
 

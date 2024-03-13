@@ -15,6 +15,7 @@
         "@mui/icons-material": "^5.15.12",
         "@mui/joy": "^5.0.0-beta.30",
         "@mui/material": "^5.15.11",
+        "@mui/x-date-pickers": "^6.19.6",
         "antd": "^5.15.1",
         "aos": "^2.3.4",
         "firebase": "^10.8.1",
@@ -24,7 +25,8 @@
         "react-d3-tree": "^3.6.2",
         "react-dom": "^18.2.0",
         "react-easy-crop": "^5.0.5",
-        "react-json-to-csv": "^1.2.0"
+        "react-json-to-csv": "^1.2.0",
+        "react-router-dom": "^6.22.3"
     },
     "devDependencies": {
         "@iconify/react": "^4.1.1",

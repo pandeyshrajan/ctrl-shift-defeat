@@ -32,7 +32,7 @@ function TreeNodeCard(prop: any) {
     const addNewChild = (e: any) => {
         console.log("FTECH CALL ");
 
-        store.newNode(nodeDatum.employeeId);
+        store.fetchReportees(nodeDatum.employeeId);
     };
 
     const addManager = () => {
@@ -40,10 +40,10 @@ function TreeNodeCard(prop: any) {
         store.newManager(nodeDatum.employeeId);
     };
 
-    const updateProfile = () => {
-        store.setCurrentUser(nodeDatum);
-        store.setTreeData(nodeDatum);
-    };
+    // const updateProfile = () => {
+    //     store.setCurrentUser(nodeDatum);
+    //     store.setTreeData(nodeDatum);
+    // };
 
     return (
         <>
