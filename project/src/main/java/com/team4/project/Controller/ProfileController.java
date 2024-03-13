@@ -37,6 +37,7 @@ public class ProfileController {
     @GetMapping("/profile/{employeeId}")
     public ResponseEntity<Object> getProfileById(@PathVariable int employeeId) {
         Optional<Profile> profile= Optional.of(new Profile());
+
         Optional<Employee> employee=(employeeService.getEmployeeById(employeeId));
         List<InterestTags> interestTags=interestService.getInterestTags(employeeId);
         List<ProjectTags> projectTags=projectService.getProjectTags(employeeId);
