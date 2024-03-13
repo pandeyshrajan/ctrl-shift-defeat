@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DocumentService {
@@ -22,7 +23,7 @@ public class DocumentService {
     }
 
 
-    public Documents getEmployeeDoc(int employeeId){
+    public Optional<Documents> getEmployeeDoc(int employeeId){
         return documentRepository.findDocuments(employeeId);
 
     }
