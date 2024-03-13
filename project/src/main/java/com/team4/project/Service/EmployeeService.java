@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +28,7 @@ public class EmployeeService {
     }
 
     //    public void deleteStudent(String id) {
-//        studentRepository.deleteById(id);
+//        studentRepository.deleteById(id)r
 //    }
     public List<Employee> getEmployeesByManagerId(int managerId) {
         return employeeRepository.findEmployeesByManagerId(managerId);
@@ -36,8 +38,13 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
-    public Employee getEmployeeById(int employeeId) {
-        return employeeRepository.findById((employeeId)).get();
+    public Optional<Employee> getEmployeeById(int employeeId) {
+        return employeeRepository.findById((employeeId));
+    }
+
+    public Optional<Employee>getManagerByEmployeeId(int employeeId)
+    {
+        return  employeeRepository.findMangerbyEmployeeId(employeeId);
     }
     public List<Employee> getLimitedEmployees(int num)
     {

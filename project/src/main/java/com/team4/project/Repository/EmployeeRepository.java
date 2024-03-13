@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 //@Component
@@ -21,7 +22,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     List<Employee> findLimitedEmployees(int num);
 
     @Query(value = "select m.* from employee e, employee m where m.employee_id=e.manager_id and e.employee_id=?1", nativeQuery = true)
-    Employee findMangerbyEmployeeId(int employeeId);
+    Optional<Employee> findMangerbyEmployeeId(int employeeId);
 
     @Query(value = "SELECT  e.* FROM employee_projects p, employee e, project_tags t WHERE e.employee_id=p.employee_id AND t.project_id=p.project_id AND t.project_name like %?1%", nativeQuery = true)
     List<Employee> findEmployeeByProjectTags(String projectId);
