@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, Integer> {
 
-    @Query(value = "select case when exists (select * from   admin where  employee_id=?1) then 1 else 0  end  as isAdmin", nativeQuery = true)
+    @Query(value = "select case when exists (select * from admin where  employee_id=?1) then 1 else 0  end  as isAdmin", nativeQuery = true)
     int isAdmin(int employeeId);
 
 }

@@ -14,4 +14,8 @@ public class Admin {
     Admin(){
 
     }
+
+    public Admin(int employeeId) {
+        this.employeeId = employeeId;
+    }
 }

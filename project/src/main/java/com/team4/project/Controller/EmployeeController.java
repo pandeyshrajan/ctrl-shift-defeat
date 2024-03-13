@@ -25,11 +25,7 @@ public class EmployeeController {
         return employee.getEmployeeId();
     }
 
-    @PostMapping(value = "/docUpdate")
-    private int saveDocument(@RequestBody Documents documents) {
-        employeeService.saveOrUpdateDocument(documents);
-        return documents.getEmployeeId();
-    }
+
 
     @GetMapping(value = "/allEmployees")
     public List<Employee> getAllEmployees() {
@@ -37,29 +33,7 @@ public class EmployeeController {
     }
 
 
-    @PostMapping(value = "/login")
-    public LoginResponse checkLogin(@RequestBody Login userLogin) {
-        System.out.println("UserLogin " + userLogin.getEmailId());
-        LoginResponse response = new LoginResponse();
-//        Login fetchUser=employeeService.getPassword(userLogin.getEmailId(),userLogin.getEmployeeId());
-        Login fetchUser;
-        String userEmail = userLogin.getEmailId();
-        int userId = userLogin.getEmployeeId();
-        if (userId == 0 && userEmail.isEmpty()) fetchUser = null;
-        else if (userId != 0 && userEmail.isEmpty()) fetchUser = employeeService.getUserById(userLogin.getEmployeeId());
-        else fetchUser = employeeService.getUserByEmail(userLogin.getEmailId());
 
-
-        System.out.println("User " + fetchUser.getEmailId());
-        if (fetchUser != null) {
-            if (fetchUser.getPassword().equals(userLogin.getPassword())) {
-                response.setAdmin(employeeService.isAdmin(fetchUser.getEmployeeId()));
-                response.setUserProfile(getProfileById(fetchUser.getEmployeeId()));
-                return response;
-            }
-            return null;
-        } else return null;
-    }
 
     @GetMapping(value = "/limitedEmployee/{num}")
     public List<Employee> getLimitedEmployees(@PathVariable int num) {
@@ -77,20 +51,6 @@ public class EmployeeController {
         return employeeService.getEmployeesByManagerId(employeeId);
     }
 
-    @GetMapping("/manager/{employeeId}")
-    public Employee getManagerByEmployeeId(@PathVariable int employeeId) {
-        return employeeService.getManagerByEmployeeId(employeeId);
-    }
-
-    @GetMapping("/projectTags/{employeeId}")
-    public List<ProjectTags> getProjectTagsByEmployeeId(@PathVariable int employeeId) {
-        return employeeService.getProjectTags(employeeId);
-    }
-
-    @GetMapping("/interestTags/{employeeId}")
-    public List<InterestTags> getInterestTagsByEmployeeId(@PathVariable int employeeId) {
-        return employeeService.getInterestTags(employeeId);
-    }
 
     @GetMapping("/projectEmployees/{projectId}")
     public List<Employee> getEmployeeByProjectTag(@PathVariable String projectId) {
@@ -118,20 +78,6 @@ public class EmployeeController {
     }
 
 
-    @GetMapping("/profile/{employeeId}")
-    public Profile getProfileById(@PathVariable int employeeId) {
-        Profile employeeProfile = new Profile();
-        employeeProfile.setEmployee(employeeService.getEmployeeById(employeeId));
-        employeeProfile.setProjectTags(employeeService.getProjectTags(employeeId));
-        employeeProfile.setInterestTags(employeeService.getInterestTags(employeeId));
-//        System.out.println(employeeProfile.getInterestTags());
-        return employeeProfile;
-    }
-
-    @GetMapping("/doc/{employeeId}")
-    public Documents getDocumentName(@PathVariable int employeeId) {
-        return employeeService.getEmployeeDoc(employeeId);
-    }
 
     @PostMapping("/update/profileImage/{id}")
     public void updateEmployeeProfileImage(@PathVariable int id, @RequestBody String url) {

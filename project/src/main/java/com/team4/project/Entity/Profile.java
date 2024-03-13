@@ -1,12 +1,13 @@
 package com.team4.project.Entity;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Optional;
 
-@Getter
-@Setter
+@Data
 public class Profile {
     private Employee employee;
     private List<ProjectTags> projectTags;
@@ -21,4 +22,6 @@ public class Profile {
     public Profile(){
 
     }
+
+
 }
