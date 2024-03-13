@@ -22,13 +22,19 @@ public class DocumentController {
     @Autowired
 //    Employee employee;
     private DocumentService documentService;
+    @Autowired
+    private EmployeeService employeeService;
 
 
 
     @PostMapping(value = "/docUpdate")
-    private int saveDocument(@RequestBody Documents documents) {
-        documentService.saveOrUpdateDocument(documents);
-        return documents.getEmployeeId();
+    private ResponseEntity<Object> saveDocument(@RequestBody Documents documents) {
+        Optional<Employee> employee=employeeService.getEmployeeById(documents.getEmployeeId());
+        if(employee.isPresent()) {
+            documentService.saveOrUpdateDocument(documents);
+            return ResponseEntity.ok("Document Updated!");
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Corresponding Employee Not Found!");
     }
 
     @GetMapping("/doc/{employeeId}")
