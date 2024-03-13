@@ -32,7 +32,7 @@ public class LoginController {
 
 
     @PostMapping(value = "/login")
-    public ResponseEntity<LoginResponse> checkLogin(@RequestBody Login userLogin) {
+    public ResponseEntity<Object> checkLogin(@RequestBody Login userLogin) {
 //        System.out.println("UserLogin " + userLogin.getEmailId());
         LoginResponse response = new LoginResponse();
 //        Login fetchUser=employeeService.getPassword(userLogin.getEmailId(),userLogin.getEmployeeId());
@@ -51,12 +51,12 @@ public class LoginController {
                 response.setLoginStatus("SUCCESS");
                 return ResponseEntity.ok(response);
             }
-            response.setLoginStatus("Invalid Password!");
+//            response.setLoginStatus("Invalid Password!");
 
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid Password");
         }
         else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User Not Found");
         }
     }
 
