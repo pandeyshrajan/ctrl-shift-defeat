@@ -3,13 +3,15 @@ package com.team4.project.Controller;
 
 import com.team4.project.Entity.*;
 import com.team4.project.Service.AdminService;
-import com.team4.project.Service.EmployeeService;
 import com.team4.project.Service.LoginService;
 import com.team4.project.Service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 //test commit
 @RestController
@@ -30,28 +32,32 @@ public class LoginController {
 
 
     @PostMapping(value = "/login")
-    public LoginResponse checkLogin(@RequestBody Login userLogin) {
+    public ResponseEntity<LoginResponse> checkLogin(@RequestBody Login userLogin) {
 //        System.out.println("UserLogin " + userLogin.getEmailId());
         LoginResponse response = new LoginResponse();
 //        Login fetchUser=employeeService.getPassword(userLogin.getEmailId(),userLogin.getEmployeeId());
-        Login fetchUser;
+        Optional<Login> fetchUser;
         String userEmail = userLogin.getEmailId();
         int userId = userLogin.getEmployeeId();
         if (userId == 0 && userEmail.isEmpty()) fetchUser = null;
         else if (userId != 0 && userEmail.isEmpty()) fetchUser = loginService.getUserById(userLogin.getEmployeeId());
         else fetchUser = loginService.getUserByEmail(userLogin.getEmailId());
-        System.out.println(fetchUser);
 
+        if (fetchUser.isPresent()) {
 
-        System.out.println("User " + fetchUser.getEmailId());
-        if (fetchUser != null) {
-            if (fetchUser.getPassword().equals(userLogin.getPassword())) {
-                response.setAdmin(adminService.isAdmin(fetchUser.getEmployeeId()));
-                response.setUserProfile(profileService.getProfile(fetchUser.getEmployeeId()));
-                return response;
+            if (fetchUser.get().getPassword().equals(userLogin.getPassword())) {
+                response.setAdmin(adminService.isAdmin(fetchUser.get().getEmployeeId()));
+                response.setUserProfile(profileService.getProfile(fetchUser.get().getEmployeeId()));
+                response.setLoginStatus("SUCCESS");
+                return ResponseEntity.ok(response);
             }
-            return null;
-        } else return null;
+            response.setLoginStatus("Invalid Password!");
+
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
     }
 
 

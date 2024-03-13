@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LoginService {
@@ -13,14 +14,16 @@ public class LoginService {
 
     @Autowired
     private LoginRepository loginRepository;
-    public Login getUserById(int employeeId)
+    public Optional<Login> getUserById(int employeeId)
     {
         return loginRepository.findUserById(employeeId);
     }
 
-    public Login getUserByEmail(String emailId)
+    public Optional<Login> getUserByEmail(String emailId)
     {
         return loginRepository.findUserByEmail(emailId);
+
+
     }
 
 
