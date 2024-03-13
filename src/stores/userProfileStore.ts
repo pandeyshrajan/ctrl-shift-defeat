@@ -16,9 +16,6 @@ class UserProfileStore {
     uploadPopUp: boolean = false; //show upload popup or not
     profileImage: string = "../../assets/MoneyView.jpeg"; //current profile image
     isAdmin: boolean = Math.random() * 10 > 5; //wheather logged in user is admin or not ( Show admin privilages in UI )
-    // currentProfileInfo: UserProfile = DEFUALT_INITIALISE_USER_PROFILE; //complete profile info of current user
-    interestTags: InterestTags[] = [];
-    projectTags: ProjectTags[] = [];
 
     constructor() {
         makeObservable(this, {

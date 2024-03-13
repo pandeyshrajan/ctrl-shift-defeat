@@ -7,7 +7,8 @@ class SearchBarStore {
     limitedEmployee: Employee[] = DEMO_EMPLOYEES;
     filteredEmployee: Employee[] = DEMO_EMPLOYEES;
     searchInput: string = "";
-    searchCriteria: string = "name";
+    searchCriteria: string = "Name";
+    // searchInput: string = "";
 
     constructor() {
         makeAutoObservable(this, {
@@ -37,24 +38,34 @@ class SearchBarStore {
         this.searchCriteria = currentCriteria;
     }
 
-    async searchByCriteria(input: string) {
+    setSearchInput(input: string) {
+        this.searchInput = input;
+    }
+
+    async searchByCriteria() {
         let filteredResponse: Employee[] = [];
 
         switch (this.searchCriteria) {
-            case "name": {
-                filteredResponse = await api.searchByName(input);
+            case "Name": {
+                filteredResponse = await api.searchByName(this.searchInput);
                 break;
             }
-            case "id": {
-                filteredResponse = await api.searchByID(parseInt(input));
+            case "ID": {
+                filteredResponse = await api.searchByID(parseInt(this.searchInput));
                 break;
             }
-            case "project": {
-                filteredResponse = await api.searchByProject(input);
+            case "Project": {
+                filteredResponse = await api.searchByProject(this.searchInput);
                 break;
             }
-            case "interest": {
-                filteredResponse = await api.searchByInterest(input);
+            case "Interest": {
+                filteredResponse = await api.searchByInterest(this.searchInput);
+                break;
+            }
+            case "Department": {
+                break;
+            }
+            case "Pod": {
                 break;
             }
         }

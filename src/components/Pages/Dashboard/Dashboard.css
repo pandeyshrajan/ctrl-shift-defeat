@@ -1,10 +1,3 @@
-/* #root {
-    margin: 0;
-    padding: 2rem;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-}  */
 .dashboard-container {
     background-image: url("../../../assets/rustic-elegance-illuminates-comfortable-domestic-kitchen-with-old-fashioned-bookshelf-decoration-generated-by-ai.jpg");
     background-position: center;
@@ -63,12 +56,13 @@
 
 .profile-component {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    /* height: 25%; */
+    padding: 0 5%;
     border: 0px;
     border-top-right-radius: 5em;
     color: rgb(255, 255, 255);
-    /* backdrop-filter: blur(50px); */
 }
 
 .info-section {
@@ -97,7 +91,6 @@
 }
 
 .main-container {
-    /* z-index: 0; */
     padding: 10px 80px 30px 80px;
     background-position: center;
     background-repeat: no-repeat;
@@ -110,15 +103,52 @@
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.291);
-    /* box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); */
 }
 
 .containing-div {
     border-radius: 5em;
-    /* position: relative; */
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
 }
 
 .nav-bar {
-    /* border-bottom: 1px solid rgba(179, 124, 221, 0.662); */
-    padding: 1.5% 4%;
+    font-size: 2.1em;
+    padding: 1.2% 5%;
+}
+
+@media (max-width: 1150px) {
+    .main-container {
+        overflow: scroll;
+        padding: 40px;
+    }
+    .containing-div {
+        flex-direction: column;
+    }
+    .search-tab {
+        visibility: hidden;
+        position: absolute;
+    }
+    .right-half {
+        border-top-left-radius: 5em;
+        border-bottom-left-radius: 5em;
+    }
+    .profile-component {
+        height: 25%;
+        border-top-left-radius: 5em;
+    }
+    .info-section {
+        border-bottom-left-radius: 5em;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        padding: 0;
+    }
+    .profile-component {
+        flex-direction: column;
+        height: 40%;
+        padding: 3% 0;
+    }
 }

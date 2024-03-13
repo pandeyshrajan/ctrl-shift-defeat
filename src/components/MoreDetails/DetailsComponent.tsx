@@ -68,8 +68,9 @@ function TreeReportiesComponent() {
                 </Tabs>
 
                 <div className="download-fullScreen">
-                    {store.getTabValue() == "three" && <Icon className="ml-1" icon="line-md:download-loop" width="2.7em" height="2.7em" style={{ color: "white" }} />}
-                    <Icon className="ml-1" icon="mingcute:fullscreen-fill" width="2.7em" height="2.7em" style={{ color: "white" }} onClick={toggleFullScreen} />
+                    {store.getTabValue() == "one" && <Icon className="ml-1 animate-button-hover" icon="line-md:edit-twotone-full" width="2.7em" height="2.7em" style={{ color: "white" }} />}
+                    {store.getTabValue() == "three" && <Icon className="ml-1 animate-button-hover" icon="line-md:download-loop" width="2.7em" height="2.7em" style={{ color: "white" }} />}
+                    <Icon className="ml-1 animate-button-hover" icon="mingcute:fullscreen-fill" width="2.7em" height="2.7em" style={{ color: "white" }} onClick={toggleFullScreen} />
                 </div>
             </div>
             {store.getTabValue() == "one" && <PersonalDetails />}

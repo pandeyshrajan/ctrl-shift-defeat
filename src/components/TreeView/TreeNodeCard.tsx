@@ -1,4 +1,4 @@
-import profileImg from "../../assets/IMG_20240127_171651_857.jpg";
+import profileImg from "../../assets/MoneyView.jpeg";
 import "./TreeNodeCard.css";
 import { DEFUALT_INITIALISE_EMPLOYEE, EMPLOYEE_DUMMY } from "../../utils/contants";
 import { store } from "../../stores/userProfileStore";
@@ -58,7 +58,7 @@ function TreeNodeCard(prop: any) {
                         </a> */}
                         <div className="main">
                             {/* <div className="image"> */}
-                            <img className="node-image" src={nodeDatum.profileImageUrl} alt="ProfilePhoto" />
+                            <img className="node-image" src={profileImg} alt="ProfilePhoto" />
                             {/* <div className="hover">
                                     <i className="fas fa-camera fa-2x"></i>
                                 </div> */}

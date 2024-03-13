@@ -3,6 +3,9 @@ import ProjectTags from "../models/ProjectTags";
 import InterestTags from "../models/InterestTags";
 import UserProfile from "../models/UserProfile";
 
+export const BASE_URL = "http://localhost:8080/api/employee";
+
+export const FILTER_FIELDS = ["Name", "ID", "Pod", "Interest", "Project", "Department"];
 export const DEFUALT_INITIALISE_EMPLOYEE: Employee = {
     name: "",
     employeeId: 0,

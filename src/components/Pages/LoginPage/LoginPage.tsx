@@ -3,10 +3,13 @@ import { Button } from "@mui/material";
 import { Icon } from "@iconify/react";
 import { commonStore } from "../../../stores/commonStore";
 import "./LoginPage.css";
+import { redirect, useNavigate } from "react-router-dom";
 
 function LoginPage() {
+    const navigate = useNavigate();
     const handleOnclick = async () => {
         await commonStore.authenticateUser();
+        navigate("/dashboard");
     };
 
     return (

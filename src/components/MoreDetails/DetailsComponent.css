@@ -13,6 +13,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    filter: brightness(95%);
 }
 
 .details-component {
@@ -34,8 +35,9 @@
     transition: all 0.6s;
 }
 
-.section-bar:hover {
-    filter: brightness(110%);
+.section-bar:hover,
+.download-fullScreen:hover {
+    filter: brightness(130%);
 }
 
 .details-header {

@@ -42,3 +42,13 @@
 .info-fields:hover {
     filter: brightness(110%);
 }
+
+.personal-details {
+    columns: 2;
+}
+
+@media (max-width: 768px) {
+    .personal-details {
+        columns: 1;
+    }
+}

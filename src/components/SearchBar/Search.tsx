@@ -5,21 +5,27 @@ import { useState } from "react";
 import { searchBarStore } from "../../stores/searchBarStore";
 import { observer } from "mobx-react";
 import { Icon } from "@iconify/react";
+import { FILTER_FIELDS } from "../../utils/contants";
 
 function Search() {
-    // const [searchCriteria, setSearchCriteria] = useState("name"); // Default search criteria
-    const [input, setInput] = useState("");
+    // const [input, setInput] = useState("");
 
     const handleFormInput = (event: any) => {
-        searchBarStore.searchByCriteria(input);
+        searchBarStore.searchByCriteria();
     };
 
     const handleChange = (event: any) => {
-        setInput(event?.target.value);
+        searchBarStore.setSearchInput(event?.target.value);
     };
 
     const handleSearchCriteriaChange = (event: any) => {
         searchBarStore.setSearchCriteria(event.target.value);
+    };
+
+    const filterLists = () => {
+        return FILTER_FIELDS.map((field: string) => {
+            return <MenuItem value={field}>{field}</MenuItem>;
+        });
     };
 
     return (
@@ -29,10 +35,7 @@ function Search() {
                     <>
                         <Icon icon="line-md:search-filled" width="2em" height="2em" style={{ color: "rgba(58,42,29, 0.75)" }} className="ml-2" />
                         <Select value={searchBarStore.searchCriteria} onChange={handleSearchCriteriaChange} className="h-11" style={{ backgroundColor: "rgba(245, 245, 245, 0.12)" }}>
-                            <MenuItem value="name">Name</MenuItem>
-                            <MenuItem value="id">ID</MenuItem>
-                            <MenuItem value="project">Project</MenuItem>
-                            <MenuItem value="interest">Interest</MenuItem>
+                            {filterLists()}
                         </Select>
                     </>
                 }
@@ -50,8 +53,8 @@ function Search() {
                     fontWeight: "bold",
                 }}
                 placeholder="Search"
+                value={searchBarStore.searchInput}
                 onChange={handleChange}
-                // className="search-bar"
             />
         </section>
     );

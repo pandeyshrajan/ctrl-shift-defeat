@@ -76,6 +76,14 @@
     float: right;
 }
 
-.profile-details {
-    /* transform: translate(-30%, 0); */
+.profile-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .profile-detail-container {
+        flex-direction: row;
+    }
 }

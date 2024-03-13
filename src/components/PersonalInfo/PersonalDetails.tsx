@@ -55,8 +55,8 @@ function PersonalDetails() {
                 >
                     {element}
                     <div className="document-icons">
-                        <Icon className="animate-button-hover" icon="line-md:downloading-loop" width="1.2em" height="1.2em" style={{ color: "white" }} />
-                        <Icon className="animate-button-hover" icon="line-md:uploading-loop" width="1.2em" height="1.2em" style={{ color: "white" }} />
+                        <Icon className="animate-button-hover" icon="line-md:downloading-loop" width="2em" height="2em" style={{ color: "white" }} />
+                        <Icon className="animate-button-hover" icon="line-md:uploading-loop" width="2em" height="2em" style={{ color: "white" }} />
                     </div>
                 </div>
             );
@@ -65,7 +65,7 @@ function PersonalDetails() {
 
     return (
         <div className="more-info flex flex-col p-0">
-            <div className="personal-details p-8 columns-2 basis-3/4">{form()}</div>
+            <div className="personal-details p-8 basis-3/4">{form()}</div>
             {store.isAdmin && (
                 <>
                     <Divider orientation="horizontal" sx={{ color: "white" }}>

@@ -6,7 +6,6 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Search from "./Search";
 import "./SearchBar.css";
-import { DEMO_EMPLOYEES } from "../../utils/contants";
 import Employee from "../../models/Employee";
 import { observer } from "mobx-react";
 import { searchBarStore } from "../../stores/searchBarStore";
