@@ -6,14 +6,15 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface LoginRepository extends JpaRepository<Login, Integer> {
     @Query(value = "SELECT * FROM login_credentials WHERE employee_id=?1", nativeQuery = true)
-    Login findUserById(int employeeId);
+    Optional<Login> findUserById(int employeeId);
 
     @Query(value = "SELECT * FROM login_credentials WHERE email_id=?1", nativeQuery = true)
-    Login findUserByEmail(String email);
+    Optional<Login> findUserByEmail(String email);
 
 
 }

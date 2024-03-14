@@ -16,7 +16,7 @@ public class Employee {
     @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employee_id")
-    private int employeeId;
+    private int employeeId=-1;
 
     @Column(name = "name")
     private String name;
@@ -79,7 +79,29 @@ public class Employee {
     public Employee(){
 
     }
-// Constructors, getters, setters, and toString method
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeId=" + employeeId +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", managerId='" + managerId + '\'' +
+                ", level='" + level + '\'' +
+                ", designation='" + designation + '\'' +
+                ", contact=" + contact +
+                ", profileImageUrl='" + profileImageUrl + '\'' +
+                ", badgeImageUrl='" + badgeImageUrl + '\'' +
+                ", slackUrl='" + slackUrl + '\'' +
+                ", department='" + department + '\'' +
+                ", dob=" + dob +
+                ", date_of_joining=" + date_of_joining +
+                ", address='" + address + '\'' +
+                ", pod='" + pod + '\'' +
+                '}';
+    }
+
+    // Constructors, getters, setters, and toString method
 
 
 }

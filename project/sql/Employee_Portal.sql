@@ -4,7 +4,7 @@
 -- https://tableplus.com/
 --
 -- Database: Employee_Portal
--- Generation Time: 2024-03-12 14:07:14.1690
+-- Generation Time: 2024-03-13 16:58:46.0000
 -- -------------------------------------------------------------
 
 
@@ -47,10 +47,9 @@ CREATE TABLE `employee` (
   `slack_url` text,
   `manager_id` varchar(255) DEFAULT NULL,
   `department` varchar(255) DEFAULT NULL,
-  `date_of_birth` datetime(6) DEFAULT NULL,
-  `date_of_joining` datetime(6) DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  `date_of_joining` date DEFAULT NULL,
   `address` text,
-  `dob` datetime(6) DEFAULT NULL,
   `pod` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`employee_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -108,7 +107,7 @@ INSERT INTO `admin` (`employee_id`) VALUES
 (3);
 
 INSERT INTO `document` (`employee_id`, `aadhar_url`, `pan_url`, `offer_letter`, `bank_details`) VALUES
-(1, 'http://example.com/aadhar', 'http://example.com/pan', 'http://example.com/offer-letter', 'http://example.com/bank-details'),
+(1, 'aadhar1', 'pan1', 'offerletter1', 'bank1'),
 (2, 'aadhar_url_2', 'pan_url_2', 'offer_letter_url_2', 'bank_details_2'),
 (3, 'aadhar_url_3', 'pan_url_3', 'offer_letter_url_3', 'bank_details_3'),
 (4, 'aadhar_url_4', 'pan_url_4', 'offer_letter_url_4', 'bank_details_4'),
@@ -124,19 +123,19 @@ INSERT INTO `document` (`employee_id`, `aadhar_url`, `pan_url`, `offer_letter`, 
 (14, 'aadhar_url_14', 'pan_url_14', 'offer_letter_url_14', 'bank_details_14'),
 (15, 'aadhar_url_15', 'pan_url_15', 'offer_letter_url_15', 'bank_details_15');
 
-INSERT INTO `employee` (`employee_id`, `email_id`, `name`, `level`, `designation`, `contact_no`, `profile_image`, `badge_image`, `slack_url`, `manager_id`, `department`, `date_of_birth`, `date_of_joining`, `address`, `dob`, `pod`) VALUES
-(1, 'john@example.com', 'John Doe', 'Senior', 'Software Engineer', 123456789, 'profile_url_ceo', 'badge_image_url_1', 'slack_url_1', NULL, 'IT', '1990-05-15 00:00:00.000000', '2010-07-20 00:00:00.000000', '123 Main St, City, Country', NULL, 'growth'),
-(2, 'jane@example.com', 'Jane Smith', 'Junior', 'Software Engineer', 987654321, 'profile_image_url_2', 'badge_image_url_2', 'slack_url_2', '1', 'IT', '1995-10-25 00:00:00.000000', '2015-03-12 00:00:00.000000', '456 Oak St, City, Country', NULL, 'ops'),
-(3, 'alice@example.com', 'Alice Johnson', 'Senior', 'Project Manager', 555555555, 'profile_image_url_3', 'badge_image_url_3', 'slack_url_3', NULL, 'Management', '1988-12-10 00:00:00.000000', '2008-02-28 00:00:00.000000', '789 Elm St, City, Country', NULL, 'pi'),
-(4, 'bob@example.com', 'Bob Anderson', 'Junior', 'UI/UX Designer', 444444444, 'profile_image_url_4', 'badge_image_url_4', 'slack_url_4', '1', 'Design', '1992-07-18 00:00:00.000000', '2014-09-05 00:00:00.000000', '101 Pine St, City, Country', NULL, 'platform'),
-(5, 'alex@example.com', 'Alex Brown', 'Senior', 'Software Engineer', 777777777, 'profile_image_url_5', 'badge_image_url_5', 'slack_url_5', NULL, 'IT', '1985-03-30 00:00:00.000000', '2005-12-15 00:00:00.000000', '222 Cedar St, City, Country', NULL, 'data'),
-(6, 'emma@example.com', 'Emma Watson', 'Junior', 'Software Engineer', 123456780, 'profile_image_url_6', 'badge_image_url_6', 'slack_url_6', '2', 'IT', '1993-09-05 00:00:00.000000', '2016-06-10 00:00:00.000000', '333 Maple St, City, Country', NULL, 'marketing'),
-(7, 'michael@example.com', 'Michael Johnson', 'Senior', 'Software Engineer', 987643210, 'profile_image_url_7', 'badge_image_url_7', 'slack_url_7', '2', 'IT', '1987-06-20 00:00:00.000000', '2007-08-30 00:00:00.000000', '444 Walnut St, City, Country', NULL, 'collections'),
-(8, 'sophia@example.com', 'Sophia Brown', 'Junior', 'UI/UX Designer', 555555555, 'profile_image_url_8', 'badge_image_url_8', 'slack_url_8', '3', 'Design', '1994-04-12 00:00:00.000000', '2018-01-25 00:00:00.000000', '555 Birch St, City, Country', NULL, 'loc'),
-(9, 'ethan@example.com', 'Ethan Anderson', 'Senior', 'Project Manager', 444444444, 'profile_image_url_9', 'badge_image_url_9', 'slack_url_9', '4', 'Management', '1983-11-28 00:00:00.000000', '2003-09-20 00:00:00.000000', '666 Pineapple St, City, Country', NULL, 'growth'),
-(10, 'olivia@example.com', 'Olivia Martinez', 'Junior', 'Software Engineer', 777777777, 'profile_image_url_10', 'badge_image_url_10', 'slack_url_10', '5', 'IT', '1996-02-08 00:00:00.000000', '2019-11-05 00:00:00.000000', '777 Orange St, City, Country', NULL, 'ops'),
-(11, 'noah@example.com', 'Noah Garcia', 'Senior', 'Software Engineer', 888888888, 'profile_image_url_11', 'badge_image_url_11', 'slack_url_11', '1', 'IT', '1989-08-15 00:00:00.000000', '2009-04-17 00:00:00.000000', '888 Grape St, City, Country', NULL, 'pi'),
-(12, 'isabella@example.com', 'Isabella Lopez', 'Junior', 'Project Manager', 999999999, 'profile_image_url_12', 'badge_image_url_12', 'slack_url_12', '2', 'Management', '1991-01-30 00:00:00.000000', '2012-12-10 00:00:00.000000', '999 Lemon St, City, Country', NULL, 'platform');
+INSERT INTO `employee` (`employee_id`, `email_id`, `name`, `level`, `designation`, `contact_no`, `profile_image`, `badge_image`, `slack_url`, `manager_id`, `department`, `date_of_birth`, `date_of_joining`, `address`, `pod`) VALUES
+(1, 'john@example.com', 'John Doe', 'Senior', 'Software Engineer', 123456789, 'profile_image_1', 'badge_image_url_1', 'slack_url_1', NULL, 'IT', '1990-05-15', '2010-07-20', '123 Main St, City, Country', 'growth'),
+(2, 'jane@example.com', 'Jane Smith', 'Junior', 'Software Engineer', 987654321, 'profile_image_url_2', 'badge_image_url_2', 'slack_url_2', '1', 'IT', '1995-10-25', '2015-03-12', '456 Oak St, City, Country', 'ops'),
+(3, 'alice@example.com', 'Alice Johnson', 'Senior', 'Project Manager', 555555555, 'profile_image_url_3', 'badge_image_url_3', 'slack_url_3', NULL, 'Management', '1988-12-10', '2008-02-28', '789 Elm St, City, Country', 'pi'),
+(4, 'bob@example.com', 'Bob Anderson', 'Junior', 'UI/UX Designer', 444444444, 'profile_image_url_4', 'badge_image_url_4', 'slack_url_4', '1', 'Design', '1992-07-18', '2014-09-05', '101 Pine St, City, Country', 'platform'),
+(5, 'alex@example.com', 'Alex Brown', 'Senior', 'Software Engineer', 777777777, 'profile_image_url_5', 'badge_image_url_5', 'slack_url_5', NULL, 'IT', '1985-03-30', '2005-12-15', '222 Cedar St, City, Country', 'data'),
+(6, 'emma@example.com', 'Emma Watson', 'Junior', 'Software Engineer', 123456780, 'profile_image_url_6', 'badge_image_url_6', 'slack_url_6', '2', 'IT', '1993-09-05', '2016-06-10', '333 Maple St, City, Country', 'marketing'),
+(7, 'michael@example.com', 'Michael Johnson', 'Senior', 'Software Engineer', 987643210, 'profile_image_url_7', 'badge_image_url_7', 'slack_url_7', '2', 'IT', '1987-06-20', '2007-08-30', '444 Walnut St, City, Country', 'collections'),
+(8, 'sophia@example.com', 'Sophia Brown', 'Junior', 'UI/UX Designer', 555555555, 'profile_image_url_8', 'badge_image_url_8', 'slack_url_8', '3', 'Design', '1994-04-12', '2018-01-25', '555 Birch St, City, Country', 'loc'),
+(9, 'ethan@example.com', 'Ethan Anderson', 'Senior', 'Project Manager', 444444444, 'profile_image_url_9', 'badge_image_url_9', 'slack_url_9', '4', 'Management', '1983-11-28', '2003-09-20', '666 Pineapple St, City, Country', 'growth'),
+(10, 'olivia@example.com', 'Olivia Martinez', 'Junior', 'Software Engineer', 777777777, 'profile_image_url_10', 'badge_image_url_10', 'slack_url_10', '5', 'IT', '1996-02-08', '2019-11-05', '777 Orange St, City, Country', 'ops'),
+(11, 'noah@example.com', 'Noah Garcia', 'Senior', 'Software Engineer', 888888888, 'profile_image_url_11', 'badge_image_url_11', 'slack_url_11', '1', 'IT', '1989-08-15', '2009-04-17', '888 Grape St, City, Country', 'pi'),
+(12, 'isabella@example.com', 'Isabella Lopez', 'Junior', 'Project Manager', 999999999, 'profile_image_url_12', 'badge_image_url_12', 'slack_url_12', '2', 'Management', '1991-01-30', '2012-12-10', '999 Lemon St, City, Country', 'platform');
 
 INSERT INTO `employee_interests` (`id`, `employee_id`, `interest_id`) VALUES
 ('1_1', 1, 'interest_1'),
