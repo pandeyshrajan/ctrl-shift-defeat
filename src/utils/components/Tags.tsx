@@ -24,9 +24,9 @@ const Tags = (props: any) => {
     };
 
     return (
-        <Flex wrap="wrap" align="center" className="profile-tags flex flex-row align-center justify-center m-1 mt-2">
+        <Flex wrap="wrap" align="center" className="profile-tags flex flex-row align-center justify-center mt-2">
             {tagsData.map<React.ReactNode>((tag) => (
-                <Tag.CheckableTag className="text-center align-middle" style={{ backgroundColor: "rgba(58,42,29, 0.65)", color: "white", fontWeight: "bold" }} key={tag} checked={searchBarStore.searchInput === tag} onClick={() => searchTagFilter(tagType, tag)}>
+                <Tag.CheckableTag className="tag text-center align-middle" style={{ backgroundColor: "rgba(58,42,29, 0.65)", color: "white", fontWeight: "bold" }} key={tag} checked={searchBarStore.searchInput === tag} onClick={() => searchTagFilter(tagType, tag)}>
                     {tag}
                 </Tag.CheckableTag>
             ))}

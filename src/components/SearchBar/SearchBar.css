@@ -25,5 +25,13 @@
 .search-bar {
     border-top-left-radius: 5em;
     z-index: 2;
+    height: 10%;
     /* background-color: rgba(245, 245, 245, 0.42); */
+}
+
+@media (max-width: 1400px) {
+    .search-box-icon {
+        visibility: hidden;
+        position: absolute;
+    }
 }

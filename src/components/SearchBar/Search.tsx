@@ -33,14 +33,14 @@ function Search() {
             <Input
                 startDecorator={
                     <>
-                        <Icon icon="line-md:search-filled" width="2em" height="2em" style={{ color: "rgba(58,42,29, 0.75)" }} className="ml-2" />
+                        <Icon icon="line-md:search-filled" width="2em" height="2em" style={{ color: "rgba(58,42,29, 0.75)" }} className="search-box-icon ml-2" />
                         <Select value={searchBarStore.searchCriteria} onChange={handleSearchCriteriaChange} className="h-11" style={{ backgroundColor: "rgba(245, 245, 245, 0.12)" }}>
                             {filterLists()}
                         </Select>
                     </>
                 }
                 endDecorator={
-                    <Button type="submit" variant="contained" onClick={handleFormInput} style={{ backgroundColor: "rgba(58,42,29, 0.85)", color: "#fff" }}>
+                    <Button className="search-bar-button" type="submit" variant="contained" onClick={handleFormInput} style={{ backgroundColor: "rgba(58,42,29, 0.85)", color: "#fff" }}>
                         Search
                     </Button>
                 }

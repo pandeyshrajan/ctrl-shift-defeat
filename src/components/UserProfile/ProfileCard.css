@@ -1,38 +1,3 @@
-/* .profile-card {
-    width: 350px;
-    margin: 20px;
-    border-radius: 4px;
-    padding-bottom: 20px;
-    background: white;
-    align-items: center;
-}
-
-.gradient {
-    background-image: linear-gradient(cyan, whitesmoke);
-    height: 125px;
-    border-radius: 4px 4px 0px 0px;
-} */
-
-/* .profile-down img {
-    height: 150px;
-    width: 150px;
-    border-radius: 100px;
-    margin-top: -75px;
-    padding: 5px;
-    background: white;
-} */
-
-/* img {
-    width: 50%;
-    height: 50%;
-    object-fit: contain;
-}
-
-.profile-image {
-    height: 80%;
-    width: 17%;
-} */
-
 .image {
     width: 100%; /* you can use % */
     height: 100%;
@@ -49,13 +14,19 @@
     height: 80%;
     width: 16%;
 }
-
+.image-container {
+    width: 17%;
+}
 .badge-icon {
-    opacity: 70%;
-    transform: translate(490%, -80%);
-    width: 18%;
-    height: 18%;
+    opacity: 30%;
+    transform: translate(390%, -70%);
+    width: 22%;
+    height: 22%;
+    /* background-color: white; */
+    /* min-width: 40px;
+    min-height: 40px; */
     cursor: pointer;
+    transition: all 0.7s;
 }
 
 .badge-icon:hover {
@@ -63,27 +34,71 @@
 }
 
 .deep-link {
-    width: 2.5em;
-    height: 2.5em;
-    float: inline-end;
-    align-items: baseline;
+    width: 40px;
+    height: 40px;
 }
 
 .deep-link-icons {
-    /* transform: translate(300%, -100%); */
-    /* /* position: relative; */
-    /* position: fixed; */
-    float: right;
+    display: flex;
+    flex-direction: row;
+    margin: 1px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+}
+
+.profile-name {
+    font-size: 2.5vw;
+}
+
+.profile-level {
+    font-size: 1vw;
 }
 
 .profile-detail-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* transform: translate(-50%, 0); */
+}
+
+@media (max-width: 1150px) {
 }
 
 @media (max-width: 768px) {
     .profile-detail-container {
         flex-direction: row;
+    }
+    .deep-link-icons {
+        width: 2em;
+        height: 2em;
+        justify-content: center;
+    }
+    .profile-name {
+        font-size: 1.5em;
+    }
+    .profile-level {
+        font-size: 0.8em;
+    }
+    .profile-info {
+        flex-direction: column;
+    }
+    .image-container {
+        /* width: 25%; */
+        /* height: 40%; */
+    }
+    .deep-link {
+        width: 30px;
+        height: 30px;
+    }
+    .badge-icon {
+        width: 23px;
+        height: 23px;
+        transform: translate(240%, -70%);
     }
 }

@@ -7,6 +7,7 @@ import { store } from "../../stores/userProfileStore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../../firebase";
 import { observer } from "mobx-react";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 const style = {
     position: "absolute" as "absolute",
@@ -45,7 +46,8 @@ function PopUp() {
 
     return (
         <div>
-            <img className="animate-button-hover m-1 bg-white p-2 rounded-lg deep-link " src={UploadImageIcon} onClick={togglePopUp} />
+            <Icon className="shadow-xl badge-icon bg-white rounded-lg" icon="mdi:image-add" style={{ color: "gray" }} onClick={togglePopUp} />
+            {/* <img className="animate-button-hover m-1 bg-white p-2 rounded-lg deep-link " src={UploadImageIcon} onClick={togglePopUp} /> */}
             <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
