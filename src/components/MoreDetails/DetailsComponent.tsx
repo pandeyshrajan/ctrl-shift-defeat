@@ -8,7 +8,6 @@ import DirectReportiesList from "../DirectReportiesList/DirectReportiesList";
 import "./DetailsComponent.css";
 import PersonalDetails from "../PersonalInfo/PersonalDetails";
 import { Icon } from "@iconify/react/dist/iconify.js";
-
 import CsvDownloadButton from "react-json-to-csv";
 import { api } from "../../models/api";
 import { commonStore } from "../../stores/commonStore";
