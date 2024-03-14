@@ -5,6 +5,7 @@ import Employee from "./Employee";
 import UserProfile from "./UserProfile";
 import { commonStore } from "../stores/commonStore";
 import { BASE_URL } from "../utils/contants";
+import toast from "react-hot-toast";
 
 class Api {
     constructor() {}
@@ -65,15 +66,19 @@ class Api {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                employeeId: 2,
-                emailId: "",
-                password: "password2",
+                employeeId: employeeId,
+                emailId: emailId,
+                password: password,
             }),
         });
 
         console.log("API RES");
 
-        console.log(response);
+        console.log(response.status);
+        if (response.status != 200) {
+            return { loginStatus: "User not found" };
+        }
+
         const data = await response.json();
         return data;
     };

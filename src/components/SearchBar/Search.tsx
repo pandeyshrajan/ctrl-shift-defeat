@@ -1,17 +1,14 @@
 import { Input } from "@mui/joy";
 import { MenuItem, Select } from "@mui/material";
 import { Button } from "@mui/material";
-import { useState } from "react";
 import { searchBarStore } from "../../stores/searchBarStore";
 import { observer } from "mobx-react";
 import { Icon } from "@iconify/react";
 import { FILTER_FIELDS } from "../../utils/contants";
 
 function Search() {
-    // const [input, setInput] = useState("");
-
-    const handleFormInput = (event: any) => {
-        searchBarStore.searchByCriteria();
+    const handleFormInput = async () => {
+        await searchBarStore.searchByCriteria();
     };
 
     const handleChange = (event: any) => {

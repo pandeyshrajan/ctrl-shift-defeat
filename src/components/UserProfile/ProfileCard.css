@@ -16,20 +16,18 @@
 }
 .image-container {
     width: 17%;
+    height: 70%;
 }
-.badge-icon {
+.change-image-icon {
     opacity: 30%;
-    transform: translate(390%, -70%);
-    width: 22%;
-    height: 22%;
-    /* background-color: white; */
-    /* min-width: 40px;
-    min-height: 40px; */
+    transform: translate(430%, -70%);
+    width: 20%;
+    height: 20%;
     cursor: pointer;
     transition: all 0.7s;
 }
 
-.badge-icon:hover {
+.change-image-icon:hover {
     opacity: 100%;
 }
 

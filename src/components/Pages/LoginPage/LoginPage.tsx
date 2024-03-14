@@ -4,12 +4,28 @@ import { Icon } from "@iconify/react";
 import { commonStore } from "../../../stores/commonStore";
 import "./LoginPage.css";
 import { redirect, useNavigate } from "react-router-dom";
+import { observer } from "mobx-react";
+import toast from "react-hot-toast";
+import { store } from "../../../stores/userProfileStore";
 
 function LoginPage() {
     const navigate = useNavigate();
     const handleOnclick = async () => {
+        toast.loading("Authenticating user", {
+            duration: 500,
+        });
         await commonStore.authenticateUser();
-        navigate("/dashboard");
+        if (commonStore.loginUserId !== -1) {
+            navigate("/dashboard");
+        }
+    };
+
+    const handleInputChange = (event: any) => {
+        commonStore.setInput(event.target.value);
+    };
+
+    const handlePasswordChange = (event: any) => {
+        commonStore.setPassword(event.target.value);
     };
 
     return (
@@ -21,8 +37,8 @@ function LoginPage() {
                         <Icon className="mt-10 m-0" icon="streamline:user-protection-2-solid" width="4em" height="4em" style={{ color: "white" }} />
                         <div className="form">
                             <div className="sign-in-form flex flex-col">
-                                <Input className="sign-in-input" placeholder="Employee ID or Email ID" endDecorator={<Icon icon="teenyicons:id-solid" width="1.2em" height="1.2em" style={{ color: "black" }} />} value={commonStore.userInputOnLogin} />
-                                <Input className="sign-in-input" placeholder="Password" type="password" endDecorator={<Icon icon="teenyicons:password-solid" width="1.2em" height="1.2em" style={{ color: "black" }} values={commonStore.password} />} />
+                                <Input className="sign-in-input" placeholder="Employee ID or Email ID" endDecorator={<Icon icon="teenyicons:id-solid" width="1.2em" height="1.2em" style={{ color: "black" }} />} value={commonStore.userInputOnLogin} required onChange={handleInputChange} />
+                                <Input className="sign-in-input" placeholder="Password" type="password" endDecorator={<Icon icon="teenyicons:password-solid" width="1.2em" height="1.2em" style={{ color: "black" }} />} value={commonStore.password} required onChange={handlePasswordChange} />
                                 <Button variant="outlined" style={{ width: "50%", backgroundColor: "rgba(58,42,29, 0.7)", color: "white", border: "1px solid white" }} onClick={handleOnclick}>
                                     Sign In
                                 </Button>
@@ -44,4 +60,4 @@ function LoginPage() {
     );
 }
 
-export default LoginPage;
+export default observer(LoginPage);

@@ -5,6 +5,7 @@ import "./PersonalDetails.css";
 import { store } from "../../stores/userProfileStore";
 import { observer } from "mobx-react";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import uploadFile from "../../utils/uploadFile";
 
 function PersonalDetails() {
     const form = () => {
@@ -40,6 +41,17 @@ function PersonalDetails() {
         });
     };
 
+    const handleUpload = async (file: any, fileType: string) => {
+        if (file) {
+            console.log(fileType);
+            console.log(file);
+
+            await uploadFile({ file, type: fileType });
+        } else {
+            console.log("AYO");
+        }
+    };
+
     const documents = () => {
         const fields = Object.keys(DOCUMENTS).filter((v) => isNaN(Number(v)));
 
@@ -55,8 +67,17 @@ function PersonalDetails() {
                 >
                     {element}
                     <div className="document-icons">
-                        <Icon className="animate-button-hover" icon="line-md:downloading-loop" width="2em" height="2em" style={{ color: "white" }} />
-                        <Icon className="animate-button-hover" icon="line-md:uploading-loop" width="2em" height="2em" style={{ color: "white" }} />
+                        <a href="https://firebasestorage.googleapis.com/v0/b/people-portal-75866.appspot.com/o/3%2Fdocument%2FBankDetails?alt=media&token=11cce1df-bc4a-451c-8666-5e200ff68832" target="_blank">
+                            <Icon className="animate-button-hover" icon="majesticons:open-line" width="2em" height="2em" style={{ color: "white" }} />
+                        </a>
+                        {store.isAdmin && (
+                            <>
+                                <label htmlFor={`${element}`}>
+                                    <Icon className="animate-button-hover" icon="line-md:uploading-loop" width="2em" height="2em" style={{ color: "white" }} />
+                                </label>
+                                <input className="hidden" id={`${element}`} type="file" onChange={(event) => handleUpload(event?.target.files[0], element)} key={element} />
+                            </>
+                        )}
                     </div>
                 </div>
             );
@@ -66,7 +87,7 @@ function PersonalDetails() {
     return (
         <div className="more-info flex flex-col p-0">
             <div className="personal-details p-8 basis-3/4">{form()}</div>
-            {store.isAdmin && (
+            {(store.isAdmin || store.isLoggedInUser()) && (
                 <>
                     <Divider orientation="horizontal" sx={{ color: "white" }}>
                         {" "}

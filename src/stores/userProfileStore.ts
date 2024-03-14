@@ -3,35 +3,32 @@ import Employee from "../models/Employee";
 import { DEFUALT_INITIALISE_EMPLOYEE, DEFUALT_INITIALISE_USER_PROFILE, EMPLOYEE_DUMMY } from "../utils/contants";
 import { api } from "../models/api";
 import UserProfile from "../models/UserProfile";
-import InterestTags from "../models/InterestTags";
-import ProjectTags from "../models/ProjectTags";
-import { commonStore } from "./commonStore";
 
 class UserProfileStore {
-    loggedInUser: UserProfile = DEFUALT_INITIALISE_USER_PROFILE; //logged in user
-    currentProfile: UserProfile = DEFUALT_INITIALISE_USER_PROFILE; //current open profile
+    loggedInUser: UserProfile = DEFUALT_INITIALISE_USER_PROFILE;
+    currentProfile: UserProfile = DEFUALT_INITIALISE_USER_PROFILE;
     directReporties: Employee[] = [];
-    treeData: Employee = EMPLOYEE_DUMMY; //data to be loaded in tree
-    tabValue: string = "one"; //current active tab in details component
-    uploadPopUp: boolean = false; //show upload popup or not
-    profileImage: string = "../../assets/MoneyView.jpeg"; //current profile image
-    isAdmin: boolean = Math.random() * 10 > 5; //wheather logged in user is admin or not ( Show admin privilages in UI )
+    treeData: Employee = DEFUALT_INITIALISE_EMPLOYEE;
+    tabValue: string = "one";
+    profileImage: string = "";
+    isAdmin: boolean = false;
 
     constructor() {
         makeObservable(this, {
             currentProfile: observable,
             treeData: observable,
             tabValue: observable,
-            uploadPopUp: observable,
             profileImage: observable,
             isAdmin: observable,
             directReporties: observable,
             setCurrentProfile: action,
             setTreeData: action,
-            openPopUp: action,
-            closePopUp: action,
             toggleProfileImage: action,
         });
+    }
+
+    isLoggedInUser(): boolean {
+        return this.loggedInUser.employee.employeeId === this.currentProfile.employee.employeeId;
     }
 
     setLoggedInUser(user: UserProfile) {
@@ -43,10 +40,6 @@ class UserProfileStore {
 
     setAdmin(value: boolean) {
         this.isAdmin = value;
-    }
-
-    getPopUpStatus(): boolean {
-        return this.uploadPopUp;
     }
 
     getCurrentProfile(): UserProfile {
@@ -72,20 +65,10 @@ class UserProfileStore {
         }
     }
 
-    openPopUp() {
-        this.uploadPopUp = true;
-        console.log(" PP " + this.uploadPopUp);
-    }
-
-    closePopUp() {
-        console.log("CLOSE");
-
-        this.uploadPopUp = false;
-    }
-
     async setCurrentProfile(currentProfile: UserProfile) {
         this.currentProfile = currentProfile;
         this.treeData = DEFUALT_INITIALISE_EMPLOYEE;
+        this.profileImage = currentProfile.employee.profileImageUrl;
         console.log("SETTING CURRENT PROFILE");
 
         await this.setTreeData();
@@ -175,6 +158,16 @@ class UserProfileStore {
     async fetchClickedProfile(emplId: number) {
         const newProfile: UserProfile = await api.getUserProfile(emplId);
         this.setCurrentProfile(newProfile);
+    }
+
+    flushData() {
+        this.loggedInUser = DEFUALT_INITIALISE_USER_PROFILE;
+        this.currentProfile = DEFUALT_INITIALISE_USER_PROFILE;
+        this.directReporties = [];
+        this.treeData = DEFUALT_INITIALISE_EMPLOYEE;
+        this.profileImage = "";
+        this.isAdmin = false;
+        this.tabValue = "one";
     }
 }
 

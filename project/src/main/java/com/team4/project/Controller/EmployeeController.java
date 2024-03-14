@@ -75,13 +75,12 @@ public class EmployeeController {
         else return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Manager Not Found!");
     }
 
-    @GetMapping("/projectEmployees/{projectId}")
+    @GetMapping("/projectEmployees/{projectName}")
     public ResponseEntity<Object> getEmployeeByProjectTag(@PathVariable String projectName) {
         List<Employee> list=employeeService.getEmployeeByProjectTags(projectName);
         if(list.isEmpty())
         {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No Employees under given Project!");
-
         }
         else return ResponseEntity.ok(list);
     }

@@ -6,6 +6,7 @@ import UserProfile from "../models/UserProfile";
 export const BASE_URL = "http://localhost:8080/api/employee";
 
 export const FILTER_FIELDS = ["Name", "ID", "Pod", "Interest", "Project", "Department"];
+
 export const DEFUALT_INITIALISE_EMPLOYEE: Employee = {
     name: "",
     employeeId: 0,
@@ -82,6 +83,14 @@ export enum DOCUMENTS {
     "Pan Card",
     "Bank Detail",
 }
+
+export const DEFUALT_INITIALISE_DOCUMENTS = {
+    employeeId: 0,
+    aadharUrl: "",
+    panUrl: "",
+    offerLetterUrl: "",
+    bankDetailsUrl: "",
+};
 
 export const DEMO_EMPLOYEES: Employee[] = [
     {

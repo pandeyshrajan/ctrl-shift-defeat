@@ -17,7 +17,7 @@ function DirectReportiesList() {
         return store.directReporties.map((child: Employee) => {
             return (
                 <>
-                    <ListItem className="reportee-item detail-card">
+                    <ListItem className="reportee-item detail-card" key={child.employeeId}>
                         <ListItemAvatar>
                             <Avatar alt="Remy Sharp" src={child.profileImageUrl} />
                         </ListItemAvatar>

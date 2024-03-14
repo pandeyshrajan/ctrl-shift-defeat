@@ -19,25 +19,22 @@ const renderForeignObjectNode = ({ nodeDatum, toggleNode, foreignObjectProps }: 
 );
 
 function TreeViewComponent({ rootStore }: any) {
-    //   const [translate, containerRef] = useCenteredTree();
     const [toggle, toggleNode] = useState(false);
 
     const [dimensions, translate, containerRef] = useCenteredTree();
-    const nodeSize = { x: "300", y: "400" };
-    const foreignObjectProps = { width: nodeSize.x, height: nodeSize.y, x: -150, y: -200 };
+    const nodeSize = { x: "200", y: "300" };
+    const foreignObjectProps = { width: nodeSize.x, height: nodeSize.y, x: -100, y: -300 };
     return (
         <div style={containerStyles} ref={containerRef}>
             <Tree
                 data={store.getTreeData()}
-                // translate={translate}
                 nodeSize={nodeSize}
                 renderCustomNodeElement={(rd3tProps) => renderForeignObjectNode({ ...rd3tProps, foreignObjectProps, rootStore })}
                 orientation="vertical"
                 depthFactor={500}
-                // initialDepth={1}
                 pathFunc="step"
-                separation={{ siblings: 3, nonSiblings: 3 }}
-                zoomable={true}
+                separation={{ siblings: 2, nonSiblings: 2 }}
+                // zoomable={true}
                 // enableLegacyTransitions={true}
                 dimensions={dimensions}
                 translate={translate}

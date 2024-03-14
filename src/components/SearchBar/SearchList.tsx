@@ -10,6 +10,7 @@ import Employee from "../../models/Employee";
 import { observer } from "mobx-react";
 import { searchBarStore } from "../../stores/searchBarStore";
 import { store } from "../../stores/userProfileStore";
+import SearchSkeleton from "../../utils/skeletons/SearchSkeleton";
 
 function AlignItemsList() {
     const loadNewProfile = async (emplId: number) => {
@@ -36,7 +37,7 @@ function AlignItemsList() {
     return (
         <div className="search-section m-1">
             <Search />
-            <List sx={{ width: "100%", maxWidth: "100%", maxHeight: "100%" }}>{populateEmployee()}</List>
+            {searchBarStore.isSearchBarLaoding ? <SearchSkeleton /> : <List sx={{ width: "100%", maxWidth: "100%", maxHeight: "100%" }}>{populateEmployee()}</List>}
         </div>
     );
 }

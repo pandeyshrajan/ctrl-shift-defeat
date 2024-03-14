@@ -6,6 +6,9 @@
 .me-2 {
     display: none;
 }
+.full-screen {
+    background-color: rgb(72, 70, 66);
+}
 
 .download-fullScreen {
     display: flex;

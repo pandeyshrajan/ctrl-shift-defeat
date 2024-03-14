@@ -11,13 +11,13 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 
 import CsvDownloadButton from "react-json-to-csv";
 import { api } from "../../models/api";
+import { commonStore } from "../../stores/commonStore";
 
 function TreeReportiesComponent() {
     useEffect(() => {
         (async () => await callData())();
     }, []);
 
-    const [style, setStyle] = useState(".me-2");
     const [csvData, setCsvData] = useState({});
 
     const handleChange = (event: any, newValue: string) => {
@@ -25,11 +25,17 @@ function TreeReportiesComponent() {
     };
 
     const toggleFullScreen = () => {
-        const element = document.querySelector(".details-component");
+        let element = document.querySelector(".details-component");
         const isFullScreen = document.fullscreenElement;
 
         if (!isFullScreen) {
+            commonStore.isFullScreen = true;
             element?.requestFullscreen();
+            document.querySelector(".details-component")?.classList.add("full-screen");
+        } else {
+            commonStore.isFullScreen = false;
+            document.exitFullscreen();
+            document.querySelector(".details-component")?.classList.remove("full-screen");
         }
     };
 
@@ -45,32 +51,20 @@ function TreeReportiesComponent() {
                     <Tab value="one" label="More Info" className="m-2" sx={{ color: "#e0e0e0" }} />
                     <Tab value="two" label="Hierarchy Tree" className="m-2" sx={{ color: "#e0e0e0" }} />
                     <Tab value="three" label="Direct Reportees" className="m-2" sx={{ color: "#e0e0e0" }} />
-
-                    {/* {store.getTabValue() == "three" && (
-                        <>
-                            <Input
-                                startDecorator={<SearchTwoTone />}
-                                endDecorator={<Button type="submit">Search</Button>}
-                                sx={{
-                                    "--Input-radius": "16px",
-                                    "--Input-decoratorChildHeight": "38px",
-                                }}
-                                placeholder="Search"
-                                onChange={handleFormInput}
-                                autoComplete="on"
-                                className="m-1 ml-3 mr-3 shadow-lg"
-                            /> */}
-                    {/* <Button onClick={showSearchBar}>Search</Button>
-                            <input className={style} /> */}
-                    {/* </>
-                    )} */}
-                    {/* {store.getTabValue() == "three" && <CsvDownloadButton data={csvData} />} */}
                 </Tabs>
 
                 <div className="download-fullScreen">
                     {store.getTabValue() == "one" && <Icon className="ml-1 animate-button-hover" icon="line-md:edit-twotone-full" width="2.7em" height="2.7em" style={{ color: "white" }} />}
-                    {store.getTabValue() == "three" && <Icon className="ml-1 animate-button-hover" icon="line-md:download-loop" width="2.7em" height="2.7em" style={{ color: "white" }} />}
-                    <Icon className="ml-1 animate-button-hover" icon="mingcute:fullscreen-fill" width="2.7em" height="2.7em" style={{ color: "white" }} onClick={toggleFullScreen} />
+                    {store.getTabValue() == "three" && (
+                        <>
+                            <label htmlFor="download-csv">
+                                <Icon className="ml-1 animate-button-hover" icon="line-md:download-loop" width="2.7em" height="2.7em" style={{ color: "white" }} />
+                            </label>
+                        </>
+                    )}
+                    {store.getTabValue() == "three" && <CsvDownloadButton className="hidden" id="download-csv" data={csvData} />}
+                    {commonStore.isFullScreen === false && <Icon className="ml-1 animate-button-hover" icon="mingcute:fullscreen-fill" width="2.7em" height="2.7em" style={{ color: "white" }} onClick={toggleFullScreen} />}
+                    {commonStore.isFullScreen && <Icon className="ml-1 animate-button-hover" icon="line-md:close" width="2.7em" height="2.7em" style={{ color: "white" }} onClick={toggleFullScreen} />}
                 </div>
             </div>
             {store.getTabValue() == "one" && <PersonalDetails />}

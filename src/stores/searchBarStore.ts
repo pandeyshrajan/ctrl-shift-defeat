@@ -1,23 +1,34 @@
 import { action, makeAutoObservable, observable } from "mobx";
 import Employee from "../models/Employee";
-import { DEMO_EMPLOYEES } from "../utils/contants";
+import { DEFUALT_INITIALISE_EMPLOYEE, DEMO_EMPLOYEES } from "../utils/contants";
 import { api } from "../models/api";
 
 class SearchBarStore {
-    limitedEmployee: Employee[] = DEMO_EMPLOYEES;
-    filteredEmployee: Employee[] = DEMO_EMPLOYEES;
+    limitedEmployee: Employee[] = [];
+    filteredEmployee: Employee[] = [];
     searchInput: string = "";
     searchCriteria: string = "Name";
-    // searchInput: string = "";
+    isSearchBarLaoding: boolean = false;
 
     constructor() {
         makeAutoObservable(this, {
             filteredEmployee: observable,
             searchInput: observable,
+            isSearchBarLaoding: observable,
             setFilteredEmployee: action,
             searchCriteria: observable,
             setSearchCriteria: action,
+            startSearchBarLoading: action,
+            flushData: action,
         });
+    }
+
+    startSearchBarLoading() {
+        this.isSearchBarLaoding = true;
+    }
+
+    stopSearchBarLoading() {
+        this.isSearchBarLaoding = false;
     }
 
     async fetchEmployeeList() {
@@ -43,6 +54,12 @@ class SearchBarStore {
     }
 
     async searchByCriteria() {
+        searchBarStore.startSearchBarLoading();
+        if (this.searchInput === "") {
+            this.setFilteredEmployee(this.limitedEmployee);
+            return;
+        }
+
         let filteredResponse: Employee[] = [];
 
         switch (this.searchCriteria) {
@@ -71,6 +88,15 @@ class SearchBarStore {
         }
 
         this.setFilteredEmployee(filteredResponse);
+        setTimeout(() => searchBarStore.stopSearchBarLoading(), 700);
+    }
+
+    flushData() {
+        this.limitedEmployee = [];
+        this.filteredEmployee = [];
+        this.searchInput = "";
+        this.searchCriteria = "";
+        this.isSearchBarLaoding = false;
     }
 }
 

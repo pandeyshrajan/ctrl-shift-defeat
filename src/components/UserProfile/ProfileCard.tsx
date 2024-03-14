@@ -4,23 +4,23 @@ import { store } from "../../stores/userProfileStore";
 import SlackIcon from "../../assets/logos--slack-icon.svg";
 import MailIcon from "../../assets/logos--google-gmail.svg";
 import CallIcon from "../../assets/fluent--call-32-filled.svg";
-import BadegeIcon from "../../assets/mingcute--badge-fill.svg";
-import PopUp from "../PopUp/PopUp";
 import Tags from "../../utils/components/Tags";
 import linkedInIcon from "../../assets/logos--linkedin-icon.svg";
 import X from "../../assets/line-md--twitter-x.svg";
 import profileImage from "../../assets/MoneyView.jpeg";
 import { Icon } from "@iconify/react/dist/iconify.js";
-
-enum TagType {
-    "Interest",
-    "Project",
-}
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { storage } from "../../../firebase";
+import uploadFile from "../../utils/uploadFile";
 
 function ProfileCard() {
     const toggleProfileIcon = () => {
         store.toggleProfileImage();
-        console.log(store.getProfileImage());
+    };
+
+    const uploadImage = async (event: any) => {
+        const file = event.target.files[0];
+        await uploadFile({ file, type: "Image" });
     };
 
     const currentShownProfile = store.getCurrentProfile().employee;
@@ -29,8 +29,14 @@ function ProfileCard() {
         <>
             <span className="image-container profile-image rounded-lg shadow-2xl">
                 <img className="image rounded-lg" src={store.profileImage} alt="ProfilePhoto" onMouseEnter={toggleProfileIcon} onMouseLeave={toggleProfileIcon} />
-                {store.loggedInUser.employee.employeeId === store.currentProfile.employee.employeeId && <PopUp />}
-                {/* <img className="badge-icon bg-gray-200 shadow-xl rounded-lg" src={BadegeIcon} onClick={toggleProfileIcon} /> */}
+                {store.isLoggedInUser() && (
+                    <>
+                        <label htmlFor="profile-pic-input">
+                            <Icon className="change-image-icon shadow-xl  bg-white rounded-lg" icon="mdi:image-add" style={{ color: "gray" }} />
+                        </label>
+                        <input className="hidden" id="profile-pic-input" type="file" onChange={uploadImage} />
+                    </>
+                )}
             </span>
             <div className="profile-info">
                 <div className="profile-detail-container flex flex-col items-center">
