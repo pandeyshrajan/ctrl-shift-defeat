@@ -4,20 +4,20 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
 import "./DirectReportiesList.css";
 import Employee from "../../models/Employee";
 import { store } from "../../stores/userProfileStore";
 
 function DirectReportiesList() {
     function displayList() {
-        // const currentShownProfile: Employee = store.getCurrentProfile().employee;
-        // console.log(currentShownProfile);
+        const loadNewProfile = async (emplId: number) => {
+            await store.fetchClickedProfile(emplId);
+        };
 
         return store.directReporties.map((child: Employee) => {
             return (
                 <>
-                    <ListItem className="reportee-item detail-card" key={child.employeeId}>
+                    <ListItem className="reportee-item detail-card" key={child.employeeId} onClick={() => loadNewProfile(child.employeeId)}>
                         <ListItemAvatar>
                             <Avatar alt="Remy Sharp" src={child.profileImageUrl} />
                         </ListItemAvatar>

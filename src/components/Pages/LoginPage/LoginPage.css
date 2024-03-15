@@ -1,8 +1,7 @@
 .login-signup-page {
     width: 100vw;
     height: 100vh;
-    overflow: auto;
-    /* background-color: rgb(55, 22, 22); */
+    overflow: hidden;
     background-image: linear-gradient(90deg, rgba(155, 150, 150, 0.058), rgba(0, 0, 0, 0.267)), url("../../../assets/IMG-20240312-WA0001.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -24,8 +23,6 @@
 .login-form {
     width: 30%;
     height: 60%;
-    min-width: 400px;
-    min-height: 400px;
     font-size: 2em;
     font-weight: 600;
     margin-left: 10%;
@@ -35,7 +32,6 @@
     justify-content: center;
     align-items: center;
     border: 1px solid rgba(195, 193, 193, 0.88);
-    /* transform: translate(-25%, 20%); */
 }
 
 .nav-bar-login {
@@ -49,11 +45,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background-color: rgba(255, 255, 255, 0.507); */
 }
 
 .about-people-portal {
-    font-size: 28px;
+    font-size: 2vw;
 }
 
 .right-component {
@@ -64,7 +59,7 @@
     justify-content: center;
     align-items: flex-end;
     text-align: end;
-    font-size: 6em;
+    font-size: 5vw;
     padding: 10%;
 }
 
@@ -77,7 +72,6 @@
     font-weight: 500;
     height: 100%;
     width: 100%;
-    /* transform: translate(0, -5%); */
 }
 
 .sign-in-form {
@@ -93,20 +87,36 @@
 .sign-in-input {
     width: 60%;
     height: 17%;
-    /* ma */
 }
 
-@media (min-width: 1024px) {
-    /* .login-form {
-        transform: translate(70%, 0);
-    } */
+@media (max-width: 900px) {
+    .about-people-portal {
+        font-size: 3vw;
+    }
+    .login-container {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .right-component {
+        align-items: flex-start;
+        align-items: center;
+        padding: 0;
+        height: 30%;
+        text-align: center;
+        margin-top: 2%;
+        font-size: 9vw;
+    }
+    .login-form {
+        margin: 0;
+        width: 80vw;
+    }
+    .login-container {
+        width: 100%;
+    }
+    .sign-in-input {
+        height: 10%;
+    }
+    .left-component {
+        font-size: 3vw;
+    }
 }
-
-/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
-} */

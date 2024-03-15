@@ -1,13 +1,15 @@
 import { Input } from "@mui/joy";
 import { MenuItem, Select } from "@mui/material";
 import { Button } from "@mui/material";
-import { searchBarStore } from "../../stores/searchBarStore";
 import { observer } from "mobx-react";
 import { Icon } from "@iconify/react";
+
 import { FILTER_FIELDS } from "../../utils/contants";
+import { commonStore } from "../../stores/commonStore";
+import { searchBarStore } from "../../stores/searchBarStore";
 
 function Search() {
-    const handleFormInput = async () => {
+    const search = async () => {
         await searchBarStore.searchByCriteria();
     };
 
@@ -25,6 +27,10 @@ function Search() {
         });
     };
 
+    const toggleSideBar = () => {
+        commonStore.toggleSearchBar();
+    };
+
     return (
         <section className="search-bar sticky top-0 p-1 pl-3 shadow-xl">
             <Input
@@ -37,7 +43,7 @@ function Search() {
                     </>
                 }
                 endDecorator={
-                    <Button className="search-bar-button" type="submit" variant="contained" onClick={handleFormInput} style={{ backgroundColor: "rgba(58,42,29, 0.85)", color: "#fff" }}>
+                    <Button className="search-bar-button" type="submit" variant="contained" onClick={search} style={{ backgroundColor: "rgba(58,42,29, 0.85)", color: "#fff" }}>
                         Search
                     </Button>
                 }
@@ -53,6 +59,7 @@ function Search() {
                 value={searchBarStore.searchInput}
                 onChange={handleChange}
             />
+            {commonStore.openSearchBar && <Icon className="ml-1 animate-button-hover" icon="line-md:close" width="2.7em" height="2.7em" style={{ color: "white" }} onClick={toggleSideBar} />}
         </section>
     );
 }

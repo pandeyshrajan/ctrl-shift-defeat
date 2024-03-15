@@ -3,6 +3,7 @@ import Employee from "../models/Employee";
 import { DEFUALT_INITIALISE_EMPLOYEE, DEFUALT_INITIALISE_USER_PROFILE, EMPLOYEE_DUMMY } from "../utils/contants";
 import { api } from "../models/api";
 import UserProfile from "../models/UserProfile";
+import { commonStore } from "./commonStore";
 
 class UserProfileStore {
     loggedInUser: UserProfile = DEFUALT_INITIALISE_USER_PROFILE;
@@ -69,6 +70,7 @@ class UserProfileStore {
         this.currentProfile = currentProfile;
         this.treeData = DEFUALT_INITIALISE_EMPLOYEE;
         this.profileImage = currentProfile.employee.profileImageUrl;
+
         console.log("SETTING CURRENT PROFILE");
 
         await this.setTreeData();
@@ -78,14 +80,12 @@ class UserProfileStore {
         this.directReporties = reportess;
     }
 
-    //Tree Data to be shown in hirarchy
     async setTreeData(newData?: Employee) {
-        if (this.treeData.employeeId === 0) {
+        if (this.treeData.employeeId === -1) {
             await this.createInitialTree();
         } else {
             console.log(" AYO WTFFF ");
-
-            this.treeData = { ...newData! }; //! marks that we know what we we are doing ignoring the error message
+            this.treeData = { ...newData! };
         }
     }
 
@@ -106,8 +106,16 @@ class UserProfileStore {
             }
         }
 
-        manager.children = siblings;
-        this.treeData = { ...manager };
+        if (manager.employeeId != -1) {
+            manager.children = siblings;
+            this.treeData = { ...manager };
+            commonStore.treeCurrentRootId = manager.employeeId;
+        } else {
+            if (reportees.length) {
+                this.currentProfile.employee.children = reportees;
+            }
+            this.treeData = { ...this.currentProfile.employee };
+        }
     }
 
     setTabValue(newValue: string) {
@@ -138,25 +146,39 @@ class UserProfileStore {
 
     async newManager(curId: number) {
         const manager: Employee = await api.getManager(curId);
-        manager.children = await api.getReportees(manager.employeeId);
-        this.setTreeData(this.addManager(this.treeData, manager, curId));
+        const tempChild: Employee[] = await api.getReportees(manager.employeeId);
+
+        const reportee: Employee[] = tempChild.map((emp) => {
+            if (emp.employeeId == curId) {
+                return this.treeData;
+            } else {
+                return emp;
+            }
+        });
+
+        manager.children = reportee;
+        this.setTreeData({ ...manager });
+        commonStore.treeCurrentRootId = manager.employeeId;
         console.log(this.treeData);
     }
 
     addManager(empl: Employee, manager: Employee, curId: number): any {
-        if (empl.employeeId === curId) {
-            // manager.children(empl);
-            return manager;
-        }
-        const c: Employee[] = empl.children?.map((cur) => {
-            return this.addManager(cur, manager, curId);
-        })!;
-        empl.children = c;
-        return empl;
+        // if (empl.employeeId === curId) {
+        //     return manager;
+        // }
+        // const c: Employee[] = empl.children?.map((cur) => {
+        //     return this.addManager(cur, manager, curId);
+        // })!;
+        // empl.children = c;
+        // return empl;
     }
 
     async fetchClickedProfile(emplId: number) {
+        console.log(emplId + " ID of Emple");
+
         const newProfile: UserProfile = await api.getUserProfile(emplId);
+        console.log(newProfile);
+
         this.setCurrentProfile(newProfile);
     }
 
@@ -171,5 +193,4 @@ class UserProfileStore {
     }
 }
 
-// export default UserProfileStore;
 export const store = new UserProfileStore();

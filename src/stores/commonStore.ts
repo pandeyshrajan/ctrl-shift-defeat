@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import { api } from "../models/api";
 import { searchBarStore } from "./searchBarStore";
 import { store } from "./userProfileStore";
-import { makeAutoObservable, observable } from "mobx";
+import { makeAutoObservable, observable, action } from "mobx";
 
 class CommonStore {
     userInputOnLogin: string = "";
@@ -10,11 +10,23 @@ class CommonStore {
     isAdmin: boolean = false;
     loginUserId: number = -1;
     isFullScreen: boolean = false;
+    isLoading: boolean = false;
+    treeCurrentRootId: number = -1;
+    openSearchBar: boolean = false;
 
     constructor() {
         makeAutoObservable(this, {
             isFullScreen: observable,
+            isLoading: observable,
+            treeCurrentRootId: observable,
+            openSearchBar: observable,
+            startLoader: action,
+            stopLoader: action,
         });
+    }
+
+    toggleSearchBar() {
+        this.openSearchBar = !this.openSearchBar;
     }
 
     async authenticateUser() {
@@ -44,6 +56,14 @@ class CommonStore {
         }
 
         await this.otherLoadings();
+    }
+
+    startLoader() {
+        this.isLoading = true;
+    }
+
+    stopLoader() {
+        this.isLoading = false;
     }
 
     async otherLoadings() {

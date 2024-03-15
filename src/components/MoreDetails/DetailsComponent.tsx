@@ -1,24 +1,18 @@
-import TreeViewComponent from "../TreeView/TreeViewComponent";
-import { useState, useEffect } from "react";
-import { store } from "../../stores/userProfileStore";
 import { observer } from "mobx-react";
 import { Tab } from "@mui/material";
-import Tabs from "@mui/material/Tabs";
-import DirectReportiesList from "../DirectReportiesList/DirectReportiesList";
-import "./DetailsComponent.css";
-import PersonalDetails from "../PersonalInfo/PersonalDetails";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import CsvDownloadButton from "react-json-to-csv";
-import { api } from "../../models/api";
+import Tabs from "@mui/material/Tabs";
+
+import { store } from "../../stores/userProfileStore";
+import TreeViewComponent from "../TreeView/TreeViewComponent";
+import PersonalDetails from "../PersonalInfo/PersonalDetails";
+import DirectReportiesList from "../DirectReportiesList/DirectReportiesList";
 import { commonStore } from "../../stores/commonStore";
 
+import "./DetailsComponent.css";
+
 function TreeReportiesComponent() {
-    useEffect(() => {
-        (async () => await callData())();
-    }, []);
-
-    const [csvData, setCsvData] = useState({});
-
     const handleChange = (event: any, newValue: string) => {
         store.setTabValue(newValue);
     };
@@ -36,11 +30,6 @@ function TreeReportiesComponent() {
             document.exitFullscreen();
             document.querySelector(".details-component")?.classList.remove("full-screen");
         }
-    };
-
-    const callData = async () => {
-        const curData = await api.getReportees(store.getCurrentProfile().employee.employeeId);
-        setCsvData(curData);
     };
 
     return (
@@ -61,7 +50,7 @@ function TreeReportiesComponent() {
                             </label>
                         </>
                     )}
-                    {store.getTabValue() == "three" && <CsvDownloadButton className="hidden" id="download-csv" data={csvData} />}
+                    {store.getTabValue() == "three" && <CsvDownloadButton className="hidden" id="download-csv" data={store.directReporties} />}
                     {commonStore.isFullScreen === false && <Icon className="ml-1 animate-button-hover" icon="mingcute:fullscreen-fill" width="2.7em" height="2.7em" style={{ color: "white" }} onClick={toggleFullScreen} />}
                     {commonStore.isFullScreen && <Icon className="ml-1 animate-button-hover" icon="line-md:close" width="2.7em" height="2.7em" style={{ color: "white" }} onClick={toggleFullScreen} />}
                 </div>

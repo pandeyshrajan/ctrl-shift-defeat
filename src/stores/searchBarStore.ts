@@ -1,6 +1,5 @@
 import { action, makeAutoObservable, observable } from "mobx";
 import Employee from "../models/Employee";
-import { DEFUALT_INITIALISE_EMPLOYEE, DEMO_EMPLOYEES } from "../utils/contants";
 import { api } from "../models/api";
 
 class SearchBarStore {
@@ -55,8 +54,10 @@ class SearchBarStore {
 
     async searchByCriteria() {
         searchBarStore.startSearchBarLoading();
+
         if (this.searchInput === "") {
             this.setFilteredEmployee(this.limitedEmployee);
+            searchBarStore.stopSearchBarLoading();
             return;
         }
 

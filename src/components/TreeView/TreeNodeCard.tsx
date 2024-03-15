@@ -1,17 +1,16 @@
-import profileImg from "../../assets/MoneyView.jpeg";
-import "./TreeNodeCard.css";
-import { DEFUALT_INITIALISE_EMPLOYEE, EMPLOYEE_DUMMY } from "../../utils/contants";
-import { store } from "../../stores/userProfileStore";
-import Employee from "../../models/Employee";
 import { observer } from "mobx-react";
 import { Button } from "@mui/material";
 
+import { store } from "../../stores/userProfileStore";
+import { commonStore } from "../../stores/commonStore";
+
+import "./TreeNodeCard.css";
+
 function TreeNodeCard(prop: any) {
-    const { toggleNode, nodeDatum } = prop;
+    const { nodeDatum } = prop;
 
     const loadNewProfile = async (emplId: number) => {
-        console.log(emplId);
-
+        console.log("LOAD NEW PROFILE.....");
         await store.fetchClickedProfile(emplId);
     };
 
@@ -41,7 +40,7 @@ function TreeNodeCard(prop: any) {
                     </div>
                     <div className="buttons-wrap">
                         <div className="follow-wrap flex flex-row justify-around">
-                            {store.getCurrentProfile().employee.managerId == nodeDatum.employeeId && (
+                            {commonStore.treeCurrentRootId == nodeDatum.employeeId && commonStore.treeCurrentRootId != 1 && (
                                 <Button className="follow" onClick={addManager} style={{ backgroundColor: "rgba(58,42,29, 0.85)", color: "#efebe9", fontSize: "11px" }}>
                                     Manager
                                 </Button>

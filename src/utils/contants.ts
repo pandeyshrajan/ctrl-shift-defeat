@@ -9,7 +9,7 @@ export const FILTER_FIELDS = ["Name", "ID", "Pod", "Interest", "Project", "Depar
 
 export const DEFUALT_INITIALISE_EMPLOYEE: Employee = {
     name: "",
-    employeeId: 0,
+    employeeId: -1,
     designation: "",
     level: "0",
     slackURL: "",

@@ -3,21 +3,36 @@ import { Button } from "@mui/material";
 import { Icon } from "@iconify/react";
 import { commonStore } from "../../../stores/commonStore";
 import "./LoginPage.css";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { observer } from "mobx-react";
 import toast from "react-hot-toast";
 import { store } from "../../../stores/userProfileStore";
 
 function LoginPage() {
     const navigate = useNavigate();
+
     const handleOnclick = async () => {
-        toast.loading("Authenticating user", {
+        if (commonStore.userInputOnLogin === "") {
+            toast.error("Invaild Input");
+            return;
+        }
+        commonStore.startLoader();
+
+        toast.loading("Authenticating user .... ", {
             duration: 500,
         });
+
         await commonStore.authenticateUser();
+
         if (commonStore.loginUserId !== -1) {
-            navigate("/dashboard");
+            sessionStorage.setItem("user", commonStore.loginUserId.toString());
+            setTimeout(() => navigate("/dashboard"), 500);
         }
+        setTimeout(() => commonStore.stopLoader(), 1000);
+
+        setTimeout(() => {
+            toast.success(`Welcome ${store.loggedInUser.employee.name} .... :)`);
+        }, 2000);
     };
 
     const handleInputChange = (event: any) => {
@@ -48,7 +63,7 @@ function LoginPage() {
                 </div>
                 <div className="right-component">
                     <div className="people-portal-heading text-white">People Portal</div>
-                    <div className="text-white about-people-portal">Lorem ipsum dolor sit,Exercitationem rem deserunt officiis iusto iste natus ipsum laboriosam architecto </div>
+                    <div className="text-white about-people-portal">Employee Management and Monitoring with ease </div>
                     <div className="icons flex flex-row justify-betweem">
                         <Icon className="animate-button-hover m-4" icon="line-md:instagram" width=".5em" height=".5em" style={{ color: "white" }} />
                         <Icon className="animate-button-hover m-4" icon="line-md:linkedin" width=".5em" height=".5em" style={{ color: "white" }} />

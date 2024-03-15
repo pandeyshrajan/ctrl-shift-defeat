@@ -11,28 +11,35 @@ import { commonStore } from "../../../stores/commonStore";
 import { store } from "../../../stores/userProfileStore";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Modal } from "@mui/material";
+import { observer } from "mobx-react";
 
 function Dashboard() {
     const navigate = useNavigate();
-
-    const logout = () => {
+    if (!sessionStorage.getItem("user")) {
+        navigate("/");
+    }
+    const logout = async () => {
+        commonStore.startLoader();
         store.flushData();
         searchBarStore.flushData();
         commonStore.flushData();
-        navigate("/");
-        toast.success("Logged out succefully");
+
+        setTimeout(() => commonStore.stopLoader(), 500);
+        sessionStorage.removeItem("user");
+        setTimeout(() => navigate("/"), 1200);
+        setTimeout(() => toast.success("Logged out succefully"), 1200);
     };
 
-    const expandSideBar = () => {
-        const element = document.querySelector(".search-bar-icon");
-        element?.classList.add("show-search-tab ");
+    const toggleSideBar = () => {
+        commonStore.toggleSearchBar();
     };
 
     return (
         <>
             <div className="dashboard-container flex h-screen flex-col">
                 <div className="nav-bar font-bold text-stone-100 sticky flex flex-row justify-between">
-                    <Icon className="animate-button-hover search-bar-icon" icon="line-md:menu-fold-right" width="1.2em" height="1.2em" style={{ color: "white" }} onClick={expandSideBar} />
+                    <Icon className="animate-button-hover search-bar-icon" icon="line-md:menu-fold-right" width="1.2em" height="1.2em" style={{ color: "white" }} onClick={toggleSideBar} />
                     <span>People Portal</span>
                     <Icon className="animate-button-hover" icon="line-md:logout" width="1.2em" height="1.2em" style={{ color: "white" }} onClick={logout} />
                 </div>
@@ -48,6 +55,18 @@ function Dashboard() {
                                 </LocalizationProvider>
                             </div>
                         </div>
+                        <Modal className="searchbar-popup" open={commonStore.openSearchBar}>
+                            <div className="search-tab-mobile flex flex-col glass h-full gradient-color" data-aos="fade-right">
+                                <div className="search-part-mobile h-3/5">
+                                    <SearchList />
+                                </div>
+                                <div className="calander-container-mobile h-2/5 align-middle">
+                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                        <DateCalendar className="calander" />
+                                    </LocalizationProvider>
+                                </div>
+                            </div>
+                        </Modal>
                         <div className="right-half flex flex-col h-full flex-grow">
                             <div className="profile-component global-border glass" data-aos="fade-down">
                                 <ProfileCard />
@@ -63,4 +82,4 @@ function Dashboard() {
     );
 }
 
-export default Dashboard;
+export default observer(Dashboard);

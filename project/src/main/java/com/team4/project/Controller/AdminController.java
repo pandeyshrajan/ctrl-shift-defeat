@@ -21,7 +21,7 @@ public class AdminController {
 
 
     @GetMapping(value = "/checkAdmin/{id}")
-    public boolean getLimitedEmployees(@PathVariable int id) {
+    public boolean getAdminStatus(@PathVariable int id) {
         return adminService.isAdmin(id);
     }
 

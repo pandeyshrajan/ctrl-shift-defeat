@@ -4,13 +4,16 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
+
 import Search from "./Search";
-import "./SearchBar.css";
 import Employee from "../../models/Employee";
+import SearchSkeleton from "../../utils/skeletons/SearchSkeleton";
+
 import { observer } from "mobx-react";
 import { searchBarStore } from "../../stores/searchBarStore";
 import { store } from "../../stores/userProfileStore";
-import SearchSkeleton from "../../utils/skeletons/SearchSkeleton";
+
+import "./SearchBar.css";
 
 function AlignItemsList() {
     const loadNewProfile = async (emplId: number) => {
@@ -23,7 +26,7 @@ function AlignItemsList() {
 
             return (
                 <>
-                    <ListItem alignItems="flex-start" className="detail-card p-0 mt-1" onClick={() => loadNewProfile(emplId)} key={empl.employeeId}>
+                    <ListItem alignItems="flex-start" className="detail-card p-0 mt-1" onClick={() => loadNewProfile(emplId)} key={emplId}>
                         <ListItemAvatar>
                             <Avatar alt="Remy Sharp" src={empl.profileImageUrl} />
                         </ListItemAvatar>

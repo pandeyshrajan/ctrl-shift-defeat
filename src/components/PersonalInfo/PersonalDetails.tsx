@@ -15,8 +15,6 @@ function PersonalDetails() {
         Object.entries(currentEmployeeData).map((entry) => {
             let key = entry[0];
             let value = entry[1];
-            console.log(key);
-
             if (key in PERSONAL_INFO) {
                 fields.push({ key: PERSONAL_INFO[key], value: value });
             }
@@ -43,12 +41,7 @@ function PersonalDetails() {
 
     const handleUpload = async (file: any, fileType: string) => {
         if (file) {
-            console.log(fileType);
-            console.log(file);
-
             await uploadFile({ file, type: fileType });
-        } else {
-            console.log("AYO");
         }
     };
 

@@ -5,18 +5,23 @@ import { commonStore } from "./stores/commonStore";
 import { Routes, Route } from "react-router-dom";
 import Dashboard from "./components/Pages/Dashboard/Dashboard";
 import { Toaster } from "react-hot-toast";
-import redirect from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
+import { FallingLines } from "react-loader-spinner";
 
 const App = () => {
     return (
         <>
-            <div>
-                <Toaster />
-            </div>
+            <Modal open={commonStore.isLoading}>
+                <div style={{ height: "100vh", alignItems: "center" }} className="main-loader flex justify-center">
+                    <FallingLines color="white" width="100" visible={true} />
+                </div>
+            </Modal>
+            <Toaster />
             <Routes>
                 <Route path="/" element={<LoginPage />} />
-                {commonStore.loginUserId !== -1 && <Route path="/dashboard" element={<Dashboard />} />}
+                <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
         </>
     );
